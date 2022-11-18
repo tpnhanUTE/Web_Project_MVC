@@ -77,7 +77,7 @@
                     Join our community of designers and developers to get access to
                     hundreds of UI components, plugins, resources, and design systems.
                 </p>
-                <form class="mt-8" action="/admin/user" method="post">
+                <form class="mt-8" action="admin" method="post">
                     <div class="mb-6">
                         <label
                                 for="email"
