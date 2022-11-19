@@ -3,12 +3,13 @@ package com.wepr.booking.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue
     private Integer User_ID;
     private String User_Name;
+    @Column(unique = true)
     private String Email;
     private String Password;
     private String User_Avatar_Url;
@@ -17,7 +18,7 @@ public class User {
     private String First_Name;
     private String Last_Name;
     private Boolean Is_Admin;
-
+    
     public Integer getUser_ID(){
         return User_ID;
     }
