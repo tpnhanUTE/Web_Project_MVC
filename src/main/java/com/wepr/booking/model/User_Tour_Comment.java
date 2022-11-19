@@ -7,30 +7,30 @@ import java.sql.Date;
 public class User_Tour_Comment {
     @Id
     @ManyToOne
-    @JoinColumn(name = "user_ID")
-    private Integer User_ID;
+    @JoinColumn(name = "User_ID")
+    private User User;
     @Id
     @ManyToOne
     @JoinColumn(name = "Tour_ID")
-    private Integer Tour_ID;
+    private Tour Tour;
     private String Comment;
     private Date Comment_Date;
     private Integer Rate;
 
-    public Integer getUser_ID() {
-        return User_ID;
+    public com.wepr.booking.model.User getUser() {
+        return User;
     }
 
-    public void setUser_ID(Integer user_ID) {
-        this.User_ID = user_ID;
+    public void setUser(com.wepr.booking.model.User user) {
+        this.User = user;
     }
 
-    public Integer getTour_ID() {
-        return Tour_ID;
+    public com.wepr.booking.model.Tour getTour() {
+        return Tour;
     }
 
-    public void setTour_ID(Integer tour_ID) {
-        this.Tour_ID = tour_ID;
+    public void setTour(com.wepr.booking.model.Tour tour) {
+        this.Tour = tour;
     }
 
     public String getComment() {
