@@ -1,12 +1,9 @@
 package com.wepr.booking.controller.admin;
 
-//import jakarta.servlet.*;
-//import jakarta.servlet.http.*;
+import com.wepr.booking.model.User;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +18,23 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        try(PrintWriter out = response.getWriter()) {
-            out.println("do post");
-        }
-    }
+        //response.setContentType("text/html");
 
+        User  user = new User();
+        user.setEmail(request.getParameter("email"));
+        user.setUser_Name(request.getParameter("userName"));
+        user.setFirst_Name(request.getParameter("firstName"));
+        user.setLast_Name(request.getParameter("lastName"));
+        user.setPassword(request.getParameter("password"));
+        String confirmPassword = request.getParameter("confirmPassword");
+
+        request.setAttribute("user", user);
+
+        String url = "/index.jsp";
+        if(!user.getPassword().equals(confirmPassword)){
+            url = "/register.jsp";
+        }
+        System.out.println(url);
+        getServletContext().getRequestDispatcher(url).forward(request,response);
+    }
 }

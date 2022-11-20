@@ -42,7 +42,8 @@
                 margin: 0px;
                 padding: 0px;
                 max-width: 100%;"
-        ></span alt="Flowbite logo"
+        ></span
+                alt="Flowbite logo"
                 srcset="/images/logo.svg 1x, /images/logo.svg 2x"
                 src="/images/logo.svg"
                 decoding="async"
@@ -62,7 +63,7 @@
                 min-height: 100%;
                 max-height: 100%;
                 object-fit: contain;"/></span
-        ><span class="ml-3">WELCOME TO</span></a
+        ><span class="ml-3">WELCOME TO KLOCK</span></a
         >
         <div
                 class="justify-center items-center w-full bg-white rounded-lg shadow lg:flex md:mt-0 lg:max-w-screen-sm xl:p-0 dark:bg-gray-800"
@@ -74,10 +75,53 @@
                     Register to new account
                 </h1>
                 <p class="mb-3 text-gray-500 dark:text-gray-400">
-                    Join our community of designers and developers to get access to
-                    hundreds of UI components, plugins, resources, and design systems.
+
                 </p>
                 <form class="mt-8" action="admin" method="post">
+                    <div class="mb-6">
+                        <label
+                                for="email"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >Your first name</label
+                        ><input
+                            required=""
+                            type="text"
+                            name="firstName"
+                            id="firstName"
+                            placeholder="name@company.com"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                    </div>
+                        <div class="mb-6">
+                            <label
+                                    for="email"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >Your last name</label
+                            ><input
+                                required=""
+                                type="text"
+                                name="lastName"
+                                id="lastName"
+                                placeholder="name@company.com"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+
+                        />
+                        </div>
+                            <div class="mb-6">
+                                <label
+                                        for="email"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                >Your user name</label
+                                ><input
+                                    required=""
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    placeholder="name@company.com"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+
+                            />
+                            </div>
                     <div class="mb-6">
                         <label
                                 for="email"
@@ -85,24 +129,22 @@
                         >Your email</label
                         ><input
                             required=""
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="name@company.com"
+                            type="text"
+                            name="userName"
+                            id="userName"
+                            placeholder="user name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value=""
+
                     />
                     </div>
                     <div class="mb-6">
                         <label
-                                for="password"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >Your password</label
                         ><input
                             required=""
                             type="password"
                             name="password"
-                            id="password"
                             placeholder=""
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             value=""
@@ -110,23 +152,25 @@
                     </div>
                     <div class="mb-6">
                         <label
-                                for="password"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                        >Comfirm Password</label
+                        >Your password</label
                         ><input
                             required=""
                             type="password"
-                            name="password"
-                            id="password"
+                            name="confirmPassword"
                             placeholder=""
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             value=""
                     />
                     </div>
+
+                    <c:if test = "${error} == \"\"">
+                        <p> <c:out value = "${error}"/></p>
+                    </c:if>
                     <div class="flex items-start mb-6">
                     </div>
                     <button
-                            class="text-white font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center mb-6 bg-blue-700"
+                            class="text-white font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center mb-6 bg-orange-700"
                             type="submit">
                 <span class="flex justify-center items-center"
                 >Register new account</span>
