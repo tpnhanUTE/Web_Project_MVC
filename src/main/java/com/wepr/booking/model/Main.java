@@ -11,8 +11,13 @@ public class Main {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        User user = new User();
-        em.persist(user);
+
+
+        //Catalog
+        Catalog catalog = new Catalog();
+        em.persist(catalog);
+
+
 
 
         transaction.commit();
