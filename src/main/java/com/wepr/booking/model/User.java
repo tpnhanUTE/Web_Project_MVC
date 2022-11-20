@@ -9,21 +9,21 @@ public class User {
     @Id
     @GeneratedValue
     private Integer User_ID;
+    @Column(unique = true)
     private String User_Name;
     @Column(unique = true)
     private String Email;
     private String Password;
     private String User_Avatar_Url;
-    private String User_Address;
     private String User_Phone;
     private String First_Name;
     private String Last_Name;
     private Boolean Is_Admin;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.MERGE)
+    @OneToMany//(mappedBy = "user",cascade = CascadeType.MERGE)
     private Set<User_Tour_Favorite>  user_tour_favorites;
-    @OneToMany(mappedBy = "user")
+    @OneToMany//(mappedBy = "user")
     private Set<User_Tour_Book> user_tour_books;
-    @OneToMany(mappedBy = "user")
+    @OneToMany//(mappedBy = "user")
     private Set<User_Tour_Comment> user_tour_comments;
     public Integer getUser_ID(){
         return User_ID;
@@ -54,12 +54,6 @@ public class User {
     }
     public void setUser_Avatar_Url(String user_Avatar_Url){
         this.User_Avatar_Url = user_Avatar_Url;
-    }
-    public String getUser_Address(){
-        return User_Address;
-    }
-    public void setUser_Address(String user_Address){
-        this.User_Address = user_Address;
     }
     public String getUser_Phone(){
         return User_Phone;
