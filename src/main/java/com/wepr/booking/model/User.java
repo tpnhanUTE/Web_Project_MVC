@@ -1,6 +1,7 @@
 package com.wepr.booking.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -18,7 +19,12 @@ public class User {
     private String First_Name;
     private String Last_Name;
     private Boolean Is_Admin;
-    
+    @OneToMany(mappedBy = "user",cascade = CascadeType.MERGE)
+    private Set<User_Tour_Favorite>  user_tour_favorites;
+    @OneToMany(mappedBy = "user")
+    private Set<User_Tour_Book> user_tour_books;
+    @OneToMany(mappedBy = "user")
+    private Set<User_Tour_Comment> user_tour_comments;
     public Integer getUser_ID(){
         return User_ID;
     }
@@ -76,5 +82,29 @@ public class User {
     public Boolean getIs_Admin(){ return Is_Admin; }
     public void setIs_Admin(Boolean isAdmin){
         this.Is_Admin = isAdmin;
+    }
+
+    public Set<User_Tour_Favorite> getUser_tour_favorites() {
+        return user_tour_favorites;
+    }
+
+    public void setUser_tour_favorites(Set<User_Tour_Favorite> user_tour_favorites) {
+        this.user_tour_favorites = user_tour_favorites;
+    }
+
+    public Set<User_Tour_Book> getUser_tour_books() {
+        return user_tour_books;
+    }
+
+    public void setUser_tour_books(Set<User_Tour_Book> user_tour_books) {
+        this.user_tour_books = user_tour_books;
+    }
+
+    public Set<User_Tour_Comment> getUser_tour_comments() {
+        return user_tour_comments;
+    }
+
+    public void setUser_tour_comments(Set<User_Tour_Comment> user_tour_comments) {
+        this.user_tour_comments = user_tour_comments;
     }
 }

@@ -5,11 +5,11 @@ import javax.persistence.*;
 public class User_Tour_Favorite {
     @Id
     @OneToOne
-    @JoinColumn(name = "Tour_ID")
+    @JoinColumn(name = "tour_ID")
     private Integer Tour_ID;
     @Id
     @ManyToOne
-    @JoinColumn(name = "User_ID")
+    @JoinColumn(name = "user_ID")
     private User User;
 
     public Integer getTour_ID(){ return Tour_ID; }
