@@ -142,7 +142,7 @@
                                             Cài đặt
                                         </a>
                                     </li>
-                                    <li class="user__option-item log-out"><a href="" class="">Đăng xuất</a></li>
+                                    <li class="user__option-item log-out"><a href="<c:url value='/logout?action=logout'/>" class="">Đăng xuất</a></li>
                                 </ul>
                             </div>
                         </div>
