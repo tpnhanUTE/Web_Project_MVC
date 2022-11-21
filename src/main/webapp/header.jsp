@@ -77,15 +77,15 @@
                     <a href="#" class="navbar-link">Xem gần đây</a>
                 </div>
 
-                <div class="navbar-item navbar-account">
+                <div class="navbar-item navbar-item--guest">
                     <a href="register.jsp" class="navbar-link">Đăng ký</a>
                 </div>
 
-                <div class="navbar-item navbar-item--orange navbar-account">
+                <div class="navbar-item navbar-item--orange navbar-item--guest">
                     <a href="Login.jsp" class="navbar-link">Đăng nhập</a>
                 </div>
 
-<%--                <div class="navbar-item cart-item">--%>
+<%--                <div class="navbar-item cart-item navbar-item--logined">--%>
 <%--                    <a href="#" class="navbar-link">Giỏ hàng</a>--%>
 <%--                    <div class="navbar-cart-wrapper dropdown-wrapper">--%>
 <%--                        <div class="navbar-cart--empty">--%>
@@ -96,7 +96,7 @@
 <%--                    </div>--%>
 <%--                </div>--%>
 
-<%--                <div class="navbar-item">--%>
+<%--                <div class="navbar-item navbar-item--logined">--%>
 <%--                    <div class="navbar-user">--%>
 <%--                        <img src="https://cf.shopee.vn/file/4aa3f33c6dc594a324f893e1f5224057_tn" alt="" class="navbar-user-img">--%>
 <%--                        <div class="navbar-user-option dropdown-wrapper">--%>
