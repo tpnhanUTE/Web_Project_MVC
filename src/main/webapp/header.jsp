@@ -9,6 +9,16 @@
 <html>
 <head>
     <title>Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./fonts/fontawesome-free-6.1.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./fonts/themify-icons/themify-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+
+    <link href="./header.css" rel="stylesheet">
 </head>
 <body>
 <header class="klook-header-wrapper">
@@ -67,77 +77,75 @@
                     <a href="#" class="navbar-link">Xem gần đây</a>
                 </div>
 
-                <div>
-                    <div class="navbar-item">
-                        <a href="#" class="navbar-link">Đăng ký</a>
-                    </div>
-
-                    <div class="navbar-item navbar-item--orange">
-                        <a href="#" class="navbar-link">Đăng nhập</a>
-                    </div>
+                <div class="navbar-item navbar-account">
+                    <a href="#" class="navbar-link">Đăng ký</a>
                 </div>
 
-                <div class="navbar-item cart-item">
-                    <a href="#" class="navbar-link">Giỏ hàng</a>
-                    <div class="navbar-cart-wrapper dropdown-wrapper">
-                        <div class="navbar-cart--empty">
-                            <img src="./img/cart-svgrepo-com.svg" alt="">
-                            <span>Giỏ hàng đang trống</span>
-                            <button class="cart-item__btn hover:bg-darkorange">Xem giỏ hàng</button>
-                        </div>
-                    </div>
+                <div class="navbar-item navbar-item--orange navbar-account">
+                    <a href="#" class="navbar-link">Đăng nhập</a>
                 </div>
 
-                <div class="navbar-item">
-                    <div class="navbar-user">
-                        <img src="https://cf.shopee.vn/file/4aa3f33c6dc594a324f893e1f5224057_tn" alt="" class="navbar-user-img">
-                        <div class="navbar-user-option dropdown-wrapper">
-                            <ul class="user__option-list">
-                                <li class="user__option-item">
-                                    <a href="" class="">
-                                        Đơn hàng
-                                    </a>
-                                </li>
-                                <li class="user__option-item">
-                                    <a href="" class="">
-                                        Mã ưu đãi
-                                    </a>
-                                </li>
-                                <li class="user__option-item">
-                                    <a href="" class="">
-                                        Credit
-                                    </a>
-                                </li>
-                                <li class="user__option-item">
-                                    <a href="" class="">
-                                        Phiếu quà tặng Klook
-                                    </a>
-                                </li>
-                                <li class="user__option-item">
-                                    <a href="" class="">
-                                        Yêu thích
-                                    </a>
-                                </li>
-                                <li class="user__option-item">
-                                    <a href="" class="">
-                                        Đánh giá
-                                    </a>
-                                </li>
-                                <li class="user__option-item">
-                                    <a href="" class="">
-                                        Tích lũy diểm thưỏng
-                                    </a>
-                                </li>
-                                <li class="user__option-item">
-                                    <a href="" class="">
-                                        Cài đặt
-                                    </a>
-                                </li>
-                                <li class="user__option-item log-out"><a href="" class="">Đăng xuất</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+<%--                <div class="navbar-item cart-item">--%>
+<%--                    <a href="#" class="navbar-link">Giỏ hàng</a>--%>
+<%--                    <div class="navbar-cart-wrapper dropdown-wrapper">--%>
+<%--                        <div class="navbar-cart--empty">--%>
+<%--                            <img src="./img/cart-svgrepo-com.svg" alt="">--%>
+<%--                            <span>Giỏ hàng đang trống</span>--%>
+<%--                            <button class="cart-item__btn hover:bg-darkorange">Xem giỏ hàng</button>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
+<%--                <div class="navbar-item">--%>
+<%--                    <div class="navbar-user">--%>
+<%--                        <img src="https://cf.shopee.vn/file/4aa3f33c6dc594a324f893e1f5224057_tn" alt="" class="navbar-user-img">--%>
+<%--                        <div class="navbar-user-option dropdown-wrapper">--%>
+<%--                            <ul class="user__option-list">--%>
+<%--                                <li class="user__option-item">--%>
+<%--                                    <a href="" class="">--%>
+<%--                                        Đơn hàng--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="user__option-item">--%>
+<%--                                    <a href="" class="">--%>
+<%--                                        Mã ưu đãi--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="user__option-item">--%>
+<%--                                    <a href="" class="">--%>
+<%--                                        Credit--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="user__option-item">--%>
+<%--                                    <a href="" class="">--%>
+<%--                                        Phiếu quà tặng Klook--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="user__option-item">--%>
+<%--                                    <a href="" class="">--%>
+<%--                                        Yêu thích--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="user__option-item">--%>
+<%--                                    <a href="" class="">--%>
+<%--                                        Đánh giá--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="user__option-item">--%>
+<%--                                    <a href="" class="">--%>
+<%--                                        Tích lũy diểm thưỏng--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="user__option-item">--%>
+<%--                                    <a href="" class="">--%>
+<%--                                        Cài đặt--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
+<%--                                <li class="user__option-item log-out"><a href="" class="">Đăng xuất</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
             </div>
         </nav>
     </div>
