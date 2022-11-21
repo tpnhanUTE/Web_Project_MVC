@@ -90,6 +90,7 @@
                             id="firstName"
                             placeholder="name@company.com"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value= "${user.First_Name}"
                     />
                     </div>
                         <div class="mb-6">
@@ -104,7 +105,6 @@
                                 id="lastName"
                                 placeholder="name@company.com"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-
                         />
                         </div>
                             <div class="mb-6">
@@ -163,10 +163,7 @@
                             value=""
                     />
                     </div>
-
-                    <c:if test = "${error} == \"\"">
-                        <p> <c:out value = "${error}"/></p>
-                    </c:if>
+                    <span id = "error"></span>
                     <div class="flex items-start mb-6">
                     </div>
                     <button
@@ -180,7 +177,7 @@
         </div>
     </div>
 </main>
-</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = {
@@ -193,4 +190,7 @@
         },
     };
 </script>
+
+</body>
+
 </html>

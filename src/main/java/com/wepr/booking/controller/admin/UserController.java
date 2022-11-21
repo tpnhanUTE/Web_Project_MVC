@@ -33,6 +33,7 @@ public class UserController extends HttpServlet {
         String url = "/index.jsp";
         if(!user.getPassword().equals(confirmPassword)){
             url = "/register.jsp";
+            request.setAttribute("error", "Please re-enter password");
         }
         System.out.println(url);
         getServletContext().getRequestDispatcher(url).forward(request,response);
