@@ -66,13 +66,16 @@
                 <div class="navbar-item">
                     <a href="#" class="navbar-link">Xem gần đây</a>
                 </div>
-                <!-- <div class="navbar-item">
-                    <a href="#" class="navbar-link">Đăng ký</a>
-                </div> -->
 
-                <!-- <div class="navbar-item navbar-item--orange">
-                    <a href="#" class="navbar-link">Đăng nhập</a>
-                </div> -->
+                <div>
+                    <div class="navbar-item">
+                        <a href="#" class="navbar-link">Đăng ký</a>
+                    </div>
+
+                    <div class="navbar-item navbar-item--orange">
+                        <a href="#" class="navbar-link">Đăng nhập</a>
+                    </div>
+                </div>
 
                 <div class="navbar-item cart-item">
                     <a href="#" class="navbar-link">Giỏ hàng</a>
