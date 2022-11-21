@@ -23,8 +23,17 @@ public class LoginController extends HttpServlet {
         String url = "/home.jsp";
         //url = "/index.jsp";
         //new user
+
+
+
+
+        //when login success
         HttpSession session = request.getSession();
+
         session.setAttribute("user", user);
+        System.out.println(session.getAttribute("user"));
+        //System.out.println((session.ti));
+
         getServletContext().getRequestDispatcher(url).forward(request,response);
     }
 }
