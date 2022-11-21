@@ -8,6 +8,6 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="register.jsp">đdfgghhjfghfghággsagdg</a>
+<a href="Login.jsp">đdfgghhjfghfghággsagdg</a>
 </body>
 </html>

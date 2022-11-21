@@ -30,7 +30,7 @@ public class RegisterController extends HttpServlet {
 
         request.setAttribute("user", user);
 
-        String url = "/index.jsp";
+        String url = "/Login.jsp";
         if(!user.getPassword().equals(confirmPassword)){
             url = "/register.jsp";
             request.setAttribute("error", "Please re-enter password");

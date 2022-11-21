@@ -19,7 +19,7 @@ public class LoginController extends HttpServlet {
         user.setPassword(request.getParameter("password"));
 
         // load from data
-        String url = "/index.jsp";
+        String url = "/home.jsp";
         //url = "/index.jsp";
         getServletContext().getRequestDispatcher(url).forward(request,response);
     }
