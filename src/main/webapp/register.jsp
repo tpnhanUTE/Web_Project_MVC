@@ -11,7 +11,7 @@
 </head>
 <body>
 <main class="bg-gray-50 dark:bg-gray-900">
-    <div class="flex flex-col justify-center items-center py-8 px-6 mx-auto md:h-screen">
+    <div class="flex flex-col justify-center items-center py-8 px-6 mx-auto">
         <a class="flex justify-center items-center mb-8 text-3xl font-semibold lg:mb-10 dark:text-white" href="/"><span style="
               box-sizing: border-box;
               display: inline-block;

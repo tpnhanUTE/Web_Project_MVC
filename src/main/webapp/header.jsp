@@ -78,11 +78,11 @@
                 </div>
 
                 <div class="navbar-item navbar-account">
-                    <a href="#" class="navbar-link">Đăng ký</a>
+                    <a href="register.jsp" class="navbar-link">Đăng ký</a>
                 </div>
 
                 <div class="navbar-item navbar-item--orange navbar-account">
-                    <a href="#" class="navbar-link">Đăng nhập</a>
+                    <a href="Login.jsp" class="navbar-link">Đăng nhập</a>
                 </div>
 
 <%--                <div class="navbar-item cart-item">--%>
