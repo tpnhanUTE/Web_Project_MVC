@@ -35,7 +35,6 @@ public class RegisterController extends HttpServlet {
             url = "/register.jsp";
             request.setAttribute("error", "Please re-enter password");
         }
-        System.out.println(url);
         getServletContext().getRequestDispatcher(url).forward(request,response);
     }
 }

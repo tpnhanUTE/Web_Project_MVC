@@ -16,10 +16,6 @@ public class Main {
         //Catalog
         Catalog catalog = new Catalog();
         em.persist(catalog);
-
-
-
-
         transaction.commit();
 
         em.close();

@@ -4,7 +4,6 @@
 
     <persistence-unit name="heroku_e9bd0b1d044616c" transaction-type="RESOURCE_LOCAL">
         <class>com.wepr.booking.model.Catalog</class>
-        <class>com.wepr.booking.model.Decentralization</class>
         <class>com.wepr.booking.model.Payment</class>
         <class>com.wepr.booking.model.Site</class>
         <class>com.wepr.booking.model.Site_Image</class>
