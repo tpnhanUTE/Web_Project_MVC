@@ -1,13 +1,13 @@
 package com.wepr.booking.controller.admin;
 
 import com.wepr.booking.model.User;
-import jakarta.servlet.annotation.*;
 
-import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
@@ -34,6 +34,8 @@ public class RegisterController extends HttpServlet {
         if(!user.getPassword().equals(confirmPassword)){
             url = "/register.jsp";
             request.setAttribute("error", "Please re-enter password");
+        }else {
+            request.setAttribute("error", "");
         }
         getServletContext().getRequestDispatcher(url).forward(request,response);
     }

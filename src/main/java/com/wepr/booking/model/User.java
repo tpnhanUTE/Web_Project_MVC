@@ -1,5 +1,7 @@
 package com.wepr.booking.model;
 
+import com.wepr.booking.utils.Utils;
+
 import javax.persistence.*;
 import java.util.Set;
 

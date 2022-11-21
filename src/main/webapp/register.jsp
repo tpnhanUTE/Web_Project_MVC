@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +11,8 @@
 </head>
 <body>
 <main class="bg-gray-50 dark:bg-gray-900">
-    <div
-            class="flex flex-col justify-center items-center py-8 px-6 mx-auto md:h-screen"
-    >
-        <a
-                class="flex justify-center items-center mb-8 text-3xl font-semibold lg:mb-10 dark:text-white"
-                href="/"
-        ><span
-                style="
+    <div class="flex flex-col justify-center items-center py-8 px-6 mx-auto md:h-screen">
+        <a class="flex justify-center items-center mb-8 text-3xl font-semibold lg:mb-10 dark:text-white" href="/"><span style="
               box-sizing: border-box;
               display: inline-block;
               overflow: hidden;
@@ -30,9 +25,7 @@
               padding: 0px;
               position: relative;
               max-width: 100%;
-            "
-        ><span
-                style="
+            "><span style="
                 box-sizing: border-box;
                 display: block;
                 width: initial;
@@ -42,8 +35,7 @@
                 border: 0px;
                 margin: 0px;
                 padding: 0px;
-                max-width: 100%;"
-        ></span
+                max-width: 100%;"></span
                 alt="Flowbite logo"
                 srcset="/images/logo.svg 1x, /images/logo.svg 2x"
                 src="/images/logo.svg"
@@ -91,6 +83,7 @@
                             id="firstName"
                             placeholder="name@company.com"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value="${user.getFirst_Name()}"
                     />
                     </div>
                         <div class="mb-6">
@@ -105,6 +98,7 @@
                                 id="lastName"
                                 placeholder="name@company.com"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                value="${user.getLast_Name()}"
                         />
                         </div>
                             <div class="mb-6">
@@ -119,7 +113,7 @@
                                     id="email"
                                     placeholder="name@company.com"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-
+                                    value="${user.getEmail()}"
                             />
                             </div>
                     <div class="mb-6">
@@ -134,7 +128,7 @@
                             id="userName"
                             placeholder="user name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-
+                            value="${user.getUser_Name()}"
                     />
                     </div>
                     <div class="mb-6">
@@ -163,7 +157,7 @@
                             value=""
                     />
                     </div>
-                    <span id = "error"></span>
+                    <span id = "error" style="color: red">${error}</span>
                     <div class="flex items-start mb-6">
                     </div>
                     <button
