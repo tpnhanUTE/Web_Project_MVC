@@ -14,16 +14,17 @@ import java.io.IOException;
 public class LogoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        if(action == "logout") {
+        System.out.println( "action "+action);
+        if(action.equals("logout") && action != null) {
             HttpSession session = request.getSession();
             session.invalidate();
-            getServletContext().getRequestDispatcher("home.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath()+"/home.jsp");
         }
+
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }
