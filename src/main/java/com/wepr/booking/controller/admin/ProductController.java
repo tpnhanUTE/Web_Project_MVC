@@ -20,6 +20,6 @@ public class ProductController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productId = request.getParameter("id");
         System.out.print("Nhan"+productId);
-        response.sendRedirect(request.getContextPath()+"/detail.jsp");
+        getServletContext().getRequestDispatcher("/detail.jsp").forward(request,response);
     }
 }

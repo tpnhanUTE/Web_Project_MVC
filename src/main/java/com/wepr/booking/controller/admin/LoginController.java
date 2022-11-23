@@ -14,6 +14,11 @@ import java.io.IOException;
 public class LoginController extends HttpServlet {
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/Login.jsp").forward(req,resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = new User();
         user.setEmail(request.getParameter("email"));
@@ -23,10 +28,6 @@ public class LoginController extends HttpServlet {
         String url = "/home.jsp";
         //url = "/index.jsp";
         //new user
-
-
-
-
         //when login success
         HttpSession session = request.getSession();
 
