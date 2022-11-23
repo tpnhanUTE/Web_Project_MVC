@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<!-- need catalog list and place list-->
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -81,6 +81,18 @@
 
                 <div class="body__menu">
                     <div class="body__menu-items">
+                        <c:forEach  items = "${Catalog}" var="item">
+
+                            <div class="menu__item hover-effect" menu-item-index=${i}>
+                                <a href="#" class="menu__item-link">
+                                    <img src="${item.img}" alt="" class="menu__item-img">
+                                    <span>${item.Catalog_Name}</span>
+                                </a>
+                            </div>
+
+                        </c:forEach>
+
+
 
                     </div>
                 </div>
@@ -99,8 +111,22 @@
                         <i class="ti-angle-left"></i>
                     </button>
                     <div class="top-destination">
-                        <div class="top-destination__items">
 
+
+                        <div class="top-destination__items">
+                            <c:forEach items="${Palces}" var="place">
+                                <a href="#" class="top-destination__link ">
+                                    <div class="top-destination__item hover-effect" style="background-image: url("${item.Place_Image_Url}");">
+                                        <div class="top-destination__item-cover"></div>
+                                        <div class="top-destination__item-text">
+                                            <div class="top-destination__item-title">
+                                                <p>${item.Place_Name}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </c:forEach>
                         </div>
                     </div>
                     <button class="top-destination__next-btn swipe__btn">
@@ -135,54 +161,56 @@
                                 <h1 class="category-info__title" style="color:#FF9D26;">Bán chạy</h1>
                             </div>
 
-                            <div class="category-swiper-wrapper">
+                           <a href="product?id=${tour.Tour_Id}">
+                               <div class="category-swiper-wrapper">
 
-                                <div class="category-swiper">
-                                    <div class="category-swiper__items best-seller" id="BestSeller">
-                                        <div class="category-swiper__item-wrapper"  >
-                                            <div class="category-swiper__item">
-                                                <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')">
+                                   <div class="category-swiper">
+                                       <div class="category-swiper__items best-seller" id="BestSeller">
+                                           <div class="category-swiper__item-wrapper"  >
+                                               <div class="category-swiper__item">
+                                                   <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')">
 
-                                                </div>
-                                                <div class="item__body">
-                                                    <div class="item__body--top">
-                                                        <div class="item__title">
-                                                            <span>Vé Cáp Treo Sun World Ba Na Hills Đà Nẵng</span>
-                                                        </div>
-                                                        <div class="item__activity">
+                                                   </div>
+                                                   <div class="item__body">
+                                                       <div class="item__body--top">
+                                                           <div class="item__title">
+                                                               <span>Vé Cáp Treo Sun World Ba Na Hills Đà Nẵng</span>
+                                                           </div>
+                                                           <div class="item__activity">
                                                                 <span class="item__activity-score">
                                                                     <i class="fa-solid fa-star"></i>
                                                                     <span class="activity-score__rate">4.7</span>
                                                                 </span>
-                                                            <span class="item__activity-review">
+                                                               <span class="item__activity-review">
                                                                     (
                                                                         <span class="activity-review__number">15K+ </span>
                                                                     &nbsp;đánh giá)
                                                                 </span>
-                                                        </div>
-                                                    </div>
+                                                           </div>
+                                                       </div>
 
-                                                    <div class="item__body--bottom">
-                                                        <div class="item-price-box">
-                                                            <span class="item-price-box__sell-price-box">₫ &nbsp<span class="sell-price__value">835,000</span> </span>
-                                                            <span class="item-price-box__old-price-box">₫ &nbsp<span class="old-price__value">850,000</span> </span>
-                                                        </div>
-                                                        <div class="item__tagging-wrapper">
-                                                            <div class="item__tagging item__tagging--disable">
+                                                       <div class="item__body--bottom">
+                                                           <div class="item-price-box">
+                                                               <span class="item-price-box__sell-price-box">₫ &nbsp<span class="sell-price__value">835,000</span> </span>
+                                                               <span class="item-price-box__old-price-box">₫ &nbsp<span class="old-price__value">850,000</span> </span>
+                                                           </div>
+                                                           <div class="item__tagging-wrapper">
+                                                               <div class="item__tagging item__tagging--disable">
 
-                                                                <p>Chính sách đảm bảo về giá</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                                   <p>Chính sách đảm bảo về giá</p>
+                                                               </div>
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
 
 
-                                    </div>
-                                </div>
+                                       </div>
+                                   </div>
 
-                            </div>
+                               </div>
+                           </a>
                         </div>
                     </div>
 

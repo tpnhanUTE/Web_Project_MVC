@@ -289,7 +289,7 @@ const app = {
         // Render top destination items
         let renderTopDestination = this.topDestinationItem.reduce(function(html, item, i) {
             return html + `
-                <a href="#" class="top-destination__link ">
+                <a href="" class="top-destination__link ">
                     <div class="top-destination__item hover-effect" style="background-image: url('${item.img}');">
                         <div class="top-destination__item-cover"></div>
                         <div class="top-destination__item-text">
@@ -306,6 +306,7 @@ const app = {
         // Render best seller items
         let renderBestSeller = this.bestSeller.reduce((html, item, i) => {
             return html + `
+                <a href="/product?id=${tour.Tour_Id}">
                 <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}" "  >
 
                     <div class="category-swiper__item hover-effect">
@@ -344,6 +345,7 @@ const app = {
                         </div>
                     </div>
                 </div>
+                </a>
             `
         }, '');
         bestSellerElement.innerHTML = renderBestSeller;
@@ -404,8 +406,8 @@ const app = {
             return html + `
             <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}" ">
                 <div class="category-swiper__item hover-effect">
+                    
                     <div class="item__heading" style="background-image: url('${item.img}')">
-                        
                     </div>
                     <div class="item__body">
                         <div class="item__body--top">
