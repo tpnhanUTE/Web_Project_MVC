@@ -3,50 +3,29 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table
+@Table(name = "user_tour_comment")
 public class User_Tour_Comment {
     @Id
-    @ManyToOne
-    @JoinColumn(name = "User_ID")
-    private User User;
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "Tour_ID")
-    private Tour Tour;
-    private String Comment;
-    private Date Comment_Date;
+    @GeneratedValue
+    private Integer userTourCommentID;
+    @Column(nullable = false)
     private Integer Rate;
+    @Column(nullable = false)
+    private Date commentDate;
+    private String Comment;
+    @ManyToOne
+    @JoinColumn(name = "fk_userID")
+    private  User user;
+    @ManyToOne
+    @JoinColumn(name = "fk_tourID")
+    private Tour tour;
 
-    public com.wepr.booking.model.User getUser() {
-        return User;
+    public Integer getUserTourCommentID() {
+        return userTourCommentID;
     }
 
-    public void setUser(com.wepr.booking.model.User user) {
-        this.User = user;
-    }
-
-    public com.wepr.booking.model.Tour getTour() {
-        return Tour;
-    }
-
-    public void setTour(com.wepr.booking.model.Tour tour) {
-        this.Tour = tour;
-    }
-
-    public String getComment() {
-        return Comment;
-    }
-
-    public void setComment(String comment) {
-        this.Comment = comment;
-    }
-
-    public Date getComment_Date() {
-        return Comment_Date;
-    }
-
-    public void setComment_Date(Date comment_Date) {
-        this.Comment_Date = comment_Date;
+    public void setUserTourCommentID(Integer userTourCommentID) {
+        this.userTourCommentID = userTourCommentID;
     }
 
     public Integer getRate() {
@@ -56,4 +35,36 @@ public class User_Tour_Comment {
     public void setRate(Integer rate) {
         Rate = rate;
     }
+
+    public Date getCommentDate() {
+        return commentDate;
+    }
+
+    public void setCommentDate(Date commentDate) {
+        this.commentDate = commentDate;
+    }
+    public String getComment() {
+        return Comment;
+    }
+
+    public void setComment(String comment) {
+        this.Comment = comment;
+    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
+    }
+
+
 }

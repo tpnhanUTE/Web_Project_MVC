@@ -1,44 +1,52 @@
 package com.wepr.booking.model;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
 public class Payment {
     @Id
     @GeneratedValue
-    private Integer Payment_ID;
-    private Boolean Payment_Status;
-    private Integer Payment_Total;
-    @OneToMany
-    @JoinColumn(name = "User_ID")
-    private List<User_Tour_Book> User_Book_Tour;
+    private Integer paymentID;
+    @Column(nullable = false)
+    private Double paymentTotal;
+    @Column(nullable = false)
+    private Date datePayment;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_userID")
+    private Set<User> users;
 
-    public Integer getPayment_ID() {
-        return Payment_ID;
+    public Integer getPaymentID() {
+        return paymentID;
     }
 
-    public void setPayment_ID(Integer payment_ID) {
-        this.Payment_ID = payment_ID;
+    public void setPaymentID(Integer paymentID) {
+        this.paymentID = paymentID;
     }
 
-    public Boolean getPayment_Status() {
-        return Payment_Status;
+    public Double getPaymentTotal() {
+        return paymentTotal;
     }
 
-    public void setPayment_Status(Boolean payment_Status) {
-        this.Payment_Status = payment_Status;
+    public void setPaymentTotal(Double paymentTotal) {
+        this.paymentTotal = paymentTotal;
     }
 
-    public Integer getPayment_Total() {
-        return Payment_Total;
+    public Date getDatePayment() {
+        return datePayment;
     }
 
-    public void setPayment_Total(Integer payment_Total) {
-        this.Payment_Total = payment_Total;
+    public void setDatePayment(Date datePayment) {
+        this.datePayment = datePayment;
     }
 
-    public List<User_Tour_Book> getUser_Book_Tour() {
-        return User_Book_Tour;
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

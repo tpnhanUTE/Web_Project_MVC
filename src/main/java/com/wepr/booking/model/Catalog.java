@@ -1,15 +1,24 @@
 package com.wepr.booking.model;
 import javax.persistence.*;
 @Entity
-@Table
+@Table(name = "catalog")
 public class Catalog {
     @Id
     @GeneratedValue
-    private  Integer Catalog_ID;
-    private String Catalog_Name;
+    private Integer catalogID;
+    @Column(nullable = false)
+    private String catalogName;
+    private String catalogImageUrl;
+    public Integer getCatalogID(){return catalogID;}
+    public  void setCatalogID(Integer catalogID){this.catalogID = catalogID;}
+    public  String getCatalogName(){return catalogName;}
+    public void setCatalogName(String catalogName){this.catalogName = catalogName;}
 
-    public Integer getCatalog_ID(){return Catalog_ID;}
-    public  void setCatalog_ID(Integer catalog_ID){this.Catalog_ID = catalog_ID;}
-    public  String getCatalog_Name(){return Catalog_Name;}
-    public void setCatalog_Name(String catalog_Name){this.Catalog_Name = catalog_Name;}
+    public String getCatalogImageUrl() {
+        return catalogImageUrl;
+    }
+
+    public void setCatalogImageUrl(String catalogImageUrl) {
+        this.catalogImageUrl = catalogImageUrl;
+    }
 }

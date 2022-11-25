@@ -22,9 +22,9 @@ public class RegisterController extends HttpServlet {
 
         User  user = new User();
         user.setEmail(request.getParameter("email"));
-        user.setUser_Name(request.getParameter("userName"));
-        user.setFirst_Name(request.getParameter("firstName"));
-        user.setLast_Name(request.getParameter("lastName"));
+        user.setUserName(request.getParameter("userName"));
+        user.setFirstname(request.getParameter("firstName"));
+        user.setLastname(request.getParameter("lastName"));
         user.setPassword(request.getParameter("password"));
         String confirmPassword = request.getParameter("confirmPassword");
 

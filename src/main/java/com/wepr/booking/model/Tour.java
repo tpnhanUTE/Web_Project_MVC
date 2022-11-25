@@ -1,26 +1,62 @@
 package com.wepr.booking.model;
 import javax.persistence.*;
 @Entity
-@Table
+@Table(name = "tour")
 public class Tour {
     @Id
     @GeneratedValue
-    private Integer Tour_ID;
-    private String Tour_Description;
-    private String Tour_Name;
-    private Integer Tour_Price;
+    private Integer tourID;
+    @Column(nullable = false)
+    private String tourName;
+    @Column(nullable = false)
+    private Double tourPrice;
+    private Double tourOldPrice;
+    @Column(nullable = false)
+    private Boolean policy;
+    private String tourDescription;
+    private  String tourSchedule;
     @ManyToOne
-    @JoinColumn(name = "Catalog_ID")
-    private Catalog Catalog_ID;
+    @JoinColumn(name = "fk_placeID")
+    private Place place;
 
-    public Integer getTour_ID(){ return Tour_ID; }
-    public void setTour_ID(Integer tour_ID){ this.Tour_ID = tour_ID; }
-    public String getTour_Description(){return Tour_Description;}
-    public void setTour_Description(String tour_Description){this.Tour_Description = tour_Description;}
-    public  String getTour_Name(){return Tour_Name;}
-    public void setTour_Name(String tour_Name){this.Tour_Name = tour_Name;}
-    public Integer getTour_Price(){return Tour_Price;}
-    public void setTour_Price(Integer tour_Price){this.Tour_Price = tour_Price;}
-    public Catalog getCatalog_ID(){return Catalog_ID;}
-    public void setCatalog_ID(Catalog catalog_ID){this.Catalog_ID = catalog_ID;}
+    public Integer getTourID(){ return tourID; }
+    public void setTourID(Integer tourID){ this.tourID = tourID; }
+    public String getTourName(){return tourName;}
+    public void setTourName(String tourName){this.tourName = tourName;}
+    public  Double getTourPrice(){return tourPrice;}
+    public void setTourPrice(Double tourPrice){this.tourPrice = tourPrice;}
+    public Double getTourOldPrice(){return tourOldPrice;}
+    public void setTourOldPrice(Double tourOldPrice){this.tourOldPrice = tourOldPrice;}
+
+    public Boolean getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(Boolean policy) {
+        this.policy = policy;
+    }
+
+    public String getTourDescription() {
+        return tourDescription;
+    }
+
+    public void setTourDescription(String tourDescription) {
+        this.tourDescription = tourDescription;
+    }
+
+    public String getTourSchedule() {
+        return tourSchedule;
+    }
+
+    public void setTourSchedule(String tourSchedule) {
+        this.tourSchedule = tourSchedule;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
 }

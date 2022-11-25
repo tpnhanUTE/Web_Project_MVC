@@ -10,90 +10,71 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue
-    private Integer User_ID;
+    private Integer userID;
     @Column(unique = true,nullable = false)
-    private String User_Name;
+    private String userName;
     @Column(unique = true,nullable = false)
-    private String Email;
+    private String email;
     @Column(nullable = false)
-    private String Password;
-    private String User_Avatar_Url;
-    private String User_Phone;
+    private String password;
+    private String userAvatarUrl;
+    private String userPhone;
     @Column(nullable = false)
-    private String First_Name;
+    private String firstname;
     @Column(nullable = false)
-    private String Last_Name;
-    private Boolean Is_Admin;
-    @OneToMany//(mappedBy = "user",cascade = CascadeType.MERGE)
-    private Set<User_Tour_Favorite>  user_tour_favorites;
-    @OneToMany//(mappedBy = "user")
-    private Set<User_Tour_Comment> user_tour_comments;
-    public Integer getUser_ID(){
-        return User_ID;
+    private String lastname;
+    private Boolean isAdmin;
+    public Integer getUserID(){
+        return userID;
     }
-    public void setUser_ID(Integer user_ID) {
-        this.User_ID = user_ID;
+    public void setUserID(Integer userID) {
+        this.userID = userID;
     }
-    public  String getUser_Name(){
-        return User_Name;
+    public  String getUserName(){
+        return userName;
     }
-    public void setUser_Name(String user_Name){
-        this.User_Name = user_Name;
+    public void setUserName(String userName){
+        this.userName = userName;
     }
     public String getEmail(){
-        return Email;
+        return email;
     }
     public void setEmail(String email){
-        this.Email = email;
+        this.email = email;
     }
     public String getPassword(){
-        return Password;
+        return password;
     }
     public void setPassword(String password){
-        this.Password = password;
+        this.password = password;
     }
-    public String getUser_Avatar_Url(){
-        return User_Avatar_Url;
+    public String getUserAvatarUrl(){
+        return userAvatarUrl;
     }
-    public void setUser_Avatar_Url(String user_Avatar_Url){
-        this.User_Avatar_Url = user_Avatar_Url;
+    public void setUserAvatarUrl(String userAvatarUrl){
+        this.userAvatarUrl = userAvatarUrl;
     }
-    public String getUser_Phone(){
-        return User_Phone;
+    public String getUserPhone(){
+        return userPhone;
     }
-    public void setUser_Phone(String user_Phone){
-        this.User_Phone = user_Phone;
+    public void setUserPhone(String userPhone){
+        this.userPhone = userPhone;
     }
     public  String getFirst_Name(){
-        return First_Name;
+        return firstname;
     }
-    public void setFirst_Name(String first_Name){
-        this.First_Name = first_Name;
+    public void setFirstname(String firstname){
+        this.firstname = firstname;
     }
-    public  String getLast_Name(){
-        return Last_Name;
+    public  String getLastname(){
+        return lastname;
     }
-    public void setLast_Name(String last_Name){
-        this.Last_Name = last_Name;
+    public void setLastname(String lastname){
+        this.lastname = lastname;
     }
-    public Boolean getIs_Admin(){ return Is_Admin; }
-    public void setIs_Admin(Boolean isAdmin){
-        this.Is_Admin = isAdmin;
-    }
-
-    public Set<User_Tour_Favorite> getUser_tour_favorites() {
-        return user_tour_favorites;
+    public Boolean getIsAdmin(){ return isAdmin; }
+    public void setIsAdmin(Boolean isAdmin){
+        this.isAdmin = isAdmin;
     }
 
-    public void setUser_tour_favorites(Set<User_Tour_Favorite> user_tour_favorites) {
-        this.user_tour_favorites = user_tour_favorites;
-    }
-
-    public Set<User_Tour_Comment> getUser_tour_comments() {
-        return user_tour_comments;
-    }
-
-    public void setUser_tour_comments(Set<User_Tour_Comment> user_tour_comments) {
-        this.user_tour_comments = user_tour_comments;
-    }
 }
