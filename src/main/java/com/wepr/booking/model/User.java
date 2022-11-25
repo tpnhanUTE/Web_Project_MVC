@@ -11,20 +11,21 @@ public class User {
     @Id
     @GeneratedValue
     private Integer User_ID;
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String User_Name;
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String Email;
+    @Column(nullable = false)
     private String Password;
     private String User_Avatar_Url;
     private String User_Phone;
+    @Column(nullable = false)
     private String First_Name;
+    @Column(nullable = false)
     private String Last_Name;
     private Boolean Is_Admin;
     @OneToMany//(mappedBy = "user",cascade = CascadeType.MERGE)
     private Set<User_Tour_Favorite>  user_tour_favorites;
-    @OneToMany//(mappedBy = "user")
-    private Set<User_Tour_Book> user_tour_books;
     @OneToMany//(mappedBy = "user")
     private Set<User_Tour_Comment> user_tour_comments;
     public Integer getUser_ID(){
@@ -86,14 +87,6 @@ public class User {
 
     public void setUser_tour_favorites(Set<User_Tour_Favorite> user_tour_favorites) {
         this.user_tour_favorites = user_tour_favorites;
-    }
-
-    public Set<User_Tour_Book> getUser_tour_books() {
-        return user_tour_books;
-    }
-
-    public void setUser_tour_books(Set<User_Tour_Book> user_tour_books) {
-        this.user_tour_books = user_tour_books;
     }
 
     public Set<User_Tour_Comment> getUser_tour_comments() {
