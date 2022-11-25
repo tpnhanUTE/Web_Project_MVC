@@ -70,7 +70,7 @@
                 <p class="mb-3 text-gray-500 dark:text-gray-400">
 
                 </p>
-                <form class="mt-8" action="register" method="post">
+                <form class="mt-8" action="home?action=register" method="post">
                     <div class="mb-6">
                         <label
                                 for="email"

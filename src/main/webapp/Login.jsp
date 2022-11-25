@@ -79,7 +79,7 @@
           Join our community of designers and developers to get access to
           hundreds of UI components, plugins, resources, and design systems.
         </p>
-        <form class="mt-8" action="login" method="post">
+        <form class="mt-8" action="home?action=login" method="post">
           <div class="mb-6">
             <label
                     for="email"
@@ -137,7 +137,7 @@
           <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
             Not registered?<a
                   class="ml-1 text-blue-700 hover:underline dark:text-blue-500"
-                  href="/register.jsp"
+                  href="register?action=register"
           >Create an account.</a>
           </div>
         </form>

@@ -241,7 +241,7 @@ const app = {
                 collection[i].querySelector('.item-price-box__old-price-box').style.display = 'none';
             }
 
-            if(collection[i].attributes['has-tag'].value === "false") {
+            if(collection[i].attributes['has-tag'].value == "false") {
                 collection[i].querySelector('.item__tagging').style.display = 'none';
             }
         }
@@ -250,7 +250,7 @@ const app = {
     renderTagOnSearchPage() {
         let nodeList = $$('.tree-list-item__node');
         let tagContentArray = Array.from(nodeList).map((item, index) => {
-            if(item.querySelector("input[type='checkbox'").checked === true) {
+            if(item.querySelector("input[type='checkbox']").checked === true) {
                 return {'nodeIndex': index, 'nodeValue': item.querySelector('span').innerText};
             }
         }, [])
@@ -276,7 +276,7 @@ const app = {
         let renderMenu = this.menuItemIcon.reduce(function (html, item, i) {
             return html + `
                     <div class="menu__item hover-effect" menu-item-index=${i}>
-                        <a href="#" class="menu__item-link">
+                        <a href="search.jsp" class="menu__item-link">
                             <img src="${item.img}" alt="" class="menu__item-img">
                             <span>${item.description}</span>
                         </a>
@@ -288,7 +288,7 @@ const app = {
         // Render top destination items
         let renderTopDestination = this.topDestinationItem.reduce(function(html, item, i) {
             return html + `
-                <a href="" class="top-destination__link ">
+                <a href="search.jsp" class="top-destination__link ">
                     <div class="top-destination__item hover-effect" style="background-image: url('${item.img}');">
                         <div class="top-destination__item-cover"></div>
                         <div class="top-destination__item-text">
@@ -305,7 +305,6 @@ const app = {
         // Render best seller items
         let renderBestSeller = this.bestSeller.reduce((html, item, i) => {
             return html + `
-                <a href="/product?id=${tour.Tour_Id}">
                 <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}" "  >
 
                     <div class="category-swiper__item hover-effect">
@@ -344,23 +343,22 @@ const app = {
                         </div>
                     </div>
                 </div>
-                </a>
             `
         }, '');
-        bestSellerElement.innerHTML = renderBestSeller;
+        // bestSellerElement.innerHTML = renderBestSeller;
+        //
+        // bookNowElement.innerHTML = renderBestSeller;
+        // newActivityElement.innerHTML = renderBestSeller;
+        // promotionElement.innerHTML = renderBestSeller;
+        // datingElement.innerHTML = renderBestSeller;
+        // childrenElement.innerHTML = renderBestSeller;
 
-        bookNowElement.innerHTML = renderBestSeller;
-        newActivityElement.innerHTML = renderBestSeller;
-        promotionElement.innerHTML = renderBestSeller;
-        datingElement.innerHTML = renderBestSeller;
-        childrenElement.innerHTML = renderBestSeller;
-
-        this.displayDiscountAndTag(bestSellerElement);
-        this.displayDiscountAndTag(bookNowElement);
-        this.displayDiscountAndTag(newActivityElement);
-        this.displayDiscountAndTag(promotionElement);
-        this.displayDiscountAndTag(datingElement);
-        this.displayDiscountAndTag(childrenElement);
+        // this.displayDiscountAndTag(bestSellerElement);
+        // this.displayDiscountAndTag(bookNowElement);
+        // this.displayDiscountAndTag(newActivityElement);
+        // this.displayDiscountAndTag(promotionElement);
+        // this.displayDiscountAndTag(datingElement);
+        // this.displayDiscountAndTag(childrenElement);
 
 
     },
@@ -403,9 +401,8 @@ const app = {
         const searchList = $('#SearchList');
         let renderSearchList = this.bestSeller.reduce((html, item, index) => {
             return html + `
-            <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
+            <a href="detail.jsp" class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
                 <div class="category-swiper__item hover-effect">
-                    
                     <div class="item__heading" style="background-image: url('${item.img}')">
                     </div>
                     <div class="item__body">
@@ -439,7 +436,7 @@ const app = {
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
             `
         }, '');
         searchList.innerHTML = renderSearchList;
@@ -476,6 +473,7 @@ const app = {
             this.swipe(menu, this.menuCurX, 1176);
             this.menuCurX = this.menuCurX + 1176;
             this.disPlaySwipeCardButton(this.menuCurX, menuNextBtn, menuPrevBtn, hideMenuNextBtnValue);
+
 
         }
 
@@ -596,9 +594,7 @@ const app = {
             node.onclick = () => {
                 app.renderTagOnSearchPage();
                 displaySelectedTagElement();
-
             }
-
         })
 
 

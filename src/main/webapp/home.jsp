@@ -81,19 +81,14 @@
 
                 <div class="body__menu">
                     <div class="body__menu-items">
-                        <c:forEach  items = "${Catalog}" var="item">
-
-                            <div class="menu__item hover-effect" menu-item-index=${i}>
-                                <a href="#" class="menu__item-link">
-                                    <img src="${item.img}" alt="" class="menu__item-img">
-                                    <span>${item.Catalog_Name}</span>
-                                </a>
-                            </div>
-
-                        </c:forEach>
-
-
-
+<%--                        <c:forEach  items="${Catalog}" var="item">--%>
+<%--                            <div class="menu__item hover-effect">--%>
+<%--                                <a href="cate?id=${item.Catalog_ID}" class="menu__item-link">--%>
+<%--                                    <img src="${item.img}" alt="" class="menu__item-img">--%>
+<%--                                    <span>${item.Catalog_Name}</span>--%>
+<%--                                </a>--%>
+<%--                            </div>--%>
+<%--                        </c:forEach>--%>
                     </div>
                 </div>
 
@@ -114,19 +109,18 @@
 
 
                         <div class="top-destination__items">
-                            <c:forEach items="${Palces}" var="place">
-                                <a href="#" class="top-destination__link ">
-                                    <div class="top-destination__item hover-effect" style="background-image: url("${item.Place_Image_Url}");">
-                                        <div class="top-destination__item-cover"></div>
-                                        <div class="top-destination__item-text">
-                                            <div class="top-destination__item-title">
-                                                <p>${item.Place_Name}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </c:forEach>
+<%--                            <c:forEach items="${Places}" var="place">--%>
+<%--                                <a href="city?id=${place.Place_ID}" class="top-destination__link ">--%>
+<%--                                    <div class="top-destination__item hover-effect" style="background-image: url("${item.Place_Image_Url}");">--%>
+<%--                                        <div class="top-destination__item-cover"></div>--%>
+<%--                                        <div class="top-destination__item-text">--%>
+<%--                                            <div class="top-destination__item-title">--%>
+<%--                                                <p>${item.Place_Name}</p>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </a>--%>
+<%--                            </c:forEach>--%>
                         </div>
                     </div>
                     <button class="top-destination__next-btn swipe__btn">
@@ -161,7 +155,7 @@
                                 <h1 class="category-info__title" style="color:#FF9D26;">Bán chạy</h1>
                             </div>
 
-                           <a href="product?id=${tour.Tour_Id}">
+                           <a <c:if test="${tour != null}">href="product?id=${tour.Tour_Id}"</c:if> >
                                <div class="category-swiper-wrapper">
 
                                    <div class="category-swiper">
@@ -207,6 +201,7 @@
 
 
                                        </div>
+
                                    </div>
 
                                </div>

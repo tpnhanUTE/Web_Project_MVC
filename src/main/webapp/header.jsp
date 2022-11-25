@@ -25,7 +25,7 @@
     <div class="klook-header">
         <nav class="navbar">
             <div class="navbar--left">
-                <img class="navbar__logo" src="./img/logo.png">
+                <a href="home.jsp"><img class="navbar__logo" src="./img/logo.png"></a>
                 <div class="navbar__search-box">
                     <input type="text" class="search-box__input" placeholder="Tìm theo điểm đến, hoạt động">
 
@@ -79,11 +79,11 @@
 
                 <% if (session.getAttribute("user") == null) { %>
                     <div class="navbar-item navbar-item--guest">
-                        <a href="logout?action=register"  class="navbar-link">Đăng ký</a>
+                        <a href="home?action=register"  class="navbar-link">Đăng ký</a>
                     </div>
 
                     <div class="navbar-item navbar-item--orange navbar-item--guest">
-                        <a href="login" methods="get" class="navbar-link">Đăng nhập</a>
+                        <a href="home?action=login" methods="get" class="navbar-link">Đăng nhập</a>
                     </div>
                 <% } else {%>
                     <div class="navbar-item cart-item navbar-item--logined">
