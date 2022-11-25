@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -103,14 +104,32 @@
           <div class="tree-list-item" >
             <div class="tree-list-item__title">Điểm đến</div>
             <div class="tree-list-item__node-wrapper" id="Destination">
-
+<%--              <c:forEach items="${destinationItems}" var="desItem">--%>
+<%--                <label class="tree-list-item__node" for="DesCheckBox-${desItem.index}">--%>
+<%--                  <div class="input__check-icon">--%>
+<%--                    <i class="fa-solid fa-check input__check-icon"></i>--%>
+<%--                  </div>--%>
+<%--                  <input type="checkbox" value ="" id="DesCheckBox-${desItem.index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange--%>
+<%--                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">--%>
+<%--                  <span>${desItem.name}</span>--%>
+<%--                </label>--%>
+<%--              </c:forEach>--%>
             </div>
           </div>
 
           <div class="tree-list-item" >
             <div class="tree-list-item__title">Danh mục</div>
             <div class="tree-list-item__node-wrapper" id="Category">
-
+<%--              <c:forEach items="categoryItems" var="cateItem">--%>
+<%--                <label class="tree-list-item__node" for="CategoryCheckBox-${cateItem.index}">--%>
+<%--                  <div class="input__check-icon">--%>
+<%--                    <i class="fa-solid fa-check input__check-icon"></i>--%>
+<%--                  </div>--%>
+<%--                  <input type="checkbox" value ="" id="CategoryCheckBox-${cateItem.index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange --%>
+<%--                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">--%>
+<%--                  <span>${cateItem.name}</span>--%>
+<%--                </label>--%>
+<%--              </c:forEach>--%>
             </div>
           </div>
         </div>
@@ -119,19 +138,7 @@
             <h3 class="activity-count__heading">Tìm thấy <span>...</span> hoạt động</h3>
             <div class="filter-action">
               <div class="experiences-options">
-                <!-- <div class="filter-btn filter__price-range">
-                    <div class="filter-btn__label">Có thể đặt</div>
-                    <div class="filter-btn__action">
-                        <i class="fa-solid fa-angle-down"></i>
-                        <i class="fa-solid fa-angle-up"></i>
-
-                    </div>
-                </div>    -->
-
                 <input type="text" id="litepicker" placeholder="Có thể đặt"/>
-
-
-
                 <div class="filter-btn filter__price-range" id="PriceFilter">
                   <div class="filter-btn__label">Mức giá</div>
                   <div class="filter-btn__action">
@@ -217,12 +224,50 @@
           </div>
 
           <div class="search-result-list" id="SearchList">
+<%--            <c:forEach items="searchItems" var="searchItem">--%>
+<%--              <div class="category-swiper__item-wrapper" has-tag="${searchItem.hasTag}" is-discounting="${this.checkDiscounting(item)}">--%>
+<%--                <div class="category-swiper__item hover-effect">--%>
 
+<%--                  <div class="item__heading" style="background-image: url('${searchItem.img}')">--%>
+<%--                  </div>--%>
+<%--                  <div class="item__body">--%>
+<%--                    <div class="item__body--top">--%>
+<%--                      <div class="item__title">--%>
+<%--                        <span>${searchItem.title}</span>--%>
+<%--                      </div>--%>
+<%--                      <div class="item__activity">--%>
+<%--                                <span class="item__activity-score">--%>
+<%--                                    <i class="fa-solid fa-star"></i>--%>
+<%--                                    <span class="activity-score__rate">${searchItem.rate}</span>--%>
+<%--                                </span>--%>
+<%--                        <span class="item__activity-review">--%>
+<%--                                    (--%>
+<%--                                        <span class="activity-review__number">${searchItem.review}</span>--%>
+<%--                                    &nbsp;đánh giá)--%>
+<%--                                </span>--%>
+<%--                      </div>--%>
+<%--                    </div>--%>
+
+<%--                    <div class="item__body--bottom">--%>
+<%--                      <div class="item-price-box">--%>
+<%--                        <span class="item-price-box__sell-price-box">₫ &nbsp<span--%>
+<%--                                class="sell-price__value">${searchItem.sellPrice}</span> </span>--%>
+<%--                        <span class="item-price-box__old-price-box">₫ &nbsp<span--%>
+<%--                                class="old-price__value">${searchItem.oldPrice}</span> </span>--%>
+<%--                      </div>--%>
+<%--                      <div class="item__tagging-wrapper">--%>
+<%--                        <div class="item__tagging">--%>
+<%--                          <p>Chính sách đảm bảo về giá</p>--%>
+<%--                        </div>--%>
+<%--                      </div>--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--            </c:forEach>--%>
           </div>
         </div>
       </div>
-
-
     </div>
   </main>
 </div>

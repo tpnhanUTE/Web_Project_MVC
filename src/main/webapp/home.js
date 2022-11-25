@@ -249,7 +249,6 @@ const app = {
     ,
     renderTagOnSearchPage() {
         let nodeList = $$('.tree-list-item__node');
-
         let tagContentArray = Array.from(nodeList).map((item, index) => {
             if(item.querySelector("input[type='checkbox'").checked === true) {
                 return {'nodeIndex': index, 'nodeValue': item.querySelector('span').innerText};
@@ -404,7 +403,7 @@ const app = {
         const searchList = $('#SearchList');
         let renderSearchList = this.bestSeller.reduce((html, item, index) => {
             return html + `
-            <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}" ">
+            <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
                 <div class="category-swiper__item hover-effect">
                     
                     <div class="item__heading" style="background-image: url('${item.img}')">
