@@ -14,8 +14,9 @@ public class Main {
 
 
         //Catalog
-        Catalog catalog = new Catalog();
-        em.persist(catalog);
+
+        User user = new User();
+        em.persist(user);
         transaction.commit();
 
         em.close();

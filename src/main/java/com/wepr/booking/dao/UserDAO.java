@@ -16,11 +16,11 @@ public class UserDAO  {
         EntityManager em = JpaConfig.getEntityManager();
         String queryString = "SELECT u FROM User u WHERE u.Email = :email and u.Password =:password";
         TypedQuery<User> q = em.createQuery(queryString,User.class);
+        q.setParameter("email", email);
+        q.setParameter("password", password);
         List<User> users;
         try{
             users = q.getResultList();
-            if(users== null || users.isEmpty())
-                users = null;
         }finally {
             em.close();
         }
@@ -34,8 +34,6 @@ public class UserDAO  {
         List<User> users= null;
         try {
             users = q.getResultList();
-            if(users== null || users.isEmpty())
-                users = null;
         }finally {
             em.close();
         }
@@ -45,11 +43,13 @@ public class UserDAO  {
         EntityManager em = JpaConfig.getEntityManager();
         String queryString = "SELECT u FROM User u WHERE u.Email =:email or u.User_Name =:userName";
         TypedQuery<User> q = em.createQuery(queryString,User.class);
+        q.setParameter("userName", userName);
+        q.setParameter("email", email);
         List<User> users= null;
         boolean isValid =true;
         try{
             users = q.getResultList();
-            if(users.stream().count() >0)
+            if(users.stream().count() > 0)
                 isValid = false;
         }
         finally {
@@ -79,6 +79,22 @@ public class UserDAO  {
         try{
             trans.begin();
             em.merge(user);
+            trans.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
+    }
+
+    public void insertUsers(User user) {
+        EntityManager em = JpaConfig.getEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+           em.persist(user);
             trans.commit();
         }catch (Exception e){
             e.printStackTrace();

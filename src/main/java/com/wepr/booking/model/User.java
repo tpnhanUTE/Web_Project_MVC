@@ -24,10 +24,10 @@ public class User {
     @Column(nullable = false)
     private String Last_Name;
     private Boolean Is_Admin;
-    @OneToMany//(mappedBy = "user",cascade = CascadeType.MERGE)
-    private Set<User_Tour_Favorite>  user_tour_favorites;
-    @OneToMany//(mappedBy = "user")
-    private Set<User_Tour_Comment> user_tour_comments;
+//    @OneToMany//(mappedBy = "user",cascade = CascadeType.MERGE)
+//    private Set<User_Tour_Favorite>  user_tour_favorites;
+//    @OneToMany//(mappedBy = "user")
+//    private Set<User_Tour_Comment> user_tour_comments;
     public Integer getUser_ID(){
         return User_ID;
     }
@@ -81,19 +81,19 @@ public class User {
         this.Is_Admin = isAdmin;
     }
 
-    public Set<User_Tour_Favorite> getUser_tour_favorites() {
-        return user_tour_favorites;
-    }
-
-    public void setUser_tour_favorites(Set<User_Tour_Favorite> user_tour_favorites) {
-        this.user_tour_favorites = user_tour_favorites;
-    }
-
-    public Set<User_Tour_Comment> getUser_tour_comments() {
-        return user_tour_comments;
-    }
-
-    public void setUser_tour_comments(Set<User_Tour_Comment> user_tour_comments) {
-        this.user_tour_comments = user_tour_comments;
-    }
+//    public Set<User_Tour_Favorite> getUser_tour_favorites() {
+//        return user_tour_favorites;
+//    }
+//
+//    public void setUser_tour_favorites(Set<User_Tour_Favorite> user_tour_favorites) {
+//        this.user_tour_favorites = user_tour_favorites;
+//    }
+//
+//    public Set<User_Tour_Comment> getUser_tour_comments() {
+//        return user_tour_comments;
+//    }
+//
+//    public void setUser_tour_comments(Set<User_Tour_Comment> user_tour_comments) {
+//        this.user_tour_comments = user_tour_comments;
+//    }
 }
