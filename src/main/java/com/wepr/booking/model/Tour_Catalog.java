@@ -1,17 +1,21 @@
 package com.wepr.booking.model;
 import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
 @Table(name = "tourCatalog")
-public class Tour_Catalog {
+public class Tour_Catalog implements Serializable {
     @Id
-    @OneToMany
     @Column(name = "fk_tourID")
-    private Tour tour;
+    private Integer tourId;
     @Id
-    @OneToMany
     @Column(name = "fk_catalogID")
-    private Catalog catalog;
+    private Integer catalogId;
 
+    @ManyToOne
+    private Catalog catalog;
+    @ManyToOne
+    private Tour tour;
     public Tour getTour() {
         return tour;
     }
@@ -26,5 +30,21 @@ public class Tour_Catalog {
 
     public void setCatalog(Catalog catalog) {
         this.catalog = catalog;
+    }
+
+    public Integer getTourId() {
+        return tourId;
+    }
+
+    public void setCatalogId(Integer catalogId) {
+        this.catalogId = catalogId;
+    }
+
+    public Integer getCatalogId() {
+        return catalogId;
+    }
+
+    public void setTourId(Integer tourId) {
+        this.tourId = tourId;
     }
 }
