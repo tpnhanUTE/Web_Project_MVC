@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Header</title>
@@ -99,7 +100,12 @@
 
                     <div class="navbar-item navbar-item--logined">
                         <div class="navbar-user">
-                            <img src="https://cf.shopee.vn/file/4aa3f33c6dc594a324f893e1f5224057_tn" alt="" class="navbar-user-img">
+                            <c:if test = "${user.getUserAvatarUrl()== null}">
+                                <img src="https://cf.shopee.vn/file/4aa3f33c6dc594a324f893e1f5224057_tn" alt="" class="navbar-user-img">
+                            </c:if>
+                            <c:if test = "${user.getUserAvatarUrl()!= null}">
+                                <img src="${user.getUserAvatarUrl()}" alt="" class="navbar-user-img">
+                            </c:if>
                             <div class="navbar-user-option dropdown-wrapper">
                                 <ul class="user__option-list">
                                     <li class="user__option-item">

@@ -106,21 +106,21 @@
                         <i class="ti-angle-left"></i>
                     </button>
                     <div class="top-destination">
-
-
                         <div class="top-destination__items">
-<%--                            <c:forEach items="${Places}" var="place">--%>
-<%--                                <a href="city?id=${place.Place_ID}" class="top-destination__link ">--%>
-<%--                                    <div class="top-destination__item hover-effect" style="background-image: url("${item.Place_Image_Url}");">--%>
-<%--                                        <div class="top-destination__item-cover"></div>--%>
-<%--                                        <div class="top-destination__item-text">--%>
-<%--                                            <div class="top-destination__item-title">--%>
-<%--                                                <p>${item.Place_Name}</p>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </a>--%>
-<%--                            </c:forEach>--%>
+                            <c:forEach items="${Places}" var="place">
+                               <c:out>
+                                <a href="city?id=${place.getPlaceID()}" class="top-destination__link ">
+                                    <div class="top-destination__item hover-effect" style="background-image: url("${item.getPlaceImageUrl()}");">
+                                    <div class="top-destination__item-cover"></div>
+                                    <div class="top-destination__item-text">
+                                        <div class="top-destination__item-title">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+                               </c:out>
+                            </c:forEach>
                         </div>
                     </div>
                     <button class="top-destination__next-btn swipe__btn">
@@ -553,7 +553,7 @@
     </footer>
 </div>
 </body>
-<script src="./home.js" type="text/javascript"></script>
+<%--<script src="./home.js" type="text/javascript"></script>--%>
 <script>
     app.startHomePage();
 </script>

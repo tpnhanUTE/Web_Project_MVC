@@ -65,7 +65,9 @@ public class HomeController extends HttpServlet {
                     url = "/Login.jsp";
                 }else {
                     HttpSession session = request.getSession();
-                    session.setAttribute("user", user);
+                    session.setAttribute("user", oUser.get());
+                    request.setAttribute("user",oUser.get());
+                    System.out.print(oUser.get().getUserAvatarUrl());
                     url = "/home?action=home";
                 }
                 break;
