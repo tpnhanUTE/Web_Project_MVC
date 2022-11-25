@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="Tour_Name" >
+                <div class="Tour_Name" name  = "Tour_Name" >
                     Tour Tham Quan Địa Đạo Củ Chi Và Đồng Bằng Sông Cửu Long Bằng Xe Limousine
                 </div>
                 <div >
@@ -277,7 +277,7 @@
         let price = document.getElementById("price").innerHTML;
 
         let amount = (+price)* (+adultValue) + (+price)* (+childValue)*0.5;
-        document.getElementById("amount").innerHTML = amount;
+        document.getElementById("amount").innerHTML = amount+"đ";
         console.log(typeof(+price));
     }
 </script>
