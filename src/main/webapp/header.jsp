@@ -25,7 +25,7 @@
     <div class="klook-header">
         <nav class="navbar">
             <div class="navbar--left">
-                <img class="navbar__logo" src="./img/logo.png">
+                <a href="home.jsp"><img class="navbar__logo" src="./img/logo.png"></a>
                 <div class="navbar__search-box">
                     <input type="text" class="search-box__input" placeholder="Tìm theo điểm đến, hoạt động">
 

@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -7,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -109,7 +110,7 @@
 <%--                  <div class="input__check-icon">--%>
 <%--                    <i class="fa-solid fa-check input__check-icon"></i>--%>
 <%--                  </div>--%>
-<%--                  <input type="checkbox" value ="" id="DesCheckBox-${desItem.index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange--%>
+<%--                  <input type="checkbox" <c:if test="${desHtmlID == 'DesCheckBox-' + desItem.index}">value="checked"</c:if> id="DesCheckBox-${desItem.index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange--%>
 <%--                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">--%>
 <%--                  <span>${desItem.name}</span>--%>
 <%--                </label>--%>
@@ -120,12 +121,12 @@
           <div class="tree-list-item" >
             <div class="tree-list-item__title">Danh mục</div>
             <div class="tree-list-item__node-wrapper" id="Category">
-<%--              <c:forEach items="categoryItems" var="cateItem">--%>
+<%--              <c:forEach items="${categoryItems}" var="cateItem">--%>
 <%--                <label class="tree-list-item__node" for="CategoryCheckBox-${cateItem.index}">--%>
 <%--                  <div class="input__check-icon">--%>
 <%--                    <i class="fa-solid fa-check input__check-icon"></i>--%>
 <%--                  </div>--%>
-<%--                  <input type="checkbox" value ="" id="CategoryCheckBox-${cateItem.index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange --%>
+<%--                  <input type="checkbox" <c:if test="${cateHtmlID == 'CategoryCheckBox-' + cateItem.index}">value=checked</c:if> id="CategoryCheckBox-${cateItem.index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange--%>
 <%--                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">--%>
 <%--                  <span>${cateItem.name}</span>--%>
 <%--                </label>--%>
@@ -224,25 +225,25 @@
           </div>
 
           <div class="search-result-list" id="SearchList">
-<%--            <c:forEach items="searchItems" var="searchItem">--%>
-<%--              <div class="category-swiper__item-wrapper" has-tag="${searchItem.hasTag}" is-discounting="${this.checkDiscounting(item)}">--%>
+<%--            <c:forEach items="${searchItems}" var="item">--%>
+<%--              <a href="detail.jsp" class="category-swiper__item-wrapper" has-tag="${item.Tour_Policy}" is-discounting="${item.Tour_Old_Price != null}">--%>
 <%--                <div class="category-swiper__item hover-effect">--%>
 
-<%--                  <div class="item__heading" style="background-image: url('${searchItem.img}')">--%>
+<%--                  <div class="item__heading" style="background-image: url('${item.Tour_Img}')">--%>
 <%--                  </div>--%>
 <%--                  <div class="item__body">--%>
 <%--                    <div class="item__body--top">--%>
 <%--                      <div class="item__title">--%>
-<%--                        <span>${searchItem.title}</span>--%>
+<%--                        <span>${item.Tour_Name}</span>--%>
 <%--                      </div>--%>
 <%--                      <div class="item__activity">--%>
 <%--                                <span class="item__activity-score">--%>
 <%--                                    <i class="fa-solid fa-star"></i>--%>
-<%--                                    <span class="activity-score__rate">${searchItem.rate}</span>--%>
+<%--                                    <span class="activity-score__rate">${item.Tour_Rating}</span>--%>
 <%--                                </span>--%>
 <%--                        <span class="item__activity-review">--%>
 <%--                                    (--%>
-<%--                                        <span class="activity-review__number">${searchItem.review}</span>--%>
+<%--                                        <span class="activity-review__number">${item.Tour_Review}</span>--%>
 <%--                                    &nbsp;đánh giá)--%>
 <%--                                </span>--%>
 <%--                      </div>--%>
@@ -251,9 +252,9 @@
 <%--                    <div class="item__body--bottom">--%>
 <%--                      <div class="item-price-box">--%>
 <%--                        <span class="item-price-box__sell-price-box">₫ &nbsp<span--%>
-<%--                                class="sell-price__value">${searchItem.sellPrice}</span> </span>--%>
+<%--                                class="sell-price__value">${item.Tour_Price}</span> </span>--%>
 <%--                        <span class="item-price-box__old-price-box">₫ &nbsp<span--%>
-<%--                                class="old-price__value">${searchItem.oldPrice}</span> </span>--%>
+<%--                                class="old-price__value">${item.Tour_Old_Price}</span> </span>--%>
 <%--                      </div>--%>
 <%--                      <div class="item__tagging-wrapper">--%>
 <%--                        <div class="item__tagging">--%>
@@ -263,7 +264,7 @@
 <%--                    </div>--%>
 <%--                  </div>--%>
 <%--                </div>--%>
-<%--              </div>--%>
+<%--              </a>--%>
 <%--            </c:forEach>--%>
           </div>
         </div>
