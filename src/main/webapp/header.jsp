@@ -79,11 +79,11 @@
 
                 <% if (session.getAttribute("user") == null) { %>
                     <div class="navbar-item navbar-item--guest">
-                        <a href="register.jsp" class="navbar-link">Đăng ký</a>
+                        <a href="logout?action=register"  class="navbar-link">Đăng ký</a>
                     </div>
 
                     <div class="navbar-item navbar-item--orange navbar-item--guest">
-                        <a href="Login.jsp" class="navbar-link">Đăng nhập</a>
+                        <a href="login" methods="get" class="navbar-link">Đăng nhập</a>
                     </div>
                 <% } else {%>
                     <div class="navbar-item cart-item navbar-item--logined">
