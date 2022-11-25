@@ -26,7 +26,7 @@ public class UserBookTourDAO {
     }
     public Optional<User_Tour_Book> Get(int tourId, int userId){
         EntityManager em = JpaConfig.getEntityManager();
-        String queryString = "SELECT u FROM User_Tour_Book u WHERE u.Tour_ID =:tourId and u.User_ID =: userId";
+        String queryString = "SELECT u FROM User_Tour_Book u WHERE u.tour =:tourId and u.user =: userId";
         TypedQuery<User_Tour_Book> q = em.createQuery(queryString,User_Tour_Book.class);
         List<User_Tour_Book> user_Tour_Book;
         try{

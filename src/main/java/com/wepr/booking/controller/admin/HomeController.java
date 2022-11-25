@@ -62,7 +62,7 @@ public class HomeController extends HttpServlet {
                 UserDAO userDAO = new UserDAO();
                 Optional<User> oUser =  userDAO.getUser(user.getEmail(), user.getPassword());
                 if(!oUser.isPresent()){
-                    url = "/home?action=login";
+                    url = "/Login.jsp";
                 }else {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
@@ -90,6 +90,7 @@ public class HomeController extends HttpServlet {
                     if(userDAO.IsValid(user.getEmail(), user.getUserName())){
                         userDAO.insertUsers(user);
                     }else{
+                        request.setAttribute("error", "email or user name has existed");
                         url = "/register.jsp";
                     }
                 }

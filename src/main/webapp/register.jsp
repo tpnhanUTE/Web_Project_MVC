@@ -83,7 +83,7 @@
                             id="firstName"
                             placeholder="name@company.com"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="${user.getFirst_Name()}"
+                            value="${user.getFirstName()}"
                     />
                     </div>
                         <div class="mb-6">
@@ -98,7 +98,7 @@
                                 id="lastName"
                                 placeholder="name@company.com"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                value="${user.getLast_Name()}"
+                                value="${user.getLastName()}"
                         />
                         </div>
                             <div class="mb-6">
@@ -128,7 +128,7 @@
                             id="userName"
                             placeholder="user name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="${user.getUser_Name()}"
+                            value="${user.getUserName()}"
                     />
                     </div>
                     <div class="mb-6">

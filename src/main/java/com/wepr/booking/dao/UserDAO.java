@@ -14,7 +14,7 @@ public class UserDAO  {
 
     public Optional<User> getUser(String email,String password ){
         EntityManager em = JpaConfig.getEntityManager();
-        String queryString = "SELECT u FROM User u WHERE u.Email = :email and u.Password =:password";
+        String queryString = "SELECT u FROM User u WHERE u.email = :email and u.password =:password";
         TypedQuery<User> q = em.createQuery(queryString,User.class);
         q.setParameter("email", email);
         q.setParameter("password", password);
@@ -29,7 +29,7 @@ public class UserDAO  {
 
     public Optional<User> getUser(int id){
         EntityManager em = JpaConfig.getEntityManager();
-        String queryString = "SELECT u FROM User u WHERE u.User_ID =:id";
+        String queryString = "SELECT u FROM User u WHERE u.userID =:id";
         TypedQuery<User> q = em.createQuery(queryString,User.class);
         List<User> users= null;
         try {
@@ -41,7 +41,7 @@ public class UserDAO  {
     }
     public boolean IsValid(String email, String userName ){
         EntityManager em = JpaConfig.getEntityManager();
-        String queryString = "SELECT u FROM User u WHERE u.Email =:email or u.User_Name =:userName";
+        String queryString = "SELECT u FROM User u WHERE u.email =:email or u.userName =:userName";
         TypedQuery<User> q = em.createQuery(queryString,User.class);
         q.setParameter("userName", userName);
         q.setParameter("email", email);
