@@ -123,6 +123,7 @@
                         </c:forEach>
                     </div>
 
+                        
 
                     </div>
                     <button class="top-destination__next-btn swipe__btn">
