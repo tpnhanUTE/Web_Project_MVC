@@ -1,7 +1,11 @@
 package com.wepr.booking.controller.admin;
 
+import com.wepr.booking.dao.CatalogDAO;
 import com.wepr.booking.dao.PlaceDAO;
+import com.wepr.booking.dao.TourDAO;
+import com.wepr.booking.model.Catalog;
 import com.wepr.booking.model.Place;
+import com.wepr.booking.model.Tour;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -20,11 +24,20 @@ public class IndexController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "/home.jsp";
         PlaceDAO placeDAO = new PlaceDAO();
-        List<Place> place =placeDAO.GetPlace();
-        for(int i=0;i< place.size();i++){
-            System.out.print(place.get(i).getPlaceImageUrl());
+        CatalogDAO catalogDAO = new CatalogDAO();
+        TourDAO tourDAO = new TourDAO();
+
+        List<Place> places = placeDAO.GetPlace();
+        List<Catalog> catalogs = catalogDAO.GetCatalog();
+        List<Tour> tours = tourDAO.getTour();
+
+        for(int i=0;i< places.size();i++){
+            System.out.print(places.get(i).getPlaceImageUrl());
         }
-        request.setAttribute("Place", place);
+
+        request.setAttribute("Places", places);
+        request.setAttribute("Catalogs", catalogs);
+        request.setAttribute("Tours",tours);
         getServletContext().getRequestDispatcher(url).forward(request,response);
     }
 }

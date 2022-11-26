@@ -29,6 +29,30 @@ public class TourDAO {
 //
 //        }
 //    }
-
-
+    public  List<Tour> getTour(){
+        EntityManager em = JpaConfig.getEntityManager();
+        String queryString = "SELECT t FROM Tour t";
+        TypedQuery<Tour> q = em.createQuery(queryString,Tour.class);
+        List<Tour> tours;
+        try{
+            tours = q.getResultList();
+            if(tours==null || tours.isEmpty())
+                tours = null;
+        }finally {
+            em.close();
+        }
+        return tours;
+    }
+    public List<Tour> getTour(Integer... catalogId){
+        List<Tour> newTour = new ArrayList<>();
+        List<Tour> tours = getTour();
+        for(int i=0;i< catalogId.length;i++){
+            for (Tour tour:tours) {
+                if(tour.getPlace().getPlaceID() == catalogId[i]){
+                    newTour.add(tour);
+                }
+            }
+        }
+        return newTour;
+    }
 }

@@ -81,14 +81,14 @@
 
                 <div class="body__menu">
                     <div class="body__menu-items">
-<%--                        <c:forEach  items="${Catalog}" var="item">--%>
-<%--                            <div class="menu__item hover-effect">--%>
-<%--                                <a href="cate?id=${item.Catalog_ID}" class="menu__item-link">--%>
-<%--                                    <img src="${item.img}" alt="" class="menu__item-img">--%>
-<%--                                    <span>${item.Catalog_Name}</span>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                        </c:forEach>--%>
+                        <c:forEach items = "${Catalogs}" var="item">
+                            <div class="menu__item hover-effect" menu-item-index=${item}>
+                                <a href="search.jsp" class="menu__item-link">
+                                    <img src="${item.getCatalogImageUrl()}" alt="" class="menu__item-img">
+                                    <span>${item.getCatalogName()}</span>
+                                </a>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
 
@@ -106,22 +106,24 @@
                         <i class="ti-angle-left"></i>
                     </button>
                     <div class="top-destination">
-                        <div class="top-destination__items">
-                            <c:forEach items="${Places}" var="place">
-                               <c:out>
-                                <a href="city?id=${place.getPlaceID()}" class="top-destination__link ">
-                                    <div class="top-destination__item hover-effect" style="background-image: url("${item.getPlaceImageUrl()}");">
+                    <div class="top-destination__items">
+
+                        <c:forEach items = "${Places}" var = "place">
+                            <a href="search.jsp" class="top-destination__link ">
+                                <div class="top-destination__item hover-effect" style="background-image: url('${place.getPlaceImageUrl()}');">
                                     <div class="top-destination__item-cover"></div>
                                     <div class="top-destination__item-text">
                                         <div class="top-destination__item-title">
-
+                                            <p>${place.getPlaceName()}</p>
                                         </div>
                                     </div>
                                 </div>
-                                </a>
-                               </c:out>
-                            </c:forEach>
-                        </div>
+                            </a>
+
+                        </c:forEach>
+                    </div>
+
+
                     </div>
                     <button class="top-destination__next-btn swipe__btn">
                         <i class="ti-angle-right"></i>
@@ -546,6 +548,7 @@
 
                 </div>
             </div>
+        </div>
     </main>
 
     <footer class="klook-footer">
@@ -555,6 +558,6 @@
 </body>
 <%--<script src="./home.js" type="text/javascript"></script>--%>
 <script>
-    app.startHomePage();
+    //app.startHomePage();
 </script>
 </html>

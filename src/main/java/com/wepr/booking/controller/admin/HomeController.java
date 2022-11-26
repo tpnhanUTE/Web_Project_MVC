@@ -1,7 +1,11 @@
 package com.wepr.booking.controller.admin;
 
 
+import com.wepr.booking.dao.CatalogDAO;
+import com.wepr.booking.dao.PlaceDAO;
 import com.wepr.booking.dao.UserDAO;
+import com.wepr.booking.model.Catalog;
+import com.wepr.booking.model.Place;
 import com.wepr.booking.model.User;
 
 import javax.servlet.ServletException;
@@ -11,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @WebServlet(name = "HomeController",  urlPatterns= {"/home","/login","/register","/logout"})
@@ -52,7 +57,7 @@ public class HomeController extends HttpServlet {
         String url = "";
         switch (action){
             case "home":
-                url = "/home.jsp";
+                url = "/index";
                 break;
             case "login":
                 User user = new User();
@@ -67,8 +72,16 @@ public class HomeController extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", oUser.get());
                     request.setAttribute("user",oUser.get());
+
+//                    PlaceDAO placeDAO = new PlaceDAO();
+//                    CatalogDAO catalogDAO = new CatalogDAO();
+//                    List<Place> places = placeDAO.GetPlace();
+//
+//                    List<Catalog> catalogs = catalogDAO.GetCatalog();
+//                    request.setAttribute("Places", places);
+//                    request.setAttribute("Catalogs", catalogs);
                     System.out.print(oUser.get().getUserAvatarUrl());
-                    url = "/home?action=home";
+                    url = "/index";
                 }
                 break;
             case "register":

@@ -272,35 +272,35 @@ const app = {
     },
 
     renderHomePage() {
-        // Render menu
-        let renderMenu = this.menuItemIcon.reduce(function (html, item, i) {
-            return html + `
-                    <div class="menu__item hover-effect" menu-item-index=${i}>
-                        <a href="search.jsp" class="menu__item-link">
-                            <img src="${item.img}" alt="" class="menu__item-img">
-                            <span>${item.description}</span>
-                        </a>
-                    </div>
-                    `
-        }, '')
-        menu.innerHTML = renderMenu;
+        // // Render menu
+        // let renderMenu = this.menuItemIcon.reduce(function (html, item, i) {
+        //     return html + `
+        //             <div class="menu__item hover-effect" menu-item-index=${i}>
+        //                 <a href="search.jsp" class="menu__item-link">
+        //                     <img src="${item.img}" alt="" class="menu__item-img">
+        //                     <span>${item.description}</span>
+        //                 </a>
+        //             </div>
+        //             `
+        // }, '')
+        // menu.innerHTML = renderMenu;
 
         // Render top destination items
-        let renderTopDestination = this.topDestinationItem.reduce(function(html, item, i) {
-            return html + `
-                <a href="search.jsp" class="top-destination__link ">
-                    <div class="top-destination__item hover-effect" style="background-image: url('${item.img}');">
-                        <div class="top-destination__item-cover"></div>
-                        <div class="top-destination__item-text">
-                            <div class="top-destination__item-title">
-                                <p>${item.name}</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                `
-        }, '')
-        topDestination.innerHTML = renderTopDestination;
+        // let renderTopDestination = this.topDestinationItem.reduce(function(html, item, i) {
+        //     return html + `
+        //         <a href="search.jsp" class="top-destination__link ">
+        //             <div class="top-destination__item hover-effect" style="background-image: url('${item.img}');">
+        //                 <div class="top-destination__item-cover"></div>
+        //                 <div class="top-destination__item-text">
+        //                     <div class="top-destination__item-title">
+        //                         <p>${item.name}</p>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </a>
+        //         `
+        // }, '')
+        // topDestination.innerHTML = renderTopDestination;
 
         // Render best seller items
         let renderBestSeller = this.bestSeller.reduce((html, item, i) => {
