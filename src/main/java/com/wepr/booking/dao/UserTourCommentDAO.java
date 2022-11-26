@@ -15,7 +15,7 @@ public class UserTourCommentDAO {
     public List<User_Tour_Comment> getUserTourCommentByTourId(Integer tourId){
         List<User_Tour_Comment> user_tour_comments= new ArrayList<User_Tour_Comment>();
         EntityManager em = JpaConfig.getEntityManager();
-        String queryString = "SELECT t FROM User_Tour_Comment t WHERE  t.tour.tourID =: tourId";
+        String queryString = "SELECT t FROM User_Tour_Comment t WHERE  t.tour.tourID =:tourId";
         TypedQuery<User_Tour_Comment> q = em.createQuery(queryString,User_Tour_Comment.class);
         q.setParameter("tourId", tourId);
         try{

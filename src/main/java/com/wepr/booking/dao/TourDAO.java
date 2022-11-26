@@ -11,8 +11,9 @@ public class TourDAO {
 
     public Optional<Tour> getTour(int id){
         EntityManager em = JpaConfig.getEntityManager();
-        String queryString = "SELECT t FROM Tour t WHERE t.tourID =:id";
+        String queryString = "SELECT t FROM Tour t WHERE t.tourID=:id";
         TypedQuery<Tour> q = em.createQuery(queryString,Tour.class);
+        q.setParameter("id",id);
         List<Tour> tours;
         try{
             tours = q.getResultList();
