@@ -669,6 +669,83 @@ const app = {
 
 
     },
+    renderCartPage() {
+        let cartItemList = $$('.cart_item');
+        let totalAmountElement = $('#totalAmountNumber');
+        let totalPriceElement = $('#totalPrice');
+        let totalBill = 0;
+        let totalAmount = 0;
+        cartItemList.forEach(item => {
+            if(item.style.display !== 'none') {
+                totalAmount++;
+                totalBill += parseInt(item.querySelector('.item-price').innerText);
+            }
+        })
+        totalAmountElement.innerText = totalAmount;
+        totalPriceElement.innerText = totalBill;
+    }
+    ,
+
+    handleEventCartPage() {
+        let allCheckBox = $('#AllCheckbox');
+        let deleteAllTag = $('.delete-all');
+        let itemCheckBoxList = $$('.item-checkbox')
+        let deleteItemTagList = $$('.delete-item');
+        let cartItemList = $$('.cart_item');
+        let totalAmountElement = $('#totalAmountNumber');
+        let totalPriceElement = $('#totalPrice');
+
+        // Handle event click all-checkbox
+        allCheckBox.onclick = () => {
+            if(allCheckBox.checked) {
+                itemCheckBoxList.forEach(item => {
+                    if(!item.checked) {
+                        item.checked = true;
+                    }
+                })
+            }
+            else {
+                itemCheckBoxList.forEach(item => {
+                    item.checked = false;
+                })
+            }
+
+        }
+
+        // Hanlde event click delelte all tag
+        deleteAllTag.onclick = () => {
+            itemCheckBoxList.forEach(item => {
+                if(item.checked) {
+                    item.closest('.cart_item').style.display = 'none';
+                }
+            })
+            updatePaymentContent();
+
+        }
+
+        // Handle event click delete item tag
+        deleteItemTagList.forEach(item => {
+            item.onclick = () => {
+                item.closest('.cart_item').style.display = 'none';
+                updatePaymentContent();
+            }
+
+        })
+
+        function updatePaymentContent() {
+            let totalBill = 0;
+            let totalAmount = 0;
+            cartItemList.forEach(item => {
+                if(item.style.display !== 'none') {
+                    totalAmount++;
+                    totalBill += parseInt(item.querySelector('.item-price').innerText);
+                }
+            })
+            totalAmountElement.innerText = totalAmount;
+            totalPriceElement.innerText = totalBill;
+        }
+
+    },
     swipe(selector, curX, addValue) {
         let newX = curX + addValue;
         selector.style.transform = `translate(${newX}px, 0)`
@@ -689,8 +766,11 @@ const app = {
         this.renderSearchPage();
 
         this.handleEventSearchPage();
+    },
+    startCartPage() {
+        this.renderCartPage();
+        this.handleEventCartPage();
     }
-
 }
 
 
