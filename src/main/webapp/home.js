@@ -345,20 +345,20 @@ const app = {
                 </div>
             `
         }, '');
-        // bestSellerElement.innerHTML = renderBestSeller;
-        //
-        // bookNowElement.innerHTML = renderBestSeller;
-        // newActivityElement.innerHTML = renderBestSeller;
-        // promotionElement.innerHTML = renderBestSeller;
-        // datingElement.innerHTML = renderBestSeller;
-        // childrenElement.innerHTML = renderBestSeller;
+        bestSellerElement.innerHTML = renderBestSeller;
 
-        // this.displayDiscountAndTag(bestSellerElement);
-        // this.displayDiscountAndTag(bookNowElement);
-        // this.displayDiscountAndTag(newActivityElement);
-        // this.displayDiscountAndTag(promotionElement);
-        // this.displayDiscountAndTag(datingElement);
-        // this.displayDiscountAndTag(childrenElement);
+        bookNowElement.innerHTML = renderBestSeller;
+        newActivityElement.innerHTML = renderBestSeller;
+        promotionElement.innerHTML = renderBestSeller;
+        datingElement.innerHTML = renderBestSeller;
+        childrenElement.innerHTML = renderBestSeller;
+
+        this.displayDiscountAndTag(bestSellerElement);
+        this.displayDiscountAndTag(bookNowElement);
+        this.displayDiscountAndTag(newActivityElement);
+        this.displayDiscountAndTag(promotionElement);
+        this.displayDiscountAndTag(datingElement);
+        this.displayDiscountAndTag(childrenElement);
 
 
     },

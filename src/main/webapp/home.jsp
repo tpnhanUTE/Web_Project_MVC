@@ -557,8 +557,8 @@
     </footer>
 </div>
 </body>
-<%--<script src="./home.js" type="text/javascript"></script>--%>
+<script src="./home.js" type="text/javascript"></script>
 <script>
-    //app.startHomePage();
+    app.startHomePage();
 </script>
 </html>
