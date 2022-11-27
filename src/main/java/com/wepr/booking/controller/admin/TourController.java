@@ -1,8 +1,10 @@
 package com.wepr.booking.controller.admin;
 
 import com.wepr.booking.dao.TourDAO;
+import com.wepr.booking.dao.TourImageDAO;
 import com.wepr.booking.dao.UserTourCommentDAO;
 import com.wepr.booking.model.Tour;
+import com.wepr.booking.model.Tour_Image;
 import com.wepr.booking.model.User_Tour_Comment;
 
 import javax.servlet.*;
@@ -27,9 +29,27 @@ public class TourController extends HttpServlet {
 
         UserTourCommentDAO userTourCommentDAO = new UserTourCommentDAO();
         List<User_Tour_Comment> user_tour_comments = userTourCommentDAO.getUserTourCommentByTourId(tourId);
+        TourImageDAO tourImageDAO = new TourImageDAO();
+
+        List<Tour_Image> tour_images = tourImageDAO.getImage(tourId);
+        for (Tour_Image tour_image:tour_images
+             ) {
+            System.out.print(tour_image.getTourImageUrl());
+
+        }
+        int rates = 0;
+        for (User_Tour_Comment user_tour_comment :user_tour_comments) {
+            rates+=user_tour_comment.getRate();
+        }
+
         if(tour!= null){
             request.setAttribute("Tour",tour);
             request.setAttribute("UserTourComments", user_tour_comments);
+            request.setAttribute("TourImages", tour_images);
+            if(user_tour_comments.size()>0)
+            {
+                request.setAttribute("Rate", (double)rates/ user_tour_comments.size());
+            }
             url = "/detail.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(request,response);
