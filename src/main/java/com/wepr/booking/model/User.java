@@ -24,6 +24,9 @@ public class User {
     @Column(nullable = false)
     private String lastname;
     private Boolean isAdmin;
+    private String address;
+    public String getAddress(){return  address;};
+    public void setAddress(String address){ this.address= address;}
     public Integer getUserID(){
         return userID;
     }

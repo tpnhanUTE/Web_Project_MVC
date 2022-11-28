@@ -345,20 +345,20 @@ const app = {
                 </div>
             `
         }, '');
-        // bestSellerElement.innerHTML = renderBestSeller;
-        //
-        // bookNowElement.innerHTML = renderBestSeller;
-        // newActivityElement.innerHTML = renderBestSeller;
-        // promotionElement.innerHTML = renderBestSeller;
-        // datingElement.innerHTML = renderBestSeller;
-        // childrenElement.innerHTML = renderBestSeller;
+        bestSellerElement.innerHTML = renderBestSeller;
 
-        // this.displayDiscountAndTag(bestSellerElement);
-        // this.displayDiscountAndTag(bookNowElement);
-        // this.displayDiscountAndTag(newActivityElement);
-        // this.displayDiscountAndTag(promotionElement);
-        // this.displayDiscountAndTag(datingElement);
-        // this.displayDiscountAndTag(childrenElement);
+        bookNowElement.innerHTML = renderBestSeller;
+        newActivityElement.innerHTML = renderBestSeller;
+        promotionElement.innerHTML = renderBestSeller;
+        datingElement.innerHTML = renderBestSeller;
+        childrenElement.innerHTML = renderBestSeller;
+
+        this.displayDiscountAndTag(bestSellerElement);
+        this.displayDiscountAndTag(bookNowElement);
+        this.displayDiscountAndTag(newActivityElement);
+        this.displayDiscountAndTag(promotionElement);
+        this.displayDiscountAndTag(datingElement);
+        this.displayDiscountAndTag(childrenElement);
 
 
     },
@@ -401,7 +401,7 @@ const app = {
         const searchList = $('#SearchList');
         let renderSearchList = this.bestSeller.reduce((html, item, index) => {
             return html + `
-            <a href="detail.jsp" class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
+            <a href="/tour?Id" class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
                 <div class="category-swiper__item hover-effect">
                     <div class="item__heading" style="background-image: url('${item.img}')">
                     </div>

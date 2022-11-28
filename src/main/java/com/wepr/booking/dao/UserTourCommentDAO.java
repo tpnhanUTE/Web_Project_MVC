@@ -24,6 +24,7 @@ public class UserTourCommentDAO {
         finally {
             em.close();
         }
+
         return user_tour_comments;
     }
 }

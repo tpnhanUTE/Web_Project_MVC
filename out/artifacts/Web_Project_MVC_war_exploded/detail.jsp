@@ -48,14 +48,14 @@
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="./img/2312_73.png" alt="First slide">
+                        <img class="d-block w-100" src="${TourImages.get(0).getTourImageUrl()}" alt="First slide">
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="./img/2312_73.png" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="./img/2312_73.png" alt="Third slide">
-                    </div>
+                    <c:forEach items = "${TourImages}" var="tourImage">
+
+                          <div class="carousel-item">
+                              <img class="d-block w-100" src="${tourImage.getTourImageUrl()}" alt="Second slide">
+                          </div>
+                    </c:forEach>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -84,18 +84,18 @@
                     </div>
                 </div>
                 <div class="Tour_Name" name  = "Tour_Name" >
-                    Tour Tham Quan Địa Đạo Củ Chi Và Đồng Bằng Sông Cửu Long Bằng Xe Limousine
+                    "${Tour.getTourName()}"
                 </div>
                 <div >
                     Hành trình 1 ngày tham quan khu di tích lịch sử Địa Đạo Củ Chi và đồng bằng sông Cửu Long
                 </div>
                 <div style="width:10px"></div>
-                <ul style="list-style-type:circle; font-size: 13px; margin-left: 20px;">
-                    <li>Khám phá thế giới dưới lòng đất của mạng lưới địa đạo phức tạp của Việt Nam khi bạn đặt tour này trên Klook!</li>
-                    <li>Tìm hiểu về cuộc sống phức tạp và vô cùng sáng tạo của những người lính sống dưới địa đạo</li>
-                    <li>Du lịch vòng quanh Địa Đạo Củ Chi và Hồ Chí Minh trên chiếc xe limousine sang trọng, hiện đại</li>
-                    <li>Chiêm ngưỡng vẻ đẹp của sông Cửu Long khi bạn đi thuyền dọc sông với hướng dẫn viên thân thiện</li>
-                    <li>Khám phá đời sống thường ngày của người dân địa phương khi bạn ghé qua một trang trại, một ngôi làng nhỏ và hơn thế nữa!</li></ul>
+                <ul style="list-style-type:circle; font-size: 13px; margin-left: 20px; list-style-type: none">
+                  <li>
+                        "${Tour.getTourDescription()}"
+                    </li>
+                </ul>
+
             </div>
             <div class="col-4">
                 <div class="package-content">
@@ -103,7 +103,7 @@
                         <div class="price-package">
                                 <span class="price-package-selling-price">
                                     <span>đ</span>
-                                    <b id = "price">1686500</b>
+                                    <b id = "price">"${Tour.getTourPrice()}"</b>
                                 </span>
                         </div>
                     </div>
@@ -121,38 +121,40 @@
             <div class="title">Các gói dịch vụ</div>
             <div class="gap"></div>
             <div class="row service">
-                <div class="col-7 service-left">
-                    <div style="display: flex; justify-content:space-between; margin-left: 30px;" >
-                        <div style="font-size:20px;"><b>Vui lòng chọn gói dịch vụ và số lượng</b> </div>
-                        <div>
-                            <button class="delete-service">Xóa gói dịch vụ</button>
-                        </div>
-                    </div>
-                    <div class="gap"></div>
+                <form class="col-7 service-left">
                     <div>
-                        <div class="label">Xin chọn ngày đi tour</div>
-                        <input  class="date_input" type="date">
-                    </div>
-                    <div class="">
-                        <div class="label">Số lượng</div>
-                        <div class="main_service_quatity" style ="display:flex; justify-content:space-between;">
-                            <div>Người lớn</div>
-                            <input type="number" min=0 max = 10 class="input_number" value="1" onchange="Amount()" id ="adultValue">
+                        <div style="display: flex; justify-content:space-between; margin-left: 30px;" >
+                            <div style="font-size:20px;"><b>Vui lòng chọn gói dịch vụ và số lượng</b> </div>
+                            <div>
+                                <button class="delete-service">Xóa gói dịch vụ</button>
+                            </div>
                         </div>
                         <div class="gap"></div>
-                        <div class="main_service_quatity" style ="display:flex; justify-content:space-between;">
-                            <div>Trẻ con</div>
-                            <input type="number" min=0 max = 10 class="input_number" value="0" onchange="Amount()" id = "childValue">
+                        <div>
+                            <div class="label">Xin chọn ngày đi tour</div>
+                            <input  class="date_input" type="date">
                         </div>
-                        <div class="gap"></div>
-                        <div class="main_service_button">
-                            <div id ="amount">1990000đ</div>
-                            <button>Thêm vào giỏ hàng</button>
-                            <button>Đặt ngay</button>
+                        <div class="">
+                            <div class="label">Số lượng</div>
+                            <div class="main_service_quatity" style ="display:flex; justify-content:space-between;">
+                                <div>Người lớn</div>
+                                <input type="number" min=0 max = 10 class="input_number" value="1" onchange="Amount()" id ="adultValue">
+                            </div>
+                            <div class="gap"></div>
+                            <div class="main_service_quatity" style ="display:flex; justify-content:space-between;">
+                                <div>Trẻ con</div>
+                                <input type="number" min=0 max = 10 class="input_number" value="0" onchange="Amount()" id = "childValue">
+                            </div>
+                            <div class="gap"></div>
+                            <div class="main_service_button">
+                                <div id ="amount">"${Tour.getTourPrice()}" đ</div>
+                                <button>Thêm vào giỏ hàng</button>
+                                <button type="submit">Đặt ngay</button>
+                            </div>
+                            <div> </div>
                         </div>
-                        <div> </div>
                     </div>
-                </div>
+                </form>
                 <div class="col-1"></div>
                 <div class="col-3 service-right">
                     <div>Thông tin sản phẩm</div>
@@ -176,7 +178,7 @@
             <div class="gap"></div>
             <div class="title">ĐÁNH GIÁ GẦN ĐÂY</div>
             <div class="comment_header">
-                <p>4.8/5</p>
+                <p>"${Rate}"/5</p>
                 <div class="comment_header_star">
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -185,6 +187,8 @@
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
             </div>
+
+            <c:forEach items = "${UserTourComments}" var="comment">
             <div class="gap"></div>
             <div class="comment">
                 <div class="comment_avt">
@@ -203,60 +207,9 @@
                     <p>Hướng dẫn viên rất thú vị, hữu ích và hài hước. Ông đã chia sẻ rất nhiều về lịch sử và văn hóa Việt Nam. Chuyến tham quan đồng bằng sông Cửu Long diễn ra tốt đẹp mặc dù trời khá nắng. May mắn là thời tiết vẫn khá tốt. Chuyến đi thuyền nhỏ khá vui vẻ và trải nghiệm tuyệt vời. Các món ăn địa phương và đồ ăn nhẹ rất tuyệt với buổi biểu diễn âm nhạc địa phương. Nhìn chung, đó là một chuyến đi thú vị nhưng nó khá mệt mỏi. Giá trị của đồng tiền.</p>
                 </div>
             </div>
-            <div class="gap"></div>
-            <div class="comment">
-                <div class="comment_avt">
-                    <div class="comment_avt">
-                        <img src="./img/7eda69ae2667e239bb76.jpg" alt="">
-                    </div>
-                    <div style="display: flex; align-items:center;">
-                        <div class="comment_header_star_in_commmet">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </div>
-                        <div style="margin-left:10px" >Tôi rất hài lòng</div></div>
-                    <p>Hướng dẫn viên rất thú vị, hữu ích và hài hước. Ông đã chia sẻ rất nhiều về lịch sử và văn hóa Việt Nam. Chuyến tham quan đồng bằng sông Cửu Long diễn ra tốt đẹp mặc dù trời khá nắng. May mắn là thời tiết vẫn khá tốt. Chuyến đi thuyền nhỏ khá vui vẻ và trải nghiệm tuyệt vời. Các món ăn địa phương và đồ ăn nhẹ rất tuyệt với buổi biểu diễn âm nhạc địa phương. Nhìn chung, đó là một chuyến đi thú vị nhưng nó khá mệt mỏi. Giá trị của đồng tiền.</p>
-                </div>
-            </div>
-            <div class="gap"></div>
-            <div class="comment">
-                <div class="comment_avt">
-                    <div class="comment_avt">
-                        <img src="./img/7eda69ae2667e239bb76.jpg" alt="">
-                    </div>
-                    <div style="display: flex; align-items:center;">
-                        <div class="comment_header_star_in_commmet">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </div>
-                        <div style="margin-left:10px" >Tôi rất hài lòng</div></div>
-                    <p>Hướng dẫn viên rất thú vị, hữu ích và hài hước. Ông đã chia sẻ rất nhiều về lịch sử và văn hóa Việt Nam. Chuyến tham quan đồng bằng sông Cửu Long diễn ra tốt đẹp mặc dù trời khá nắng. May mắn là thời tiết vẫn khá tốt. Chuyến đi thuyền nhỏ khá vui vẻ và trải nghiệm tuyệt vời. Các món ăn địa phương và đồ ăn nhẹ rất tuyệt với buổi biểu diễn âm nhạc địa phương. Nhìn chung, đó là một chuyến đi thú vị nhưng nó khá mệt mỏi. Giá trị của đồng tiền.</p>
-                </div>
-            </div>
-            <div class="gap"></div>
-            <div class="comment">
-                <div class="comment_avt">
-                    <div class="comment_avt">
-                        <img src="./img/7eda69ae2667e239bb76.jpg" alt="">
-                    </div>
-                    <div style="display: flex; align-items:center;">
-                        <div class="comment_header_star_in_commmet">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </div>
-                        <div style="margin-left:10px" >Tôi rất hài lòng</div></div>
-                    <p>Hướng dẫn viên rất thú vị, hữu ích và hài hước. Ông đã chia sẻ rất nhiều về lịch sử và văn hóa Việt Nam. Chuyến tham quan đồng bằng sông Cửu Long diễn ra tốt đẹp mặc dù trời khá nắng. May mắn là thời tiết vẫn khá tốt. Chuyến đi thuyền nhỏ khá vui vẻ và trải nghiệm tuyệt vời. Các món ăn địa phương và đồ ăn nhẹ rất tuyệt với buổi biểu diễn âm nhạc địa phương. Nhìn chung, đó là một chuyến đi thú vị nhưng nó khá mệt mỏi. Giá trị của đồng tiền.</p>
-                </div>
-            </div>
+            <div class="gap"></d
+
+            </c:forEach>
         </div>
     </main>
 
@@ -274,7 +227,7 @@
     {
         let adultValue = document.getElementById("adultValue").value;
         let childValue = document.getElementById("childValue").value;
-        let price = document.getElementById("price").innerHTML;
+        let price = document.getElementById("price").innerHTML.replace('"','');
 
         let amount = (+price)* (+adultValue) + (+price)* (+childValue)*0.5;
         document.getElementById("amount").innerHTML = amount+"đ";
