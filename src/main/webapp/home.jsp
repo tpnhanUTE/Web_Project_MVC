@@ -82,8 +82,8 @@
                 <div class="body__menu">
                     <div class="body__menu-items">
                         <c:forEach items = "${Catalogs}" var="item">
-                            <div class="menu__item hover-effect" menu-item-index=${item}>
-                                <a href="search.jsp" class="menu__item-link">
+                            <div class="menu__item hover-effect">
+                                <a href="/Web_Project_MVC_war_exploded/cate?id=${item.catalogID}" class="menu__item-link">
                                     <img src="${item.getCatalogImageUrl()}" alt="" class="menu__item-img">
                                     <span>${item.getCatalogName()}</span>
                                 </a>
@@ -109,7 +109,7 @@
                     <div class="top-destination__items">
 
                         <c:forEach items = "${Places}" var = "place">
-                            <a href="search.jsp" class="top-destination__link ">
+                            <a href="/Web_Project_MVC_war_exploded/city?id=${place.placeID}" class="top-destination__link ">
                                 <div class="top-destination__item hover-effect" style="background-image: url('${place.getPlaceImageUrl()}');">
                                     <div class="top-destination__item-cover"></div>
                                     <div class="top-destination__item-text">

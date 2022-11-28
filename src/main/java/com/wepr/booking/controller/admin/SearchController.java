@@ -36,7 +36,7 @@ public class SearchController extends HttpServlet {
         request.setAttribute("destinationItems", placeList);
 
         String servletPath = request.getServletPath();
-        Integer itemID = Integer.parseInt(request.getParameter("id"));
+        String itemID = request.getParameter("id");
         if(servletPath.contains("city")) {
             //List <Tour> tourList = new ArrayList<Tour>();  //Query by itemID
             //request.setAttribute("searchItems", tourList);

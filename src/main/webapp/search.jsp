@@ -113,14 +113,15 @@
 
                   <c:if test="${desHtmlID == desItem.placeID}">
                     <input type="checkbox" checked id="DesCheckBox-${desItem.placeID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
-                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
+                  checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
                   </c:if>
                   <c:if test="${desHtmlID != desItem.placeID}">
                     <input type="checkbox" id="DesCheckBox-${desItem.placeID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
-                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
+                  checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
                   </c:if>
                   <span>${desItem.placeName}</span>
                 </label>
+
               </c:forEach>
             </div>
           </div>
