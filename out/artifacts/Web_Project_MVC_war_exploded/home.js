@@ -364,82 +364,82 @@ const app = {
     },
     renderSearchPage() {
         // Render destination list item
-        let destinationItems = this.topDestinationItem.map(({img, name}) => name);
-        let renderdestinationItems = destinationItems.reduce((html, item, index) => {
-            return html + `
-            <label class="tree-list-item__node" for="DesCheckBox-${index}">
-                <div class="input__check-icon">
-                    <i class="fa-solid fa-check input__check-icon"></i>
-                </div>
-                <input type="checkbox" value ="" id="DesCheckBox-${index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange 
-                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2"> 
-                <span>${item}</span>
-            </label>
-            `
-        }, '')
-        const treeListItem = $('#Destination');
+        // let destinationItems = this.topDestinationItem.map(({img, name}) => name);
+        // let renderdestinationItems = destinationItems.reduce((html, item, index) => {
+        //     return html + `
+        //     <label class="tree-list-item__node" for="DesCheckBox-${index}">
+        //         <div class="input__check-icon">
+        //             <i class="fa-solid fa-check input__check-icon"></i>
+        //         </div>
+        //         <input type="checkbox" value ="" id="DesCheckBox-${index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+        //         checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
+        //         <span>${item}</span>
+        //     </label>
+        //     `
+        // }, '')
+        // const treeListItem = $('#Destination');
         // treeListItem.innerHTML = renderdestinationItems;
 
         // Render category list item
-        let categoryItems = this.menuItemIcon.map(({img, description}) => description);
-        let renderCategoryItems = categoryItems.reduce((html, item, index) => {
-            return html + `
-            <label class="tree-list-item__node" for="CategoryCheckBox-${index}">
-                <div class="input__check-icon">
-                    <i class="fa-solid fa-check input__check-icon"></i>
-                </div>
-                <input type="checkbox" value ="" id="CategoryCheckBox-${index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange 
-                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2"> 
-                <span>${item}</span>
-            </label>
-            `
-        }, '')
-        const categoryListItem = $('#Category');
+        // let categoryItems = this.menuItemIcon.map(({img, description}) => description);
+        // let renderCategoryItems = categoryItems.reduce((html, item, index) => {
+        //     return html + `
+        //     <label class="tree-list-item__node" for="CategoryCheckBox-${index}">
+        //         <div class="input__check-icon">
+        //             <i class="fa-solid fa-check input__check-icon"></i>
+        //         </div>
+        //         <input type="checkbox" value ="" id="CategoryCheckBox-${index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+        //         checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
+        //         <span>${item}</span>
+        //     </label>
+        //     `
+        // }, '')
+        // const categoryListItem = $('#Category');
         // categoryListItem.innerHTML = renderCategoryItems;
 
         // Render search list
         const searchList = $('#SearchList');
-        let renderSearchList = this.bestSeller.reduce((html, item, index) => {
-            return html + `
-            <a href="/tour?Id" class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
-                <div class="category-swiper__item hover-effect">
-                    <div class="item__heading" style="background-image: url('${item.img}')">
-                    </div>
-                    <div class="item__body">
-                        <div class="item__body--top">
-                            <div class="item__title">
-                                <span>${item.title}</span>
-                            </div>
-                            <div class="item__activity">
-                                <span class="item__activity-score">
-                                    <i class="fa-solid fa-star"></i>
-                                    <span class="activity-score__rate">${item.rate}</span>
-                                </span>
-                                <span class="item__activity-review">
-                                    (
-                                        <span class="activity-review__number">${item.review}</span>
-                                    &nbsp;đánh giá)
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <div class="item__body--bottom">
-                            <div class="item-price-box">
-                                <span class="item-price-box__sell-price-box">₫ &nbsp<span class="sell-price__value">${item.sellPrice}</span> </span>
-                                <span class="item-price-box__old-price-box">₫ &nbsp<span class="old-price__value">${item.oldPrice}</span> </span>
-                            </div>
-                            <div class="item__tagging-wrapper">
-                                <div class="item__tagging">
-                                    <p>Chính sách đảm bảo về giá</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            `
-        }, '');
-        searchList.innerHTML = renderSearchList;
+        // let renderSearchList = this.bestSeller.reduce((html, item, index) => {
+        //     return html + `
+        //     <a href="/tour?Id" class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
+        //         <div class="category-swiper__item hover-effect">
+        //             <div class="item__heading" style="background-image: url('${item.img}')">
+        //             </div>
+        //             <div class="item__body">
+        //                 <div class="item__body--top">
+        //                     <div class="item__title">
+        //                         <span>${item.title}</span>
+        //                     </div>
+        //                     <div class="item__activity">
+        //                         <span class="item__activity-score">
+        //                             <i class="fa-solid fa-star"></i>
+        //                             <span class="activity-score__rate">${item.rate}</span>
+        //                         </span>
+        //                         <span class="item__activity-review">
+        //                             (
+        //                                 <span class="activity-review__number">${item.review}</span>
+        //                             &nbsp;đánh giá)
+        //                         </span>
+        //                     </div>
+        //                 </div>
+        //
+        //                 <div class="item__body--bottom">
+        //                     <div class="item-price-box">
+        //                         <span class="item-price-box__sell-price-box">₫ &nbsp<span class="sell-price__value">${item.sellPrice}</span> </span>
+        //                         <span class="item-price-box__old-price-box">₫ &nbsp<span class="old-price__value">${item.oldPrice}</span> </span>
+        //                     </div>
+        //                     <div class="item__tagging-wrapper">
+        //                         <div class="item__tagging">
+        //                             <p>Chính sách đảm bảo về giá</p>
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </a>
+        //     `
+        // }, '');
+        // searchList.innerHTML = renderSearchList;
 
         const searhListCollection = searchList.children;
         for (let i = 0; i < searhListCollection.length; i++) {
@@ -765,7 +765,6 @@ const app = {
     startSearchPage() {
         this.renderSearchPage();
         this.handleEventSearchPage();
-        this.renderSearchPage();
         displaySelectedTagElement();
 
 
