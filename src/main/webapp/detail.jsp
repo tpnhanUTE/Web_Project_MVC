@@ -84,15 +84,12 @@
                     </div>
                 </div>
                 <div class="Tour_Name" name  = "Tour_Name" >
-                    "${Tour.getTourName()}"
-                </div>
-                <div >
-                    Hành trình 1 ngày tham quan khu di tích lịch sử Địa Đạo Củ Chi và đồng bằng sông Cửu Long
+                    ${Tour.getTourName()}
                 </div>
                 <div style="width:10px"></div>
                 <ul style="list-style-type:circle; font-size: 13px; margin-left: 20px; list-style-type: none">
                   <li>
-                        "${Tour.getTourDescription()}"
+                        ${Tour.getTourDescription()}
                     </li>
                 </ul>
 
@@ -103,7 +100,7 @@
                         <div class="price-package">
                                 <span class="price-package-selling-price">
                                     <span>đ</span>
-                                    <b id = "price">"${Tour.getTourPrice()}"</b>
+                                    <b id = "price">${Tour.getTourPrice()}</b>
                                 </span>
                         </div>
                     </div>
@@ -147,7 +144,7 @@
                             </div>
                             <div class="gap"></div>
                             <div class="main_service_button">
-                                <div id ="amount">"${Tour.getTourPrice()}" đ</div>
+                                <div id ="amount">${Tour.getTourPrice()}đ</div>
                                 <button>Thêm vào giỏ hàng</button>
                                 <button type="submit">Đặt ngay</button>
                             </div>
@@ -178,7 +175,7 @@
             <div class="gap"></div>
             <div class="title">ĐÁNH GIÁ GẦN ĐÂY</div>
             <div class="comment_header">
-                <p>"${Rate}"/5</p>
+                <p>${Rate}/5</p>
                 <div class="comment_header_star">
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -203,8 +200,9 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </div>
-                        <div style="margin-left:10px" >Tôi rất hài lòng</div></div>
-                    <p>Hướng dẫn viên rất thú vị, hữu ích và hài hước. Ông đã chia sẻ rất nhiều về lịch sử và văn hóa Việt Nam. Chuyến tham quan đồng bằng sông Cửu Long diễn ra tốt đẹp mặc dù trời khá nắng. May mắn là thời tiết vẫn khá tốt. Chuyến đi thuyền nhỏ khá vui vẻ và trải nghiệm tuyệt vời. Các món ăn địa phương và đồ ăn nhẹ rất tuyệt với buổi biểu diễn âm nhạc địa phương. Nhìn chung, đó là một chuyến đi thú vị nhưng nó khá mệt mỏi. Giá trị của đồng tiền.</p>
+                        <div style="margin-bottom:5px;margin-top: 5px;">${comment.getRate()}/5</div>
+
+                    <p> ${comment.getComment()}</p>
                 </div>
             </div>
             <div class="gap"></d

@@ -27,8 +27,8 @@ public class TourController extends HttpServlet {
         TourDAO tourDAO = new TourDAO();
         Tour tour = tourDAO.getTour(tourId).get();
 
-        UserTourCommentDAO userTourCommentDAO = new UserTourCommentDAO();
-        List<User_Tour_Comment> user_tour_comments = userTourCommentDAO.getUserTourCommentByTourId(tourId);
+ //       UserTourCommentDAO userTourCommentDAO = new UserTourCommentDAO();
+ //       List<User_Tour_Comment> user_tour_comments = userTourCommentDAO.getUserTourCommentByTourId(tourId);
         TourImageDAO tourImageDAO = new TourImageDAO();
 
         List<Tour_Image> tour_images = tourImageDAO.getImage(tourId);
@@ -37,19 +37,19 @@ public class TourController extends HttpServlet {
             System.out.print(tour_image.getTourImageUrl());
 
         }
-        int rates = 0;
-        for (User_Tour_Comment user_tour_comment :user_tour_comments) {
-            rates+=user_tour_comment.getRate();
-        }
+//        int rates = 0;
+//        for (User_Tour_Comment user_tour_comment :user_tour_comments) {
+//            rates+=user_tour_comment.getRate();
+//        }
 
         if(tour!= null){
             request.setAttribute("Tour",tour);
-            request.setAttribute("UserTourComments", user_tour_comments);
+//            request.setAttribute("UserTourComments", user_tour_comments);
             request.setAttribute("TourImages", tour_images);
-            if(user_tour_comments.size()>0)
-            {
-                request.setAttribute("Rate", (double)rates/ user_tour_comments.size());
-            }
+//            if(user_tour_comments.size()>0)
+//            {
+//                request.setAttribute("Rate", (double)rates/ user_tour_comments.size());
+//            }
             url = "/detail.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(request,response);
