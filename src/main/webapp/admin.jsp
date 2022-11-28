@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
@@ -32,7 +33,7 @@
 </head>
 <body>
 
-<div class="container-xxl position-relative bg-white d-flex p-0">
+<div class="container-xxl position-relative bg-white d-flex p-0" style="margin: auto">
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
@@ -175,87 +176,17 @@
                 <!-- Sales Chart End -->
 
 
-                <!-- Recent Sales Start -->
-                <div class="container-fluid pt-4 px-4">
-                    <div class="bg-light text-center rounded p-4">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h6 class="mb-0">Recent Tour</h6>
-                            <a href="">Show All</a>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table text-start align-middle table-bordered table-hover mb-0">
-                                <thead>
-                                <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">User</th>
-                                    <th scope="col">Tour Name</th>
-                                    <th scope="col">Total Price</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>Trần Phước Nhân</td>
-                                    <td>Đồng Tháp</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>Trần Phước Nhân</td>
-                                    <td>Đồng Tháp</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>Trần Phước Nhân</td>
-                                    <td>Đồng Tháp</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>Trần Phước Nhân</td>
-                                    <td>Đồng Tháp</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>Trần Phước Nhân</td>
-                                    <td>Đồng Tháp</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- Recent Sales End -->
 
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <div class="table-responsive">
-                    <div class="mb-4 me-4 p-4"> User List</div>
+                    <div class="mb-4 me-4 p-4"> USER MANAGER</div>
                     <table class="table text-start align-middle table-bordered table-hover mb-0">
                         <thead>
                         <tr class="text-dark">
-                            <th scope="col"><input class="form-check-input" type="checkbox"></th>
+
                             <th scope="col">Date</th>
                             <th scope="col">User</th>
                             <th scope="col">Tour Name</th>
@@ -266,7 +197,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
+
                             <td>01 Jan 2045</td>
                             <td>Trần Phước Nhân</td>
                             <td>Đồng Tháp</td>
@@ -275,7 +206,7 @@
                             <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                         </tr>
                         <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
+
                             <td>01 Jan 2045</td>
                             <td>Trần Phước Nhân</td>
                             <td>Đồng Tháp</td>
@@ -284,7 +215,7 @@
                             <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                         </tr>
                         <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
+
                             <td>01 Jan 2045</td>
                             <td>Trần Phước Nhân</td>
                             <td>Đồng Tháp</td>
@@ -293,7 +224,7 @@
                             <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                         </tr>
                         <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
+
                             <td>01 Jan 2045</td>
                             <td>Trần Phước Nhân</td>
                             <td>Đồng Tháp</td>
@@ -302,7 +233,7 @@
                             <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                         </tr>
                         <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
+
                             <td>01 Jan 2045</td>
                             <td>Trần Phước Nhân</td>
                             <td>Đồng Tháp</td>
@@ -314,10 +245,148 @@
                     </table>
                 </div>
             </div>
+
+
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <div class="table-responsive">
+                    <div class="mb-4 me-4 p-4"> TOUR MANAGER</div>
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                        <tr class="text-dark">
+
+                            <th scope="col">Tour Name</th>
+                            <th scope="col">Tour Price</th>
+                            <th scope="col">Tour Old Price</th>
+                            <th scope="col">Policy</th>
+                            <th scope="col">Description</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Tour Sai Gon</td>
+                            <td>1900000</td>
+                            <td>2000000</td>
+                            <td></td>
+                            <td>no description</td>
+                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div  id="form_Edit">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="validationDefault01">Tour name</label>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="Tour name" value="Mark" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="validationDefault02">Tour price</label>
+                                <input type="text" class="form-control" id="validationDefault02" placeholder="Tour price" value="Otto" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="validationDefaultUsername">Tour old price</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Tour old price" aria-describedby="inputGroupPrepend2" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationDefault03">Description</label>
+                                <input type="text" class="form-control" id="validationDefault03" placeholder="Description" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationDefault04">Policy</label>
+                                <input type="text" class="form-control" id="validationDefault04" placeholder="Policy" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationDefault05">Schedule</label>
+                                <input type="text" class="form-control" id="validationDefault05" placeholder="Schedule" required>
+                            </div>
+                            <div id="newInputfield">
+                                <input type="text" style="margin:10px;" class="form-control" id="newInput" placeholder="Image Url" required>
+                            </div>
+                        </div>
+                        <div style="display:flex; justify-content: space-around;">
+                            <button class="btn btn-primary " style="color:orange" onclick="RemoveInputfield()">Remove link image</button>
+                            <button class="btn btn-primary " style="color:orange" onclick="AddInputfield()">Add link image</button>
+                            <button class="btn btn-primary " type="submit" style="color:orange">Edit</button>
+                            <button class="btn btn-primary" type="submit" style="color:orange">Add</button>
+                        </div>
+                    </form>
+
+                </div>
 
             </div>
             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                        <tr class="text-dark">
+
+                            <th scope="col">Date</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Tour Name</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+
+                            <td>01 Jan 2045</td>
+                            <td>Trần Phước Nhân</td>
+                            <td>Đồng Tháp</td>
+                            <td>$123</td>
+                            <td>Paid</td>
+                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                        </tr>
+                        <tr>
+
+                            <td>01 Jan 2045</td>
+                            <td>Trần Phước Nhân</td>
+                            <td>Đồng Tháp</td>
+                            <td>$123</td>
+                            <td>Paid</td>
+                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                        </tr>
+                        <tr>
+
+                            <td>01 Jan 2045</td>
+                            <td>Trần Phước Nhân</td>
+                            <td>Đồng Tháp</td>
+                            <td>$123</td>
+                            <td>Paid</td>
+                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                        </tr>
+                        <tr>
+
+                            <td>01 Jan 2045</td>
+                            <td>Trần Phước Nhân</td>
+                            <td>Đồng Tháp</td>
+                            <td>$123</td>
+                            <td>Paid</td>
+                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                        </tr>
+                        <tr>
+
+                            <td>01 Jan 2045</td>
+                            <td>Trần Phước Nhân</td>
+                            <td>Đồng Tháp</td>
+                            <td>$123</td>
+                            <td>Paid</td>
+                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>
@@ -351,5 +420,24 @@
         },
     };
 </script>
+<script>
+    function AddInputfield(){
+        let newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.style = 'margin: 10px';
+        newInput.placeholder = 'Image Url'
+        newInput.classList.add('form-control');
+        newInput.classList.add('new-input');
+        newInput.name = "Image_Url";
 
+        let newInputField = document.getElementById("newInputfield");
+        newInputField.appendChild(newInput);
+
+    }
+    function RemoveInputfield(){
+        let newInputList = document.querySelector('.new-input');
+        let newInputField = document.getElementById("newInputfield");
+        newInputField.removeChild(newInputList)
+    }
+</script>
 </html>
