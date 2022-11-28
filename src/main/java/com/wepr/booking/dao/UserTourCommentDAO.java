@@ -12,19 +12,19 @@ import javax.persistence.TypedQuery;
 import java.util.*;
 
 public class UserTourCommentDAO {
-    public List<User_Tour_Comment> getUserTourCommentByTourId(Integer tourId){
-        List<User_Tour_Comment> user_tour_comments= null;
-        EntityManager em = JpaConfig.getEntityManager();
-        String queryString = "SELECT t FROM User_Tour_Comment t WHERE  t.tour.tourID =:tourId";
-        TypedQuery<User_Tour_Comment> q = em.createQuery(queryString,User_Tour_Comment.class);
-        q.setParameter("tourId", tourId);
-        try{
-            user_tour_comments = q.getResultList();
-        }
-        finally {
-            em.close();
-        }
-
-        return user_tour_comments;
-    }
+//    public List<User_Tour_Comment> getUserTourCommentByTourId(Integer tourId){
+//        List<User_Tour_Comment> user_tour_comments= null;
+//        EntityManager em = JpaConfig.getEntityManager();
+//        String queryString = "SELECT t FROM User_Tour_Comment t WHERE  t.tour.tourID =:tourId";
+//        TypedQuery<User_Tour_Comment> q = em.createQuery(queryString,User_Tour_Comment.class);
+//        q.setParameter("tourId", tourId);
+//        try{
+//            user_tour_comments = q.getResultList();
+//        }
+//        finally {
+//            em.close();
+//        }
+//
+//        return user_tour_comments;
+//    }
 }
