@@ -378,7 +378,7 @@ const app = {
             `
         }, '')
         const treeListItem = $('#Destination');
-        treeListItem.innerHTML = renderdestinationItems;
+        // treeListItem.innerHTML = renderdestinationItems;
 
         // Render category list item
         let categoryItems = this.menuItemIcon.map(({img, description}) => description);
@@ -395,7 +395,7 @@ const app = {
             `
         }, '')
         const categoryListItem = $('#Category');
-        categoryListItem.innerHTML = renderCategoryItems;
+        // categoryListItem.innerHTML = renderCategoryItems;
 
         // Render search list
         const searchList = $('#SearchList');
@@ -458,6 +458,7 @@ const app = {
         // Render selected tag
         this.renderTagOnSearchPage();
 
+        // Render checked input
 
 
 
@@ -667,7 +668,6 @@ const app = {
 
 
 
-
     },
     renderCartPage() {
         let cartItemList = $$('.cart_item');
@@ -764,8 +764,13 @@ const app = {
     },
     startSearchPage() {
         this.renderSearchPage();
-
         this.handleEventSearchPage();
+        this.renderSearchPage();
+        displaySelectedTagElement();
+
+
+
+
     },
     startCartPage() {
         this.renderCartPage();

@@ -1,8 +1,11 @@
 package com.wepr.booking.controller.admin;
 
 import com.wepr.booking.model.Tour;
+import com.wepr.booking.model.Place;
 import com.wepr.booking.model.Catalog;
-//import com.wepr.booking.model.Place;
+import com.wepr.booking.dao.PlaceDAO;
+import com.wepr.booking.dao.TourDAO;
+import com.wepr.booking.dao.CatalogDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,31 +25,33 @@ public class SearchController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Catalog> catalogList = new ArrayList<Catalog>(); //Query all catalog
+        CatalogDAO catalog = new CatalogDAO();
+        TourDAO tour = new TourDAO();
+        PlaceDAO place = new PlaceDAO();
+
+        List<Catalog> catalogList = catalog.GetCatalog(); //Query all catalog
         request.setAttribute("categoryItems", catalogList);
 
-//        List <Place> placeList = new ArrayList<Place>(); //Query all place
-//        request.setAttribute("destinationItems", placeList);
+        List <Place> placeList = place.GetPlace(); //Query all place
+        request.setAttribute("destinationItems", placeList);
 
         String servletPath = request.getServletPath();
-        String itemID = request.getParameter("id");
+        Integer itemID = Integer.parseInt(request.getParameter("id"));
         if(servletPath.contains("city")) {
-            List <Tour> tourList = new ArrayList<Tour>();  //Query by itemID
-            request.setAttribute("searchItems", tourList);
-            String desHtmlID = "DesCheckBox-" + itemID;
-            request.setAttribute("desHtmlID", desHtmlID);
+            //List <Tour> tourList = new ArrayList<Tour>();  //Query by itemID
+            //request.setAttribute("searchItems", tourList);
+            request.setAttribute("desHtmlID", itemID);
         }
         else if(servletPath.contains("cate")) {
-            List <Tour> tourList = new ArrayList<Tour>();  //Query by itemID
-            request.setAttribute("searchItems", tourList);
-            String cateHtmlID = "CategoryCheckBox-" + itemID;
-            request.setAttribute("cateHtmlID", cateHtmlID);
+            //List <Tour> tourList = new ArrayList<Tour>();  //Query by itemID
+            //request.setAttribute("searchItems", tourList);
+            request.setAttribute("cateHtmlID", itemID);
         }
         else {
             System.out.println("search by key");
         }
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("search.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/search.jsp");
         dispatcher.forward(request, response);
 
 

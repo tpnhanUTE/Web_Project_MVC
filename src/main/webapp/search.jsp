@@ -105,32 +105,45 @@
           <div class="tree-list-item" >
             <div class="tree-list-item__title">Điểm đến</div>
             <div class="tree-list-item__node-wrapper" id="Destination">
-<%--              <c:forEach items="${destinationItems}" var="desItem">--%>
-<%--                <label class="tree-list-item__node" for="DesCheckBox-${desItem.index}">--%>
-<%--                  <div class="input__check-icon">--%>
-<%--                    <i class="fa-solid fa-check input__check-icon"></i>--%>
-<%--                  </div>--%>
-<%--                  <input type="checkbox" <c:if test="${desHtmlID == 'DesCheckBox-' + desItem.index}">value="checked"</c:if> id="DesCheckBox-${desItem.index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange--%>
-<%--                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">--%>
-<%--                  <span>${desItem.name}</span>--%>
-<%--                </label>--%>
-<%--              </c:forEach>--%>
+              <c:forEach items="${destinationItems}" var="desItem">
+                <label class="tree-list-item__node" for="DesCheckBox-${desItem.placeID}">
+                  <div class="input__check-icon">
+                    <i class="fa-solid fa-check input__check-icon"></i>
+                  </div>
+
+                  <c:if test="${desHtmlID == desItem.placeID}">
+                    <input type="checkbox" checked id="DesCheckBox-${desItem.placeID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
+                  </c:if>
+                  <c:if test="${desHtmlID != desItem.placeID}">
+                    <input type="checkbox" id="DesCheckBox-${desItem.placeID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
+                  </c:if>
+                  <span>${desItem.placeName}</span>
+                </label>
+              </c:forEach>
             </div>
           </div>
 
           <div class="tree-list-item" >
             <div class="tree-list-item__title">Danh mục</div>
             <div class="tree-list-item__node-wrapper" id="Category">
-<%--              <c:forEach items="${categoryItems}" var="cateItem">--%>
-<%--                <label class="tree-list-item__node" for="CategoryCheckBox-${cateItem.index}">--%>
-<%--                  <div class="input__check-icon">--%>
-<%--                    <i class="fa-solid fa-check input__check-icon"></i>--%>
-<%--                  </div>--%>
-<%--                  <input type="checkbox" <c:if test="${cateHtmlID == 'CategoryCheckBox-' + cateItem.index}">value=checked</c:if> id="CategoryCheckBox-${cateItem.index}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange--%>
-<%--                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">--%>
-<%--                  <span>${cateItem.name}</span>--%>
-<%--                </label>--%>
-<%--              </c:forEach>--%>
+              <c:forEach items="${categoryItems}" var="cateItem">
+                <label class="tree-list-item__node" for="CategoryCheckBox-${cateItem.catalogID}">
+                  <div class="input__check-icon">
+                    <i class="fa-solid fa-check input__check-icon"></i>
+                  </div>
+                  <c:if test="${cateHtmlID == cateItem.catalogID}">
+                    <input type="checkbox" checked  id="CategoryCheckBox-${cateItem.catalogID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
+                  </c:if>
+                  <c:if test="${cateHtmlID != cateItem.catalogID}">
+                    <input type="checkbox"  id="CategoryCheckBox-${cateItem.catalogID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
+                  </c:if>
+                  <span>${cateItem.catalogName}</span>
+                </label>
+              </c:forEach>
             </div>
           </div>
         </div>
