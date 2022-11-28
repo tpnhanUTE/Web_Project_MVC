@@ -5,7 +5,7 @@
     <groupId>com.example</groupId>
     <artifactId>Web_Project</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Web_Project</name>
+    <name>Web_Project_MVC</name>
     <packaging>war</packaging>
 
     <properties>
