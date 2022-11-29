@@ -104,4 +104,16 @@ public class UserDAO  {
             em.close();
         }
     }
+    public List<User> getUsers(){
+        EntityManager em = JpaConfig.getEntityManager();
+        String queryString = "SELECT u FROM User u";
+        TypedQuery<User> q = em.createQuery(queryString,User.class);
+        List<User> users= null;
+        try {
+            users = q.getResultList();
+        }finally {
+            em.close();
+        }
+        return users;
+    }
 }

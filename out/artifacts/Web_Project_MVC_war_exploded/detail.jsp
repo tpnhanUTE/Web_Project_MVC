@@ -44,7 +44,7 @@
     <%@ include file="header.jsp" %>
     <main class="klook-main">
         <!--Slider-->
-        <div class="main_Slider">
+        <div class="main_Slider" name=" ">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
