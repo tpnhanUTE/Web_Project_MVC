@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html lang="vi">
 <head>
@@ -239,47 +240,53 @@
           </div>
 
           <div class="search-result-list" id="SearchList">
-<%--            <c:forEach items="${searchItems}" var="item">--%>
-<%--              <a href="detail.jsp" class="category-swiper__item-wrapper" has-tag="${item.Tour_Policy}" is-discounting="${item.Tour_Old_Price != null}">--%>
-<%--                <div class="category-swiper__item hover-effect">--%>
+            <c:forEach items="${tourList}" var="item">
+              <a href="/tour?Id=${item.tourID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
+                <div class="category-swiper__item hover-effect">
 
-<%--                  <div class="item__heading" style="background-image: url('${item.Tour_Img}')">--%>
-<%--                  </div>--%>
-<%--                  <div class="item__body">--%>
-<%--                    <div class="item__body--top">--%>
-<%--                      <div class="item__title">--%>
-<%--                        <span>${item.Tour_Name}</span>--%>
-<%--                      </div>--%>
-<%--                      <div class="item__activity">--%>
-<%--                                <span class="item__activity-score">--%>
-<%--                                    <i class="fa-solid fa-star"></i>--%>
-<%--                                    <span class="activity-score__rate">${item.Tour_Rating}</span>--%>
-<%--                                </span>--%>
-<%--                        <span class="item__activity-review">--%>
-<%--                                    (--%>
-<%--                                        <span class="activity-review__number">${item.Tour_Review}</span>--%>
-<%--                                    &nbsp;đánh giá)--%>
-<%--                                </span>--%>
-<%--                      </div>--%>
-<%--                    </div>--%>
+                  <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')">
+                  </div>
+                  <div class="item__body">
+                    <div class="item__body--top">
+                      <div class="item__title">
+                        <span>${item.tourName}</span>
+                      </div>
+                      <div class="item__activity">
+                                <span class="item__activity-score">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="activity-score__rate">4.8</span>
+                                </span>
+                        <span class="item__activity-review">
+                                    (
+                                        <span class="activity-review__number">15K+</span>
+                                    &nbsp;đánh giá)
+                                </span>
+                      </div>
+                    </div>
 
-<%--                    <div class="item__body--bottom">--%>
-<%--                      <div class="item-price-box">--%>
-<%--                        <span class="item-price-box__sell-price-box">₫ &nbsp<span--%>
-<%--                                class="sell-price__value">${item.Tour_Price}</span> </span>--%>
-<%--                        <span class="item-price-box__old-price-box">₫ &nbsp<span--%>
-<%--                                class="old-price__value">${item.Tour_Old_Price}</span> </span>--%>
-<%--                      </div>--%>
-<%--                      <div class="item__tagging-wrapper">--%>
-<%--                        <div class="item__tagging">--%>
-<%--                          <p>Chính sách đảm bảo về giá</p>--%>
-<%--                        </div>--%>
-<%--                      </div>--%>
-<%--                    </div>--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--              </a>--%>
-<%--            </c:forEach>--%>
+                    <div class="item__body--bottom">
+                      <div class="item-price-box">
+                        <span class="item-price-box__sell-price-box">₫&nbsp
+                          <span class="sell-price__value">
+                            <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${item.tourPrice}" />
+                          </span>
+                        </span>
+                        <span class="item-price-box__old-price-box">₫&nbsp
+                          <span class="old-price__value">
+                              <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${item.tourOldPrice}" />
+                          </span>
+                        </span>
+                      </div>
+                      <div class="item__tagging-wrapper">
+                        <div class="item__tagging">
+                          <p>Chính sách đảm bảo về giá</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </c:forEach>
           </div>
         </div>
       </div>

@@ -3,9 +3,11 @@ package com.wepr.booking.controller.admin;
 
 import com.wepr.booking.dao.CatalogDAO;
 import com.wepr.booking.dao.PlaceDAO;
+import com.wepr.booking.dao.TourDAO;
 import com.wepr.booking.dao.UserDAO;
 import com.wepr.booking.model.Catalog;
 import com.wepr.booking.model.Place;
+import com.wepr.booking.model.Tour;
 import com.wepr.booking.model.User;
 
 import javax.servlet.ServletException;
@@ -72,16 +74,28 @@ public class HomeController extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", oUser.get());
                     request.setAttribute("user",oUser.get());
+                    if(oUser.get().getIsAdmin() !=null ){
+                        userDAO = new UserDAO();
+                        List<User> users = userDAO.getUsers();
 
-//                    PlaceDAO placeDAO = new PlaceDAO();
+                        TourDAO tourDAO = new TourDAO();
+                        List<Tour> tours = tourDAO.getTour();
+                        request.setAttribute("users", users);
+                        request.setAttribute("tours",tours);
+                        url = "/admin.jsp";
+//
+                    }
+                    else{
+                        PlaceDAO placeDAO = new PlaceDAO();
 //                    CatalogDAO catalogDAO = new CatalogDAO();
 //                    List<Place> places = placeDAO.GetPlace();
 //
 //                    List<Catalog> catalogs = catalogDAO.GetCatalog();
 //                    request.setAttribute("Places", places);
 //                    request.setAttribute("Catalogs", catalogs);
-                    System.out.print(oUser.get().getUserAvatarUrl());
-                    url = "/index";
+                        System.out.print(oUser.get().getUserAvatarUrl());
+                        url = "/index";
+                    }
                 }
                 break;
             case "register":

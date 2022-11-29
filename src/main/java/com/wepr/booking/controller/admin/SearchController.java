@@ -35,16 +35,15 @@ public class SearchController extends HttpServlet {
         List <Place> placeList = place.GetPlace(); //Query all place
         request.setAttribute("destinationItems", placeList);
 
+        List <Tour> tourList = tour.getTour();
+        request.setAttribute("tourList", tourList);
+
         String servletPath = request.getServletPath();
         String itemID = request.getParameter("id");
         if(servletPath.contains("city")) {
-            //List <Tour> tourList = new ArrayList<Tour>();  //Query by itemID
-            //request.setAttribute("searchItems", tourList);
             request.setAttribute("desHtmlID", itemID);
         }
         else if(servletPath.contains("cate")) {
-            //List <Tour> tourList = new ArrayList<Tour>();  //Query by itemID
-            //request.setAttribute("searchItems", tourList);
             request.setAttribute("cateHtmlID", itemID);
         }
         else {
