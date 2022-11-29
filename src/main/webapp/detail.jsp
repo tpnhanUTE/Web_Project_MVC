@@ -145,7 +145,7 @@
                             <div class="gap"></div>
                             <div class="main_service_button">
                                 <div id ="amount">${Tour.getTourPrice()}đ</div>
-                                <button>Thêm vào giỏ hàng</button>
+                                <button">Thêm vào giỏ hàng</button>
                                 <button type="submit">Đặt ngay</button>
                             </div>
                             <div> </div>
