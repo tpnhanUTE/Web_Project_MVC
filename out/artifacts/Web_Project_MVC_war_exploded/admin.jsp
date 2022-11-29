@@ -226,7 +226,7 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${tours}" var ="tour">
-                                <tr id = "tour${tour.getTourID()}">
+                                <tr id = "tour${tour.getTourID()}" onclick="ClickRow(${tour.getTourID()})">
                                     <td>${tour.getTourName()}</td>
                                     <td>${tour.getTourPrice()}</td>
                                     <td>${tour.getTourOldPrice()}</td>
@@ -292,6 +292,13 @@
                                     <input type="text" style="margin:10px;" class="form-control" id="newInput" placeholder="Image Url" required>
                                 </div>
                             </div>
+
+                            <label>Place</label>
+                            <select class="form-select" name="place"  id="form_Place" style="margin: 10px;" aria-label="Default select example">
+                                <c:forEach items = "${places}" var="place">
+                                    <option value="${place.getPlaceID()}">${place.getPlaceName()}</option>
+                                </c:forEach>
+                            </select>
                             <div style="display:flex; justify-content: space-around;">
                                 <button class="btn btn-primary " style="color:orange" onclick="RemoveInputfield()">Remove link image</button>
                                 <button class="btn btn-primary " style="color:orange" onclick="AddInputfield()">Add link image</button>
@@ -377,14 +384,19 @@
 
             let button = document.getElementById("buttonAction")
             if(tourName.length ==0){
-                document.getElementById("form_action").action = "nha";
-                button.innerHTML = "EDIT"
+
+                document.getElementById("form_action").action = "admin?action=add";
+                button.innerHTML = "ADD"
             }
             else{
-                document.getElementById("form_action").action = "nha1111";
-                button.innerHTML = "ADD"
+                document.getElementById("form_action").action = "admin?action=edit";
+                button.innerHTML = "EDIT"
             }
         })
     })
+    function ClickRow(id){
+        console.log(id)
+        document.getElementById("form_Place").value = +id
+    }
 </script>
 </html>

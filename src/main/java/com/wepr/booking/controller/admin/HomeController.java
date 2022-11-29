@@ -80,10 +80,15 @@ public class HomeController extends HttpServlet {
 
                         TourDAO tourDAO = new TourDAO();
                         List<Tour> tours = tourDAO.getTour();
+
+                        PlaceDAO placeDAO = new PlaceDAO();
+                        List<Place> places = placeDAO.GetPlace();
+
                         request.setAttribute("users", users);
                         request.setAttribute("tours",tours);
+                        request.setAttribute("places",places);
                         url = "/admin.jsp";
-//
+
                     }
                     else{
                         PlaceDAO placeDAO = new PlaceDAO();
