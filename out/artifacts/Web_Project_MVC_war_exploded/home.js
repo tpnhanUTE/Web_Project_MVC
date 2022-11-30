@@ -270,7 +270,61 @@ const app = {
         selectedElement.innerHTML = tagHtml ? tagHtml : '';
 
     },
+    renderSelectedCartOnSearchPage() {
+        //Hide all cart
+        let cartList = $$('.category-swiper__item-wrapper');
+        Array.from(cartList).forEach(item => {
+            item.style.display = 'none'
+        })
+        // Get selected destination tag
+        let desList = $$('#Destination .tree-list-item__node');
+        let selectedDesIDArray = Array.from(desList).map((item, index) => {
+            if (item.querySelector("input[type='checkbox']").checked === true) {
+                return item.querySelector('input').id;
+            }
+        }, [])
+        // Get selected category tag
+        let cateList = $$('#Category .tree-list-item__node');
+        let selectedCateIDArray = Array.from(cateList).map((item, index) => {
+            if (item.querySelector("input[type='checkbox']").checked === true) {
+                return item.querySelector('input').id;
+            }
+        }, [])
+        // Display cart
+        Array.from(cartList).forEach(item => {
+            let filterArr = item.getAttribute('data-filter').split(' ');
+            desList.forEach(des => {
+                for (let i = 0; i < filterArr.length; i++) {
+                    if (des === filterArr[i]) {
+                        item.style.display = 'block';
+                    }
+                }
+            })
 
+            cateList.forEach(cate => {
+                for (let i = 0; i < filterArr.length; i++) {
+                    if (cate === filterArr[i]) {
+                        item.style.display = 'block';
+                    }
+                }
+            })
+        })
+    },
+    renderCartByPriceOnSearchPage() {
+        let cartList = $$('.category-swiper__item-wrapper');
+        let reservePrice = parseInt($('#range1').text);
+        let endPrice = parseInt($('#range2').text);
+        Array.from(cartList).forEach(cart => {
+            if(cart.style.display !== 'none') {
+                let cartPrice = parseInt(cart.querySelector('.sell-price__value').text);
+                if(cartPrice > endPrice || cartPrice < endPrice) {
+                    cart.style.display = 'none'
+                }
+            }
+        })
+
+    }
+    ,
     renderHomePage() {
         // // Render menu
         // let renderMenu = this.menuItemIcon.reduce(function (html, item, i) {
@@ -305,12 +359,9 @@ const app = {
         // Render best seller items
         let renderBestSeller = this.bestSeller.reduce((html, item, i) => {
             return html + `
-                <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}" "  >
-
+                <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
                     <div class="category-swiper__item hover-effect">
-                        <div class="item__heading" style="background-image: url('${item.img}')">
-                            
-                        </div>
+                        <div class="item__heading" style="background-image: url('${item.img}')"></div>
                         <div class="item__body">
                             <div class="item__body--top">
                                 <div class="item__title">
@@ -345,24 +396,26 @@ const app = {
                 </div>
             `
         }, '');
-        bestSellerElement.innerHTML = renderBestSeller;
-
-        bookNowElement.innerHTML = renderBestSeller;
-        newActivityElement.innerHTML = renderBestSeller;
-        promotionElement.innerHTML = renderBestSeller;
-        datingElement.innerHTML = renderBestSeller;
-        childrenElement.innerHTML = renderBestSeller;
+        // bestSellerElement.innerHTML = renderBestSeller;
+        //
+        // bookNowElement.innerHTML = renderBestSeller;
+        // newActivityElement.innerHTML = renderBestSeller;
+        // promotionElement.innerHTML = renderBestSeller;
+        // datingElement.innerHTML = renderBestSeller;
+        // childrenElement.innerHTML = renderBestSeller;
 
         this.displayDiscountAndTag(bestSellerElement);
-        this.displayDiscountAndTag(bookNowElement);
-        this.displayDiscountAndTag(newActivityElement);
-        this.displayDiscountAndTag(promotionElement);
-        this.displayDiscountAndTag(datingElement);
-        this.displayDiscountAndTag(childrenElement);
+        // this.displayDiscountAndTag(bookNowElement);
+        // this.displayDiscountAndTag(newActivityElement);
+        // this.displayDiscountAndTag(promotionElement);
+        // this.displayDiscountAndTag(datingElement);
+        // this.displayDiscountAndTag(childrenElement);
 
 
     },
     renderSearchPage() {
+        const searchList = $('#SearchList');
+
         // Render destination list item
         // let destinationItems = this.topDestinationItem.map(({img, name}) => name);
         // let renderdestinationItems = destinationItems.reduce((html, item, index) => {
@@ -398,7 +451,6 @@ const app = {
         // categoryListItem.innerHTML = renderCategoryItems;
 
         // Render search list
-        const searchList = $('#SearchList');
         // let renderSearchList = this.bestSeller.reduce((html, item, index) => {
         //     return html + `
         //     <a href="/tour?Id" class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
@@ -466,6 +518,8 @@ const app = {
 
     handleEventHomePage() {
 
+
+
         const menuWidth = menu.offsetWidth;
         const hideMenuNextBtnValue = -(menuWidth -30 - 1176);
 
@@ -505,82 +559,96 @@ const app = {
 
         }
 
+        let bestSellerItemAmount = bestSellerElement.querySelectorAll('.category-swiper__item-wrapper').length;
+        let bookNowItemAmount = bookNowElement.querySelectorAll('.category-swiper__item-wrapper').length;
+        let newActivityItemAmount = newActivityElement.querySelectorAll('.category-swiper__item-wrapper').length;
+        let promotionItemAmount = promotionElement.querySelectorAll('.category-swiper__item-wrapper').length;
+        let datingItemAmount = datingElement.querySelectorAll('.category-swiper__item-wrapper').length;
+        let childrenItemAmount = childrenElement.querySelectorAll('.category-swiper__item-wrapper').length;
+
+        let hideBSNextBtnValue = -(Math.floor(bestSellerItemAmount / 4) * 944);
+        let hideBNNextBtnValue = -(Math.floor(bookNowItemAmount / 4) * 944);
+        let hideNANextBtnValue = -(Math.floor(newActivityItemAmount / 4) * 944);
+        let hidePromotionNextBtnValue = -(Math.floor(promotionItemAmount / 4) * 944);
+        let hideDatingNextBtnValue = -(Math.floor(datingItemAmount / 4) * 944);
+        let hideChildrenNextBtnValue = -(Math.floor(childrenItemAmount / 4) * 944);
+
         // Handle event swipe best seller
         bestSellerNextBtn.onclick = () => {
             this.swipe(bestSellerElement, this.bestSellerCurX, -944);
             this.bestSellerCurX = this.bestSellerCurX - 944;
-            this.disPlaySwipeCardButton(this.bestSellerCurX, bestSellerNextBtn, bestSellerPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.bestSellerCurX, bestSellerNextBtn, bestSellerPrevBtn, hideBSNextBtnValue);
         }
 
         bestSellerPrevBtn.onclick = () => {
             this.swipe(bestSellerElement, this.bestSellerCurX, 944);
             this.bestSellerCurX = this.bestSellerCurX + 944;
-            this.disPlaySwipeCardButton(this.bestSellerCurX, bestSellerNextBtn, bestSellerPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.bestSellerCurX, bestSellerNextBtn, bestSellerPrevBtn, hideBSNextBtnValue);
         }
 
         // Handle event swipe book-now
         bookNowNextBtn.onclick = () => {
             this.swipe(bookNowElement, this.bookNowCurX, -944);
             this.bookNowCurX = this.bookNowCurX - 944;
-            this.disPlaySwipeCardButton(this.bookNowCurX, bookNowNextBtn, bookNowPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.bookNowCurX, bookNowNextBtn, bookNowPrevBtn, hideBNNextBtnValue);
         }
 
         bookNowPrevBtn.onclick = () => {
             this.swipe(bookNowElement, this.bookNowCurX, 944);
             this.bookNowCurX = this.bookNowCurX + 944;
-            this.disPlaySwipeCardButton(this.bookNowCurX, bookNowNextBtn, bookNowPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.bookNowCurX, bookNowNextBtn, bookNowPrevBtn, hideBNNextBtnValue);
         }
 
         // Handle event swipe new activity
         newActitityNextBtn.onclick = () => {
             this.swipe(newActivityElement, this.newActivityCurX, -944);
             this.newActivityCurX = this.newActivityCurX - 944;
-            this.disPlaySwipeCardButton(this.newActivityCurX, newActitityNextBtn, newActitityPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.newActivityCurX, newActitityNextBtn, newActitityPrevBtn, hideNANextBtnValue);
         }
 
         newActitityPrevBtn.onclick = () => {
             this.swipe(newActivityElement, this.newActivityCurX, 944);
             this.newActivityCurX = this.newActivityCurX + 944;
-            this.disPlaySwipeCardButton(this.newActivityCurX, newActitityNextBtn, newActitityPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.newActivityCurX, newActitityNextBtn, newActitityPrevBtn, hideNANextBtnValue);
         }
 
         // Handle event swipe promotion
         promotionNextBtn.onclick = () => {
             this.swipe(promotionElement, this.promotionCurX, -944);
             this.promotionCurX = this.promotionCurX - 944;
-            this.disPlaySwipeCardButton(this.promotionCurX, promotionNextBtn, promotionPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.promotionCurX, promotionNextBtn, promotionPrevBtn, hidePromotionNextBtnValue);
         }
 
         promotionPrevBtn.onclick = () => {
             this.swipe(promotionElement, this.promotionCurX, 944);
             this.promotionCurX = this.promotionCurX + 944;
-            this.disPlaySwipeCardButton(this.promotionCurX, promotionNextBtn, promotionPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.promotionCurX, promotionNextBtn, promotionPrevBtn, hidePromotionNextBtnValue);
         }
 
         // Handle event swipe dating
         datingNextBtn.onclick = () => {
             this.swipe(datingElement, this.datingCurX, -944);
             this.datingCurX = this.datingCurX - 944;
-            this.disPlaySwipeCardButton(this.datingCurX, datingNextBtn, datingPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.datingCurX, datingNextBtn, datingPrevBtn, hideDatingNextBtnValue);
         }
 
         datingPrevBtn.onclick = () => {
             this.swipe(datingElement, this.datingCurX, 944);
             this.datingCurX = this.datingCurX + 944;
-            this.disPlaySwipeCardButton(this.datingCurX, datingNextBtn, datingPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.datingCurX, datingNextBtn, datingPrevBtn, hideDatingNextBtnValue);
         }
 
         // Handle event swipe children
         childrenNextBtn.onclick = () => {
             this.swipe(childrenElement, this.childrenCurX, -944);
             this.childrenCurX = this.childrenCurX - 944;
-            this.disPlaySwipeCardButton(this.childrenCurX, childrenNextBtn, childrenPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.childrenCurX, childrenNextBtn, childrenPrevBtn, hideChildrenNextBtnValue);
         }
 
         childrenPrevBtn.onclick = () => {
             this.swipe(childrenElement, this.childrenCurX, 944);
             this.childrenCurX = this.childrenCurX + 944;
-            this.disPlaySwipeCardButton(this.childrenCurX, childrenNextBtn, childrenPrevBtn, -944);
+            this.disPlaySwipeCardButton(this.childrenCurX, childrenNextBtn, childrenPrevBtn, hideChildrenNextBtnValue);
         }
 
         // Handle event click suggestion-filter item
@@ -590,6 +658,7 @@ const app = {
     },
     handleEventSearchPage() {
         // Event click node
+        let searchList = $('#SearchList');
         let nodeList = $$('.tree-list-item__node');
         Array.from(nodeList).forEach((node, index) => {
             node.onclick = () => {
@@ -661,8 +730,9 @@ const app = {
             slideOne();
             sliderTwo.value = 500000;
             slideTwo();
-
         }
+
+
 
 
 
