@@ -4,12 +4,13 @@ import com.wepr.booking.JpaConfig.JpaConfig;
 import com.wepr.booking.model.Tour;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.*;
 
 public class TourDAO {
 
-    public Optional<Tour> getTour(int id){
+    public Optional<Tour> getTour(Integer id){
         EntityManager em = JpaConfig.getEntityManager();
         String queryString = "SELECT t FROM Tour t WHERE t.tourID=:id";
         TypedQuery<Tour> q = em.createQuery(queryString,Tour.class);
@@ -55,5 +56,35 @@ public class TourDAO {
             }
         }
         return newTour;
+    }
+    public void updateTour(Tour tour){
+        EntityManager em = JpaConfig.getEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.merge(tour);
+            trans.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
+    }
+    public void insertTour(Tour tour){
+        EntityManager em = JpaConfig.getEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.persist(tour);
+            trans.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
     }
 }

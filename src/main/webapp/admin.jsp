@@ -246,17 +246,17 @@
                         </table>
                     </div>
                     <div  id="form_Edit">
-                        <form id ="form_action">
+                        <form id ="form_action" method="post">
                             <div class="form-row">
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationDefault01">Tour name</label>
-                                    <input id="TourName" type="text" class="form-control" id="validationDefault01" placeholder="Tour name" value="Mark" required>
+                                    <input id="TourName" name="TourName" type="text" class="form-control" id="validationDefault01" placeholder="Tour name" value="Mark" required>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationDefault02">Tour price</label>
-                                    <input id = "TourPrice" type="text" class="form-control" id="validationDefault02" placeholder="Tour price" value="Otto" required>
+                                    <input id = "TourPrice" name="TourPrice" type="text" class="form-control" id="validationDefault02" placeholder="Tour price" value="Otto" required>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
@@ -265,7 +265,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupPrepend2">@</span>
                                         </div>
-                                        <input id="TourOldPrice" type="text" class="form-control" id="validationDefaultUsername" placeholder="Tour old price" aria-describedby="inputGroupPrepend2" required>
+                                        <input id="TourOldPrice" name="TourOldPrice" type="text" class="form-control" id="validationDefaultUsername" placeholder="Tour old price" aria-describedby="inputGroupPrepend2">
                                     </div>
                                 </div>
                             </div>
@@ -274,22 +274,22 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label for="validationDefault03">Description</label>
-                                    <input id = "TourDescription" type="text" class="form-control" id="validationDefault03" placeholder="Description" required>
+                                    <input id = "TourDescription" name="TourDescription" type="text" class="form-control" id="validationDefault03" placeholder="Description" >
                                 </div>
 
                                 <div class="col-md-3 mb-3">
                                     <label for="validationDefault04">Policy</label>
-                                    <input id ="TourPolicy" type="text" class="form-control" id="validationDefault04" placeholder="Policy" required>
+                                    <input id ="TourPolicy" name="TourPolicy" type="text" class="form-control" id="validationDefault04" placeholder="Policy" >
                                 </div>
 
                                 <div class="col-md-3 mb-3">
                                     <label for="validationDefault05">Schedule</label>
-                                    <input id = "TourSchedule" type="text" class="form-control" id="validationDefault05" placeholder="Schedule" required>
+                                    <input id = "TourSchedule" name="TourSchedule" type="text" class="form-control" id="validationDefault05" placeholder="Schedule">
                                 </div>
-
+                                <span id = "tourId"></span>
 
                                 <div id="newInputfield">
-                                    <input type="text" style="margin:10px;" class="form-control" id="newInput" placeholder="Image Url" required>
+<%--                                    <input type="text" style="margin:10px;" class="form-control" id="newInput" placeholder="Image Url" required>--%>
                                 </div>
                             </div>
 
@@ -375,7 +375,10 @@
             let tourPolicy = $(row).find('td').eq(3).html();
             let tourDescription = $(row).find('td').eq(4).html();
             //alert(row + tourName + tourPrice + tourOldPrice + tourPolicy +  tourDescription)
-
+            let trid = $(this).closest('tr').attr('id'); // table row ID
+            if(trid){
+                trid = trid.replace("tour","")
+            }
             document.getElementById("TourName").value = tourName
             document.getElementById("TourPrice").value = tourPrice
             document.getElementById("TourOldPrice").value = tourOldPrice
@@ -389,14 +392,16 @@
                 button.innerHTML = "ADD"
             }
             else{
-                document.getElementById("form_action").action = "admin?action=edit";
+                document.getElementById("form_action").action = "admin?action=edit&id="+trid;
                 button.innerHTML = "EDIT"
             }
         })
     })
     function ClickRow(id){
         console.log(id)
-        document.getElementById("form_Place").value = +id
+        let row = document.getElementById("form_Place").value = +id
+
+        //document.getElementById("tourId").setAttribute("id",id);
     }
 </script>
 </html>
