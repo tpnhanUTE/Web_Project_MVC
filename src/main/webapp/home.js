@@ -697,9 +697,9 @@ const app = {
         })
 
         // Handle event search
-        let headerFrom = $('#HeaderForm');
+        let headerForm = $('#HeaderForm');
         let mainForm = $('#MainForm');
-        this.redirectToSearchPageByKey(headerFrom);
+        this.redirectToSearchPageByKey(headerForm);
         this.redirectToSearchPageByKey(mainForm);
     },
     handleEventSearchPage() {
@@ -776,12 +776,12 @@ const app = {
                     }, ''));
 
                     if(cartPrice > endPrice || cartPrice < reservePrice) {
-                        cart.classList.add('price-filter')
+                        cart.classList.add('card--hidden')
                     }
                 }
             })
+            this.afterFiltering();
         }
-        this.afterFiltering();
         // Event click reset button
         let resetBtn = $('#ResetBtn');
         resetBtn.onclick = () => {
@@ -799,8 +799,8 @@ const app = {
         function deletePriceFilter() {
             let cartList = $$('.category-swiper__item-wrapper');
             Array.from(cartList).forEach(cart => {
-                if(cart.classList.contains('price-filter')) {
-                    cart.classList.remove('price-filter');
+                if(cart.classList.contains('card--hidden')) {
+                    cart.classList.remove('card--hidden');
                 }
             })
         }
