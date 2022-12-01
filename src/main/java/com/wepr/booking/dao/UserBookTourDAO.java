@@ -39,12 +39,11 @@ public class UserBookTourDAO {
         }
         return user_Tour_Book.stream().findFirst();
     }
-    public List<User_Tour_Book> Get(User user){
+    public List<User_Tour_Book> Get(){
         EntityManager em = JpaConfig.getEntityManager();
-        String queryString = "SELECT u FROM User_Tour_Book u  inner join User t where t =:user and u.payment is null";
+        String queryString = "SELECT u FROM User_Tour_Book u";
         TypedQuery<User_Tour_Book> q = em.createQuery(queryString,User_Tour_Book.class);
-        q.setParameter("user",user);
-        List<User_Tour_Book> user_Tour_Book;
+        List<User_Tour_Book> user_Tour_Book=null;
         try{
             user_Tour_Book = q.getResultList();
             if(user_Tour_Book== null || user_Tour_Book.isEmpty())
