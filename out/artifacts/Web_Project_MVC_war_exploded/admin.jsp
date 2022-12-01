@@ -32,10 +32,10 @@
     <title>Tour Adminstration</title>
 </head>
 <body>
-
-<div class="container-xxl position-relative bg-white d-flex p-0" style="margin: auto">
+<div class="container-xxl position-relative bg-white d-flex p-0">
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
+
         <nav class="navbar bg-light navbar-light">
             <a href="index.html" class="navbar-brand mx-4 mb-3">
                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>TOUR</h3>
@@ -46,7 +46,7 @@
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-0">Trần Phước Nhân</h6>
+                    <h6 class="mb-0">${user.getUserName()}</h6>
                     <span>Admin</span>
                 </div>
             </div>
@@ -112,7 +112,6 @@
             </div>
         </nav>
         <!-- Navbar End -->
-
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <!-- Sale & Revenue Start -->
@@ -186,67 +185,30 @@
                     <table class="table text-start align-middle table-bordered table-hover mb-0">
                         <thead>
                         <tr class="text-dark">
-
-                            <th scope="col">Date</th>
-                            <th scope="col">User</th>
-                            <th scope="col">Tour Name</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">User_Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Address</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
+                        <c:forEach items="${users}" var="user">
+                            <tr id="user${user.getUserID()}">
+                                <td>${user.getUserName()}</td>
+                                <td>${user.getEmail()}</td>
+                                <td>${user.getFirstName()}</td>
+                                <td>${user.getLastName()}</td>
+                                <td>${user.getUserPhone()}</td>
+                                <td>${user.getAddress()}</td>
+                                <td><a class="btn btn-sm btn-primary" onclick="clickUser(${user.getUserID()})">Edit</a></td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                 <div class="table-responsive">
                     <div class="mb-4 me-4 p-4"> TOUR MANAGER</div>
@@ -259,138 +221,96 @@
                             <th scope="col">Tour Old Price</th>
                             <th scope="col">Policy</th>
                             <th scope="col">Description</th>
-
                         </tr>
+
                         </thead>
                         <tbody>
+                        <c:forEach items="${tours}" var ="tour">
+                            <tr id = "tour${tour.getTourID()}" onclick="ClickRow(${tour.getTourID()})">
+                                <td>${tour.getTourName()}</td>
+                                <td>${tour.getTourPrice()}</td>
+                                <td>${tour.getTourOldPrice()}</td>
+                                <td>${tour.getPolicy()}</td>
+                                <td>${tour.getTourDescription()}</td>
+                                    <%--                                    <td><a class="btn btn-sm btn-primary" onclick="EditTour(${tour.getTourID()})">Edit</a></td>--%>
+                            </tr>
+                        </c:forEach>
                         <tr>
-                            <td>Tour Sai Gon</td>
-                            <td>1900000</td>
-                            <td>2000000</td>
                             <td></td>
-                            <td>no description</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
-
                         </tbody>
                     </table>
                 </div>
                 <div  id="form_Edit">
-                    <form>
+                    <form id ="form_action" method="post">
                         <div class="form-row">
+
                             <div class="col-md-4 mb-3">
                                 <label for="validationDefault01">Tour name</label>
-                                <input type="text" class="form-control" id="validationDefault01" placeholder="Tour name" value="Mark" required>
+                                <input id="TourName" name="TourName" type="text" class="form-control" id="validationDefault01" placeholder="Tour name" value="Mark" required>
                             </div>
+
                             <div class="col-md-4 mb-3">
                                 <label for="validationDefault02">Tour price</label>
-                                <input type="text" class="form-control" id="validationDefault02" placeholder="Tour price" value="Otto" required>
+                                <input id = "TourPrice" name="TourPrice" type="text" class="form-control" id="validationDefault02" placeholder="Tour price" value="Otto" required>
                             </div>
+
                             <div class="col-md-4 mb-3">
                                 <label for="validationDefaultUsername">Tour old price</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroupPrepend2">@</span>
                                     </div>
-                                    <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Tour old price" aria-describedby="inputGroupPrepend2" required>
+                                    <input id="TourOldPrice" name="TourOldPrice" type="text" class="form-control" id="validationDefaultUsername" placeholder="Tour old price" aria-describedby="inputGroupPrepend2">
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-row">
+
                             <div class="col-md-6 mb-3">
                                 <label for="validationDefault03">Description</label>
-                                <input type="text" class="form-control" id="validationDefault03" placeholder="Description" required>
+                                <input id = "TourDescription" name="TourDescription" type="text" class="form-control" id="validationDefault03" placeholder="Description" >
                             </div>
+
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault04">Policy</label>
-                                <input type="text" class="form-control" id="validationDefault04" placeholder="Policy" required>
+                                <input id ="TourPolicy" name="TourPolicy" type="text" class="form-control" id="validationDefault04" placeholder="Policy" >
                             </div>
+
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault05">Schedule</label>
-                                <input type="text" class="form-control" id="validationDefault05" placeholder="Schedule" required>
+                                <input id = "TourSchedule" name="TourSchedule" type="text" class="form-control" id="validationDefault05" placeholder="Schedule">
                             </div>
+                            <span id = "tourId"></span>
+
                             <div id="newInputfield">
-                                <input type="text" style="margin:10px;" class="form-control" id="newInput" placeholder="Image Url" required>
+                                <%--                                    <input type="text" style="margin:10px;" class="form-control" id="newInput" placeholder="Image Url" required>--%>
                             </div>
                         </div>
+
+                        <label>Place</label>
+                        <select class="form-select" name="place"  id="form_Place" style="margin: 10px;" aria-label="Default select example">
+                            <c:forEach items = "${places}" var="place">
+                                <option value="${place.getPlaceID()}">${place.getPlaceName()}</option>
+                            </c:forEach>
+                        </select>
                         <div style="display:flex; justify-content: space-around;">
                             <button class="btn btn-primary " style="color:orange" onclick="RemoveInputfield()">Remove link image</button>
                             <button class="btn btn-primary " style="color:orange" onclick="AddInputfield()">Add link image</button>
-                            <button class="btn btn-primary " type="submit" style="color:orange">Edit</button>
-                            <button class="btn btn-primary" type="submit" style="color:orange">Add</button>
+                            <button id="buttonAction" class="btn btn-primary " type="submit" style="color:orange">Edit</button>
+
                         </div>
                     </form>
-
                 </div>
-
-            </div>
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0">
-                        <thead>
-                        <tr class="text-dark">
-
-                            <th scope="col">Date</th>
-                            <th scope="col">User</th>
-                            <th scope="col">Tour Name</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-
-                            <td>01 Jan 2045</td>
-                            <td>Trần Phước Nhân</td>
-                            <td>Đồng Tháp</td>
-                            <td>$123</td>
-                            <td>Paid</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
             </div>
         </div>
     </div>
+</div>
 </body>
 
 <!-- JavaScript Libraries -->
@@ -438,6 +358,50 @@
         let newInputList = document.querySelector('.new-input');
         let newInputField = document.getElementById("newInputfield");
         newInputField.removeChild(newInputList)
+    }
+
+    function EditTour(Id){
+        let tourId = document.getElementById("tour"+Id);
+        let  childs =Array.from(tourId.children)
+        let tourNameInput = document.getElementById("tourName").value  = child[0].innerHTML;
+
+    }
+    $(function(){
+        $('td').on('click', function(){
+            let row =  $(this).closest('tr');
+            let tourName = $(row).find('td').eq(0).html();
+            let tourPrice = $(row).find('td').eq(1).html();
+            let tourOldPrice = $(row).find('td').eq(2).html();
+            let tourPolicy = $(row).find('td').eq(3).html();
+            let tourDescription = $(row).find('td').eq(4).html();
+            //alert(row + tourName + tourPrice + tourOldPrice + tourPolicy +  tourDescription)
+            let trid = $(this).closest('tr').attr('id'); // table row ID
+            if(trid){
+                trid = trid.replace("tour","")
+            }
+            document.getElementById("TourName").value = tourName
+            document.getElementById("TourPrice").value = tourPrice
+            document.getElementById("TourOldPrice").value = tourOldPrice
+            document.getElementById("TourPolicy").value = tourPolicy
+            document.getElementById("TourDescription").value = tourDescription
+
+            let button = document.getElementById("buttonAction")
+            if(tourName.length ==0){
+
+                document.getElementById("form_action").action = "admin?action=add";
+                button.innerHTML = "ADD"
+            }
+            else{
+                document.getElementById("form_action").action = "admin?action=edit&id="+(trid-1);
+                button.innerHTML = "EDIT"
+            }
+        })
+    })
+    function ClickRow(id){
+        console.log(id)
+        let row = document.getElementById("form_Place").value = +id
+
+        //document.getElementById("tourId").setAttribute("id",id);
     }
 </script>
 </html>
