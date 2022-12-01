@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -70,52 +71,54 @@
         <a href="#" class="delete-all text">Xóa dịch vụ đã chọn</a>
       </div>
       <div class="cart_list">
-        <div class="cart_item">
-          <div class="cart_item-content">
-            <div class="checkbox-grid-item">
-              <label class="cart-list__node" for="Item-1">
-                <div class="">
-                  <i class="fa-solid fa-check input__check-icon"></i>
-                </div>
-                <input type="checkbox" value ="" id="Item-1" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+        <c:forEach items="${tourDis}" var="tourDis">
+          <div class="cart_item">
+            <div class="cart_item-content">
+              <div class="checkbox-grid-item">
+                <label class="cart-list__node" for="Item-1">
+                  <div class="">
+                    <i class="fa-solid fa-check input__check-icon"></i>
+                  </div>
+                  <input type="checkbox" value ="" id="Item-1" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                                     checked:border-orange focus:outline-none transition duration-200 item-checkbox">
-              </label>
-            </div>
-            <div class="img-grid-item">
-              <a href="#">
-                <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
-              </a>
-            </div>
-            <div class="info-grid-item">
-              <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
-              <div class="info-description">Loại gói dịch vụ: Vé Vào Cổng + Cano Khứ Hồi</div>
-            </div>
-            <div class="date-grid-item">
-              <div class="date">2/12/2022</div>
-              <span>(Giờ địa phương)</span>
-            </div>
-            <div class="guest-grid-item">
-              <div class="guest-category">
-                <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                <input type="number" class="guest-amount children-amount" value="1">
+                </label>
               </div>
-              <div class="guest-category">
-                <span class="guest-title">Người lớn</span>
-                <input type="number" class="guest-amount adult-amount" value="1">
+              <div class="img-grid-item">
+                <a href="#">
+                  <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
+                </a>
               </div>
+              <div class="info-grid-item">
+                <a href="#" class="info-title">${tourDis.value.tour.getTourName()}</a>
+                <div class="info-description">Loại gói dịch vụ: Vé Vào Cổng + Cano Khứ Hồi</div>
+              </div>
+              <div class="date-grid-item">
+                <div class="date">2/12/2022</div>
+                <span>(Giờ địa phương)</span>
+              </div>
+              <div class="guest-grid-item">
+                <div class="guest-category">
+                  <span class="guest-title">Trẻ em (100 - 139 cm)</span>
+                  <input type="number" class="guest-amount children-amount" value="1">
+                </div>
+                <div class="guest-category">
+                  <span class="guest-title">Người lớn</span>
+                  <input type="number" class="guest-amount adult-amount" value="1">
+                </div>
+              </div>
+
+
             </div>
+            <div class="cart_item-footer">
+              <div class="footer-operator">
+                <a href="#">Sửa</a>
+                <a href="#" class="delete-item">Xóa</a>
+              </div>
+              <div class="footer-price">₫ <span class="item-price">1907400</span></div>
 
-
-          </div>
-          <div class="cart_item-footer">
-            <div class="footer-operator">
-              <a href="#">Sửa</a>
-              <a href="#" class="delete-item">Xóa</a>
             </div>
-            <div class="footer-price">₫ <span class="item-price">1907400</span></div>
-
           </div>
-        </div>
+        </c:forEach>
 
         <div class="cart_item">
           <div class="cart_item-content">
@@ -228,6 +231,6 @@
 </body>
 <script src="./home.js" type="text/javascript"></script>
 <script>
-  app.startCartPage();
+  //app.startCartPage();
 </script>
 </html>
