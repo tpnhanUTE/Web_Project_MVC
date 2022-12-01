@@ -97,7 +97,7 @@
                     </div>
                 <% } else {%>
                     <div class="navbar-item cart-item navbar-item--logined">
-                        <a href="#" class="navbar-link">Giỏ hàng</a>
+                        <a href="cart" class="navbar-link">Giỏ hàng</a>
                         <div class="navbar-cart-wrapper dropdown-wrapper">
                             <div class="navbar-cart--empty">
                                 <img src="./img/cart-svgrepo-com.svg" alt="">
