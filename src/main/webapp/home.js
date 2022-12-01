@@ -247,6 +247,36 @@ const app = {
         }
     }
     ,
+    redirectToSearchPageByKey(formElement) {
+        let searchBtn = formElement.querySelector('button');
+        let searchInput = formElement.querySelector('input');
+        searchBtn.onclick = (e) => {
+            e.preventDefault();
+            search();
+
+        }
+
+        searchInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                search();
+            }
+        });
+
+        function search() {
+            if(searchInput.value.trim() !== "") {
+                let searchValue = searchInput.value;
+                let searchValueArr = searchValue.split(' ');
+                let url = "";
+                searchValueArr.forEach(value => {
+                    url += value + '%';
+                })
+                url = url.slice(0, -1);
+                window.location.href = 'search?key=' + url;
+            }
+        }
+    }
+    ,
     renderTagOnSearchPage() {
         let nodeList = $$('.tree-list-item__node');
         let tagContentArray = Array.from(nodeList).map((item, index) => {
@@ -323,6 +353,20 @@ const app = {
             }
         })
 
+    }
+    ,
+    afterFiltering() {
+        let searchList = $('#SearchList');
+        let activityCount = $('.search-result-container .activity-count span');
+        activityCount.innerHTML = searchList.children.length;
+
+
+        const searhListCollection = searchList.children;
+        for (let i = 0; i < searhListCollection.length; i++) {
+            if((i + 1) % 3 === 0) {
+                searhListCollection[i].style.marginRight = 0 + 'px';
+            }
+        }
     }
     ,
     renderHomePage() {
@@ -512,13 +556,9 @@ const app = {
 
         // Render checked input
 
-
-
     },
 
     handleEventHomePage() {
-
-
 
         const menuWidth = menu.offsetWidth;
         const hideMenuNextBtnValue = -(menuWidth -30 - 1176);
@@ -655,6 +695,12 @@ const app = {
         const filterOptionItem = $$('#SortBySuggestion .filter__option-item');
         filterOptionItem.forEach((item, index) => {
         })
+
+        // Handle event search
+        let headerFrom = $('#HeaderForm');
+        let mainForm = $('#MainForm');
+        this.redirectToSearchPageByKey(headerFrom);
+        this.redirectToSearchPageByKey(mainForm);
     },
     handleEventSearchPage() {
         // Event click node
@@ -716,10 +762,26 @@ const app = {
         let priceRangeElement = $('#PriceFilter');
         let acceptBtn = $('#AcceptBtn');
         acceptBtn.onclick = () => {
+            let cartList = $$('.category-swiper__item-wrapper');
             priceRangeValue.textContent = '₫' + `${displayValOne.innerText}` + ' - ' + '₫' + `${displayValTwo.innerText}`;
             priceRangeElement.style.backgroundColor = '#ff5b00';
             priceRangeElement.style.color = '#fff';
+            deletePriceFilter();
+            let reservePrice = parseInt(displayValOne.innerText);
+            let endPrice = parseInt(displayValTwo.innerText);
+            Array.from(cartList).forEach(cart => {
+                if(cart.style.display !== 'none') {
+                    let cartPrice = parseInt(cart.querySelector('.sell-price__value').innerText.split('.').reduce(function(init, value) {
+                        return init + value;
+                    }, ''));
+
+                    if(cartPrice > endPrice || cartPrice < reservePrice) {
+                        cart.classList.add('price-filter')
+                    }
+                }
+            })
         }
+        this.afterFiltering();
         // Event click reset button
         let resetBtn = $('#ResetBtn');
         resetBtn.onclick = () => {
@@ -730,11 +792,22 @@ const app = {
             slideOne();
             sliderTwo.value = 500000;
             slideTwo();
+            deletePriceFilter();
+            this.afterFiltering();
         }
 
+        function deletePriceFilter() {
+            let cartList = $$('.category-swiper__item-wrapper');
+            Array.from(cartList).forEach(cart => {
+                if(cart.classList.contains('price-filter')) {
+                    cart.classList.remove('price-filter');
+                }
+            })
+        }
 
-
-
+        // Handle event search
+        let headerFrom = $('#HeaderForm');
+        this.redirectToSearchPageByKey(headerFrom);
 
 
 

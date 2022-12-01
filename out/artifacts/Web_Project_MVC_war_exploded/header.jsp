@@ -27,45 +27,54 @@
         <nav class="navbar">
             <div class="navbar--left">
                 <a href="index"><img class="navbar__logo" src="./img/logo.png"></a>
-                <div class="navbar__search-box">
-                    <input type="text" class="search-box__input" placeholder="Tìm theo điểm đến, hoạt động">
+                <form method="post" action="search" id="HeaderForm">
+                    <div class="navbar__search-box">
+                        <c:if test="${key == null}">
+                            <input type="text" class="search-box__input" placeholder="Tìm theo điểm đến, hoạt động">
+                        </c:if>
 
-                    <button class="search-box__btn">
-                        <i class="ti-search"></i>
-                    </button>
+                        <c:if test="${key != null}">
+                            <input value="${key}" type="text" class="search-box__input" placeholder="Tìm theo điểm đến, hoạt động">
+                        </c:if>
 
-                    <div class="search-box-recommendation-wrapper">
-                        <div class="search-box-recommendation">
-                            <div class="search-group">
-                                <p class="search-box__heading">Lịch sử tìm kiếm</p>
-                                <ul class="search-box__list">
-                                    <li class="search-box__item">hồ chí minh</li>
-                                    <li class="search-box__item">săn mây đà lạt</li>
-                                </ul>
+                        <button type="submit" class="search-box__btn">
+                            <i class="ti-search"></i>
+                        </button>
+
+                        <div class="search-box-recommendation-wrapper">
+                            <div class="search-box-recommendation">
+                                <div class="search-group">
+                                    <p class="search-box__heading">Lịch sử tìm kiếm</p>
+                                    <ul class="search-box__list">
+                                        <li class="search-box__item">hồ chí minh</li>
+                                        <li class="search-box__item">săn mây đà lạt</li>
+                                    </ul>
+                                </div>
+
+                                <div class="search-group">
+                                    <p class="search-box__heading">Phổ biến nhất</p>
+                                    <ul class="search-box__list">
+                                        <li class="search-box__item">sim thai lan</li>
+                                        <li class="search-box__item">thai lan</li>
+                                        <li class="search-box__item">seoul</li>
+                                        <li class="search-box__item">phuket</li>
+
+                                        <li class="search-box__item">sapa</li>
+
+                                        <li class="search-box__item">bali</li>
+                                        <li class="search-box__item">da nang</li>
+
+                                        <li class="search-box__item">ba na hill</li>
+
+                                        <li class="search-box__item">bali</li>
+                                    </ul>
+                                </div>
+
                             </div>
-
-                            <div class="search-group">
-                                <p class="search-box__heading">Phổ biến nhất</p>
-                                <ul class="search-box__list">
-                                    <li class="search-box__item">sim thai lan</li>
-                                    <li class="search-box__item">thai lan</li>
-                                    <li class="search-box__item">seoul</li>
-                                    <li class="search-box__item">phuket</li>
-
-                                    <li class="search-box__item">sapa</li>
-
-                                    <li class="search-box__item">bali</li>
-                                    <li class="search-box__item">da nang</li>
-
-                                    <li class="search-box__item">ba na hill</li>
-
-                                    <li class="search-box__item">bali</li>
-                                </ul>
-                            </div>
-
                         </div>
                     </div>
-                </div>
+                </form>
+
             </div>
             <div class="navbar--right">
                 <div class="navbar-item">

@@ -695,6 +695,10 @@ body {
     font-size: 14px;
 }
 
+.price-filter {
+    display: none!important;
+}
+
 /* Animation */
 
 @keyframes navbarOption {
@@ -811,3 +815,5 @@ input[type="range"]:active::-webkit-slider-thumb{
 #litepicker::-ms-input-placeholder { /* Microsoft Edge */
     color: #000;
 }
+
+

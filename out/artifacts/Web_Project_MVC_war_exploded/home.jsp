@@ -56,19 +56,21 @@
                         <h1 class="title__heading">Vui chơi & giải trí</h1>
                         <p class="title__description">Check in điểm tham quan nổi tiếng, khám phá tour và nhiều hơn nữa ở Việt Nam</p>
                     </div>
-                    <div class="header__search-box rounded-md">
+                    <form method="post" action="search" id="MainForm">
+                        <div class="header__search-box rounded-md">
 
-                        <i class="ti-search"></i>
+                            <i class="ti-search"></i>
 
-
-                        <input class="focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900
+                            <input id="SearchInput" class="focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900
                             rounded-md shadow-sm"
-                               type="text" aria-label="Filter projects" placeholder="Bạn muốn tham gia hoạt động gì ở VIỆT NAM ?">
+                                   type="text" aria-label="Filter projects" placeholder="Bạn muốn tham gia hoạt động gì ở VIỆT NAM ?">
 
-                        <button class="btn hover:bg-darkorange rounded-md bg-orange">
-                            <span>Tìm kiếm</span>
-                        </button>
-                    </div>
+                            <button type="submit" class="btn hover:bg-darkorange rounded-md bg-orange search-btn">
+                                <span>Tìm kiếm</span>
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>

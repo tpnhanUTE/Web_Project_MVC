@@ -247,6 +247,36 @@ const app = {
         }
     }
     ,
+    redirectToSearchPageByKey(formElement) {
+        let searchBtn = formElement.querySelector('button');
+        let searchInput = formElement.querySelector('input');
+        searchBtn.onclick = (e) => {
+            e.preventDefault();
+            search();
+
+        }
+
+        searchInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                search();
+            }
+        });
+
+        function search() {
+            if(searchInput.value.trim() !== "") {
+                let searchValue = searchInput.value;
+                let searchValueArr = searchValue.split(' ');
+                let url = "";
+                searchValueArr.forEach(value => {
+                    url += value + '%';
+                })
+                url = url.slice(0, -1);
+                window.location.href = 'search?key=' + url;
+            }
+        }
+    }
+    ,
     renderTagOnSearchPage() {
         let nodeList = $$('.tree-list-item__node');
         let tagContentArray = Array.from(nodeList).map((item, index) => {
@@ -325,6 +355,20 @@ const app = {
 
     }
     ,
+    afterFiltering() {
+        let searchList = $('#SearchList');
+        let activityCount = $('.search-result-container .activity-count span');
+        activityCount.innerHTML = searchList.children.length;
+
+
+        const searhListCollection = searchList.children;
+        for (let i = 0; i < searhListCollection.length; i++) {
+            if((i + 1) % 3 === 0) {
+                searhListCollection[i].style.marginRight = 0 + 'px';
+            }
+        }
+    }
+    ,
     renderHomePage() {
         // // Render menu
         // let renderMenu = this.menuItemIcon.reduce(function (html, item, i) {
@@ -357,45 +401,45 @@ const app = {
         // topDestination.innerHTML = renderTopDestination;
 
         // Render best seller items
-        let renderBestSeller = this.bestSeller.reduce((html, item, i) => {
-            return html + `
-                <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
-                    <div class="category-swiper__item hover-effect">
-                        <div class="item__heading" style="background-image: url('${item.img}')"></div>
-                        <div class="item__body">
-                            <div class="item__body--top">
-                                <div class="item__title">
-                                    <span>${item.title}</span>
-                                </div>
-                                <div class="item__activity">
-                                    <span class="item__activity-score">
-                                        <i class="fa-solid fa-star"></i>
-                                        <span class="activity-score__rate">${item.rate}</span>
-                                    </span>
-                                    <span class="item__activity-review">
-                                        (
-                                            <span class="activity-review__number">${item.review}</span>
-                                        &nbsp;đánh giá)
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <div class="item__body--bottom">
-                                <div class="item-price-box">
-                                    <span class="item-price-box__sell-price-box">₫ &nbsp<span class="sell-price__value">${item.sellPrice}</span> </span>
-                                    <span class="item-price-box__old-price-box">₫ &nbsp<span class="old-price__value">${item.oldPrice}</span> </span>
-                                </div>
-                                <div class="item__tagging-wrapper">
-                                    <div class="item__tagging">
-                                        <p>Chính sách đảm bảo về giá</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `
-        }, '');
+        // let renderBestSeller = this.bestSeller.reduce((html, item, i) => {
+        //     return html + `
+        //         <div class="category-swiper__item-wrapper" has-tag="${item.hasTag}" is-discounting="${this.checkDiscounting(item)}">
+        //             <div class="category-swiper__item hover-effect">
+        //                 <div class="item__heading" style="background-image: url('${item.img}')"></div>
+        //                 <div class="item__body">
+        //                     <div class="item__body--top">
+        //                         <div class="item__title">
+        //                             <span>${item.title}</span>
+        //                         </div>
+        //                         <div class="item__activity">
+        //                             <span class="item__activity-score">
+        //                                 <i class="fa-solid fa-star"></i>
+        //                                 <span class="activity-score__rate">${item.rate}</span>
+        //                             </span>
+        //                             <span class="item__activity-review">
+        //                                 (
+        //                                     <span class="activity-review__number">${item.review}</span>
+        //                                 &nbsp;đánh giá)
+        //                             </span>
+        //                         </div>
+        //                     </div>
+        //
+        //                     <div class="item__body--bottom">
+        //                         <div class="item-price-box">
+        //                             <span class="item-price-box__sell-price-box">₫ &nbsp<span class="sell-price__value">${item.sellPrice}</span> </span>
+        //                             <span class="item-price-box__old-price-box">₫ &nbsp<span class="old-price__value">${item.oldPrice}</span> </span>
+        //                         </div>
+        //                         <div class="item__tagging-wrapper">
+        //                             <div class="item__tagging">
+        //                                 <p>Chính sách đảm bảo về giá</p>
+        //                             </div>
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     `
+        // }, '');
         // bestSellerElement.innerHTML = renderBestSeller;
         //
         // bookNowElement.innerHTML = renderBestSeller;
@@ -405,11 +449,11 @@ const app = {
         // childrenElement.innerHTML = renderBestSeller;
 
         this.displayDiscountAndTag(bestSellerElement);
-        // this.displayDiscountAndTag(bookNowElement);
-        // this.displayDiscountAndTag(newActivityElement);
-        // this.displayDiscountAndTag(promotionElement);
-        // this.displayDiscountAndTag(datingElement);
-        // this.displayDiscountAndTag(childrenElement);
+        this.displayDiscountAndTag(bookNowElement);
+        this.displayDiscountAndTag(newActivityElement);
+        this.displayDiscountAndTag(promotionElement);
+        this.displayDiscountAndTag(datingElement);
+        this.displayDiscountAndTag(childrenElement);
 
 
     },
@@ -512,13 +556,9 @@ const app = {
 
         // Render checked input
 
-
-
     },
 
     handleEventHomePage() {
-
-
 
         const menuWidth = menu.offsetWidth;
         const hideMenuNextBtnValue = -(menuWidth -30 - 1176);
@@ -655,6 +695,12 @@ const app = {
         const filterOptionItem = $$('#SortBySuggestion .filter__option-item');
         filterOptionItem.forEach((item, index) => {
         })
+
+        // Handle event search
+        let headerFrom = $('#HeaderForm');
+        let mainForm = $('#MainForm');
+        this.redirectToSearchPageByKey(headerFrom);
+        this.redirectToSearchPageByKey(mainForm);
     },
     handleEventSearchPage() {
         // Event click node
@@ -716,10 +762,26 @@ const app = {
         let priceRangeElement = $('#PriceFilter');
         let acceptBtn = $('#AcceptBtn');
         acceptBtn.onclick = () => {
+            let cartList = $$('.category-swiper__item-wrapper');
             priceRangeValue.textContent = '₫' + `${displayValOne.innerText}` + ' - ' + '₫' + `${displayValTwo.innerText}`;
             priceRangeElement.style.backgroundColor = '#ff5b00';
             priceRangeElement.style.color = '#fff';
+            deletePriceFilter();
+            let reservePrice = parseInt(displayValOne.innerText);
+            let endPrice = parseInt(displayValTwo.innerText);
+            Array.from(cartList).forEach(cart => {
+                if(cart.style.display !== 'none') {
+                    let cartPrice = parseInt(cart.querySelector('.sell-price__value').innerText.split('.').reduce(function(init, value) {
+                        return init + value;
+                    }, ''));
+
+                    if(cartPrice > endPrice || cartPrice < reservePrice) {
+                        cart.classList.add('price-filter')
+                    }
+                }
+            })
         }
+        this.afterFiltering();
         // Event click reset button
         let resetBtn = $('#ResetBtn');
         resetBtn.onclick = () => {
@@ -730,11 +792,22 @@ const app = {
             slideOne();
             sliderTwo.value = 500000;
             slideTwo();
+            deletePriceFilter();
+            this.afterFiltering();
         }
 
+        function deletePriceFilter() {
+            let cartList = $$('.category-swiper__item-wrapper');
+            Array.from(cartList).forEach(cart => {
+                if(cart.classList.contains('price-filter')) {
+                    cart.classList.remove('price-filter');
+                }
+            })
+        }
 
-
-
+        // Handle event search
+        let headerFrom = $('#HeaderForm');
+        this.redirectToSearchPageByKey(headerFrom);
 
 
 

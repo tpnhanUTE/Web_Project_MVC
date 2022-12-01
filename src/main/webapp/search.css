@@ -611,11 +611,6 @@ body {
     padding: 0 6px;
 }
 
-
-
-
-
-
 .btn {
     min-width: 86px;
     display: inline-block;
@@ -811,3 +806,5 @@ input[type="range"]:active::-webkit-slider-thumb{
 #litepicker::-ms-input-placeholder { /* Microsoft Edge */
     color: #000;
 }
+
+
