@@ -13,7 +13,7 @@ public class Payment {
     @Column(nullable = false)
     private Double paymentTotal;
     @Column(nullable = false)
-    private Date datePayment;
+    private String datePayment;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_userID")
     private Set<User> users;
@@ -34,11 +34,11 @@ public class Payment {
         this.paymentTotal = paymentTotal;
     }
 
-    public Date getDatePayment() {
+    public String getDatePayment() {
         return datePayment;
     }
 
-    public void setDatePayment(Date datePayment) {
+    public void setDatePayment(String datePayment) {
         this.datePayment = datePayment;
     }
 
