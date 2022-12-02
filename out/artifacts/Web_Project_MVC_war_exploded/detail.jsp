@@ -129,7 +129,7 @@
                         <div class="gap"></div>
                         <div>
                             <div class="label">Xin chọn ngày đi tour</div>
-                            <input  class="date_input" type="date" name="dateDeparture">
+                            <input  class="date_input" type="date" name="dateDeparture" required>
                         </div>
                         <div class="">
                             <div class="label">Số lượng</div>

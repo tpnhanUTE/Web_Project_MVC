@@ -43,6 +43,16 @@ public class UserBookTourInfor {
     private String tourName;
     private Double tourPrice;
 
+
+    public String getTourImageUrl() {
+        return tourImageUrl;
+    }
+
+    public void setTourImageUrl(String tourImageUrl) {
+        this.tourImageUrl = tourImageUrl;
+    }
+
+    private  String tourImageUrl;
     public String getDateDepartment() {
         return dateDepartment;
     }

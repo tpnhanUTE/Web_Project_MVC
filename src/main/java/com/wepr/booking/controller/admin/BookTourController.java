@@ -51,7 +51,7 @@ public class BookTourController extends HttpServlet {
             userTourBook.setUser(user);
             userTourBook.setTour(tourDAO.getTour(tourId).get());
             userTourBook.setPayment(null);
-            List<Tour_Image> tour_images = tourImageDAO.getImage(tourId);
+            List<Tour_Image> tour_images = tourImageDAO.getImages(tourId);
 
 
             for (Tour_Image tour_image:tour_images) {

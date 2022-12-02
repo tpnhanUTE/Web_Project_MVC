@@ -33,6 +33,10 @@ public class PaymentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] checkTours = request.getParameterValues("checkTour");
+        if(checkTours ==null){
+            String url = "/cart";
+            getServletContext().getRequestDispatcher(url).forward(request,response);
+        }
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 

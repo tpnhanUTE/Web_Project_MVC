@@ -89,7 +89,7 @@
                 </div>
                 <div class="img-grid-item">
                   <a href="#">
-                    <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
+                    <img src="${userBookTourInfor.tourImageUrl}" alt="" class="shopcart-cover">
                   </a>
                 </div>
                 <div class="info-grid-item">

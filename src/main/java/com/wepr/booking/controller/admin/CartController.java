@@ -1,6 +1,7 @@
 package com.wepr.booking.controller.admin;
 
 import com.wepr.booking.dao.TourDAO;
+import com.wepr.booking.dao.TourImageDAO;
 import com.wepr.booking.dao.UserBookTourDAO;
 import com.wepr.booking.model.*;
 
@@ -11,10 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 @WebServlet(name = "CartController", urlPatterns = "/cart")
@@ -64,6 +62,8 @@ public class CartController extends HttpServlet {
         AtomicReference<Double> price = new AtomicReference<>(0.0);
         tourDis.forEach((k,v)->{
             Double m = (v.tour.getTourPrice() * v.userTourBook.getAdultAmount()) + (v.tour.getTourPrice() * v.userTourBook.getChildAmount() / 2);
+            TourImageDAO tourImageDAO = new TourImageDAO();
+            Optional<Tour_Image> tour_image  = tourImageDAO.getImage(v.tour.getTourID());
 
             UserBookTourInfor userBookTourInfor = new UserBookTourInfor();
             userBookTourInfor.setUserBookTourId(k);
@@ -73,6 +73,7 @@ public class CartController extends HttpServlet {
             userBookTourInfor.setAdult(v.userTourBook.getAdultAmount());
             userBookTourInfor.setChild(v.userTourBook.getChildAmount());
             userBookTourInfor.setDateDepartment(v.userTourBook.getDateDeparture());
+            userBookTourInfor.setTourImageUrl(tour_image.get().getTourImageUrl());
             userBookTourInfors.add(userBookTourInfor);
             price.updateAndGet(v1 -> v1 + m);
         });
@@ -80,7 +81,7 @@ public class CartController extends HttpServlet {
         request.setAttribute("userBookTourInfors",userBookTourInfors);
         request.setAttribute("amount",price);
         System.out.print(price.toString());
-        System.out.print(tourDis.toString());
+
 
 
         getServletContext().getRequestDispatcher(url).forward(request,response);

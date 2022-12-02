@@ -31,7 +31,7 @@ public class TourController extends HttpServlet {
  //       List<User_Tour_Comment> user_tour_comments = userTourCommentDAO.getUserTourCommentByTourId(tourId);
         TourImageDAO tourImageDAO = new TourImageDAO();
 
-        List<Tour_Image> tour_images = tourImageDAO.getImage(tourId);
+        List<Tour_Image> tour_images = tourImageDAO.getImages(tourId);
         for (Tour_Image tour_image:tour_images
              ) {
             System.out.print(tour_image.getTourImageUrl());

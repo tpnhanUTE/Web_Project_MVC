@@ -140,7 +140,7 @@ const app = {
             img: 'https://res.klook.com/image/upload/c_fill,w_352,h_470/fl_lossy.progressive,q_85,f_auto/cities/pv8gftuu2hmdi7sghimz.webp',
             name: 'Đồng Hới - Quảng Bình'
         },
-        
+
         {
             img: 'https://res.klook.com/image/upload/c_fill,w_352,h_470/fl_lossy.progressive,q_85,f_auto/cities/h4frkpsjdbkbtm5ajtw1.webp',
             name: 'Cần Thơ - ĐB Sông Cửu Long'
@@ -228,6 +228,24 @@ const app = {
     promotionCurX: 0,
     datingCurX: 0,
     childrenCurX: 0,
+    engSub(str) {
+        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+        str = str.replace(/đ/g, "d");
+        str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+        str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+        str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+        str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+        str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+        str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+        str = str.replace(/Đ/g, "D");
+        return str;
+    }
+    ,
     checkDiscounting(item) {
         if(item.oldPrice === '') {
             return false;
@@ -253,7 +271,6 @@ const app = {
         searchBtn.onclick = (e) => {
             e.preventDefault();
             search();
-
         }
 
         searchInput.addEventListener("keypress", function(event) {
@@ -265,8 +282,8 @@ const app = {
 
         function search() {
             if(searchInput.value.trim() !== "") {
-                let searchValue = searchInput.value;
-                let searchValueArr = searchValue.split(' ');
+                let searchValue = app.engSub(searchInput.value).toLowerCase();
+                let searchValueArr = searchValue.replace(/\s+/g, ' ').split(' ');
                 let url = "";
                 searchValueArr.forEach(value => {
                     url += value + '%';
@@ -339,33 +356,32 @@ const app = {
                 }
             })
         })
+        this.afterFiltering();
     },
-    renderCartByPriceOnSearchPage() {
-        let cartList = $$('.category-swiper__item-wrapper');
-        let reservePrice = parseInt($('#range1').text);
-        let endPrice = parseInt($('#range2').text);
-        Array.from(cartList).forEach(cart => {
-            if(cart.style.display !== 'none') {
-                let cartPrice = parseInt(cart.querySelector('.sell-price__value').text);
-                if(cartPrice > endPrice || cartPrice < endPrice) {
-                    cart.style.display = 'none'
-                }
-            }
-        })
-
-    }
-    ,
     afterFiltering() {
         let searchList = $('#SearchList');
         let activityCount = $('.search-result-container .activity-count span');
-        activityCount.innerHTML = searchList.children.length;
+        let searhListCollection = searchList.children;
 
-
-        const searhListCollection = searchList.children;
-        for (let i = 0; i < searhListCollection.length; i++) {
-            if((i + 1) % 3 === 0) {
-                searhListCollection[i].style.marginRight = 0 + 'px';
+        let count = 0;
+        for(let i = 0; i < searhListCollection.length; i++) {
+            if(!searhListCollection[i].classList.contains('card--hidden')) {
+                count++;
             }
+        }
+        activityCount.innerHTML = count;
+
+        let i = 0, visibleCartIndex = 0;
+        while(i < searhListCollection.length) {
+            if(!searhListCollection[i].classList.contains('card--hidden')) {
+                console.log(searhListCollection[i])
+                if((visibleCartIndex + 1) % 3 === 0) {
+                    searhListCollection[i].style.marginRight = 0 + 'px';
+                    console.log('mgr: ' + searhListCollection[i])
+                }
+                visibleCartIndex++;
+            }
+            i++;
         }
     }
     ,
@@ -537,25 +553,43 @@ const app = {
         // }, '');
         // searchList.innerHTML = renderSearchList;
 
-        const searhListCollection = searchList.children;
-        for (let i = 0; i < searhListCollection.length; i++) {
-            if((i + 1) % 3 === 0) {
-                searhListCollection[i].style.marginRight = 0 + 'px';
-            }
-        }
+        // const searhListCollection = searchList.children;
+        // for (let i = 0; i < searhListCollection.length; i++) {
+        //     if((i + 1) % 3 === 0) {
+        //         searhListCollection[i].style.marginRight = 0 + 'px';
+        //     }
+        // }
 
         // Display discount and tag on card
         this.displayDiscountAndTag(searchList);
 
-        // Render activity count
-        const activityCount = $('.search-result-container .activity-count span');
-        activityCount.innerHTML = searchList.children.length;
+        // // Render activity count
+        // const activityCount = $('.search-result-container .activity-count span');
+        // activityCount.innerHTML = searchList.children.length;
 
         // Render selected tag
         this.renderTagOnSearchPage();
 
-        // Render checked input
-
+        // Render tour by key
+        let url = window.location.search
+        let keyArr = url.slice(5).split('%');
+        let keyStr = '';
+        let headerInput = $('#HeaderForm input');
+        keyArr.forEach(key => {
+            keyStr += key + ' ';
+        })
+        keyStr = keyStr.trim();
+        let cartList = $$('.category-swiper__item-wrapper');
+        if(keyStr) {
+            console.log(keyStr)
+            Array.from(cartList).forEach(cart => {
+                let cartTitleElement = cart.querySelector('.item__title span');
+                if(!app.engSub(cartTitleElement.innerText).toLowerCase().includes(keyStr)) {
+                    cart.classList.contains('card--hidden');
+                }
+            })
+        }
+        app.afterFiltering();
     },
 
     handleEventHomePage() {
@@ -749,8 +783,8 @@ const app = {
             fillColor();
         }
         function fillColor(){
-            percent1 = (sliderOne.value / sliderMaxValue) * 100;
-            percent2 = (sliderTwo.value / sliderMaxValue) * 100;
+            let percent1 = (sliderOne.value / sliderMaxValue) * 100;
+            let percent2 = (sliderTwo.value / sliderMaxValue) * 100;
             sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #ff5b00 ${percent1}% , #ff5b00 ${percent2}%, #dadae5 ${percent2}%)`;
         }
         sliderOne.oninput = slideOne;
@@ -761,12 +795,14 @@ const app = {
         let priceRangeValue = $('.filter-btn__label');
         let priceRangeElement = $('#PriceFilter');
         let acceptBtn = $('#AcceptBtn');
+        let cartList = $$('.category-swiper__item-wrapper');
+
         acceptBtn.onclick = () => {
-            let cartList = $$('.category-swiper__item-wrapper');
             priceRangeValue.textContent = '₫' + `${displayValOne.innerText}` + ' - ' + '₫' + `${displayValTwo.innerText}`;
             priceRangeElement.style.backgroundColor = '#ff5b00';
             priceRangeElement.style.color = '#fff';
             deletePriceFilter();
+            removeMarginRight();
             let reservePrice = parseInt(displayValOne.innerText);
             let endPrice = parseInt(displayValTwo.innerText);
             Array.from(cartList).forEach(cart => {
@@ -793,14 +829,22 @@ const app = {
             sliderTwo.value = 500000;
             slideTwo();
             deletePriceFilter();
+            removeMarginRight();
             this.afterFiltering();
         }
 
         function deletePriceFilter() {
-            let cartList = $$('.category-swiper__item-wrapper');
             Array.from(cartList).forEach(cart => {
                 if(cart.classList.contains('card--hidden')) {
                     cart.classList.remove('card--hidden');
+                }
+            })
+        }
+
+        function removeMarginRight() {
+            Array.from(cartList).forEach(cart => {
+                if(cart.hasAttribute("style")) {
+                    cart.removeAttribute("style");
                 }
             })
         }
@@ -819,7 +863,7 @@ const app = {
         let totalBill = 0;
         let totalAmount = 0;
         cartItemList.forEach(item => {
-            if(item.style.display !== 'none') {
+            if(item.querySelector('input').checked) {
                 totalAmount++;
                 totalBill += parseInt(item.querySelector('.item-price').innerText);
             }
@@ -834,9 +878,9 @@ const app = {
         let deleteAllTag = $('.delete-all');
         let itemCheckBoxList = $$('.item-checkbox')
         let deleteItemTagList = $$('.delete-item');
-        let cartItemList = $$('.cart_item');
-        let totalAmountElement = $('#totalAmountNumber');
-        let totalPriceElement = $('#totalPrice');
+        // let cartItemList = $$('.cart_item');
+        // let totalAmountElement = $('#totalAmountNumber');
+        // let totalPriceElement = $('#totalPrice');
 
         // Handle event click all-checkbox
         allCheckBox.onclick = () => {
@@ -859,34 +903,33 @@ const app = {
         deleteAllTag.onclick = () => {
             itemCheckBoxList.forEach(item => {
                 if(item.checked) {
-                    item.closest('.cart_item').style.display = 'none';
+                    item.closest('.cart_item').remove();
                 }
             })
-            updatePaymentContent();
-
+            app.renderCartPage();
         }
 
         // Handle event click delete item tag
         deleteItemTagList.forEach(item => {
             item.onclick = () => {
-                item.closest('.cart_item').style.display = 'none';
-                updatePaymentContent();
+                item.closest('.cart_item').remove();
+                app.renderCartPage();
             }
 
         })
 
-        function updatePaymentContent() {
-            let totalBill = 0;
-            let totalAmount = 0;
-            cartItemList.forEach(item => {
-                if(item.style.display !== 'none') {
-                    totalAmount++;
-                    totalBill += parseInt(item.querySelector('.item-price').innerText);
-                }
-            })
-            totalAmountElement.innerText = totalAmount;
-            totalPriceElement.innerText = totalBill;
-        }
+        // function updatePaymentContent() {
+        //     let totalBill = 0;
+        //     let totalAmount = 0;
+        //     cartItemList.forEach(item => {
+        //         if(item.querySelector('input').checked) {
+        //             totalAmount++;
+        //             totalBill += parseInt(item.querySelector('.item-price').innerText);
+        //         }
+        //     })
+        //     totalAmountElement.innerText = totalAmount;
+        //     totalPriceElement.innerText = totalBill;
+        // }
 
     },
     swipe(selector, curX, addValue) {
