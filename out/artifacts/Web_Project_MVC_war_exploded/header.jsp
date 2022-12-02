@@ -118,7 +118,7 @@
                             <div class="navbar-user-option dropdown-wrapper">
                                 <ul class="user__option-list">
                                     <li class="user__option-item">
-                                        <a href="" class="">
+                                        <a href="history" class="">
                                             Đơn hàng
                                         </a>
                                     </li>
