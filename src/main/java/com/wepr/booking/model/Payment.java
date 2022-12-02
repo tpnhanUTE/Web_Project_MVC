@@ -14,9 +14,18 @@ public class Payment {
     private Double paymentTotal;
     @Column(nullable = false)
     private String datePayment;
-    @OneToMany(cascade = CascadeType.ALL)
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne
     @JoinColumn(name = "fk_userID")
-    private Set<User> users;
+    private User user;
 
     public Integer getPaymentID() {
         return paymentID;
@@ -42,11 +51,5 @@ public class Payment {
         this.datePayment = datePayment;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 }
