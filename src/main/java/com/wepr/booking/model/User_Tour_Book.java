@@ -9,13 +9,13 @@ public class User_Tour_Book {
     @GeneratedValue
     private Integer userBookTourID;
     @Column(nullable = false)
-    private Date dateBook;
+    private String dateBook;
     @Column(nullable = false)
     private Integer adultAmount;
     @Column(nullable = false)
     private Integer childAmount;
     @Column(nullable = false)
-    private Date dateDeparture;
+    private String dateDeparture;
     @ManyToOne
     @JoinColumn(name = "fk_userID")
     private User user;
@@ -28,11 +28,11 @@ public class User_Tour_Book {
     public Integer getUserBookTourID(){ return userBookTourID; }
     public void setUserBookTourID(Integer userBookTourID){ this.userBookTourID = userBookTourID; }
 
-    public Date getDateBook() {
+    public String getDateBook() {
         return dateBook;
     }
 
-    public void setDateBook(Date dateBook) {
+    public void setDateBook(String dateBook) {
         this.dateBook = dateBook;
     }
 
@@ -52,11 +52,11 @@ public class User_Tour_Book {
         this.childAmount = childAmount;
     }
 
-    public Date getDateDeparture() {
+    public String getDateDeparture() {
         return dateDeparture;
     }
 
-    public void setDateDeparture(Date dateDeparture) {
+    public void setDateDeparture(String dateDeparture) {
         this.dateDeparture = dateDeparture;
     }
 

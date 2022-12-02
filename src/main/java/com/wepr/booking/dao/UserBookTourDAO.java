@@ -1,6 +1,7 @@
 package com.wepr.booking.dao;
 
 import com.wepr.booking.JpaConfig.JpaConfig;
+import com.wepr.booking.model.User;
 import com.wepr.booking.model.User_Tour_Book;
 
 import javax.persistence.EntityManager;
@@ -37,5 +38,19 @@ public class UserBookTourDAO {
             em.close();
         }
         return user_Tour_Book.stream().findFirst();
+    }
+    public List<User_Tour_Book> Get(){
+        EntityManager em = JpaConfig.getEntityManager();
+        String queryString = "SELECT u FROM User_Tour_Book u";
+        TypedQuery<User_Tour_Book> q = em.createQuery(queryString,User_Tour_Book.class);
+        List<User_Tour_Book> user_Tour_Book=null;
+        try{
+            user_Tour_Book = q.getResultList();
+            if(user_Tour_Book== null || user_Tour_Book.isEmpty())
+                user_Tour_Book = null;
+        }finally {
+            em.close();
+        }
+        return user_Tour_Book;
     }
 }

@@ -11,7 +11,7 @@ public class User_Tour_Comment {
     @Column(nullable = false)
     private Integer Rate;
     @Column(nullable = false)
-    private Date commentDate;
+    private String commentDate;
     private String Comment;
     @ManyToOne
     @JoinColumn(name = "fk_userID")
@@ -36,11 +36,11 @@ public class User_Tour_Comment {
         Rate = rate;
     }
 
-    public Date getCommentDate() {
+    public String getCommentDate() {
         return commentDate;
     }
 
-    public void setCommentDate(Date commentDate) {
+    public void setCommentDate(String commentDate) {
         this.commentDate = commentDate;
     }
     public String getComment() {

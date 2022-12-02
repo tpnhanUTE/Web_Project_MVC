@@ -52,9 +52,9 @@
                     </div>
                     <c:forEach items = "${TourImages}" var="tourImage">
 
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="${tourImage.getTourImageUrl()}" alt="Second slide">
-                          </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="${tourImage.getTourImageUrl()}" alt="Second slide">
+                        </div>
                     </c:forEach>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -88,7 +88,7 @@
                 </div>
                 <div style="width:10px"></div>
                 <ul style="list-style-type:circle; font-size: 13px; margin-left: 20px; list-style-type: none">
-                  <li>
+                    <li>
                         ${Tour.getTourDescription()}
                     </li>
                 </ul>
@@ -118,7 +118,7 @@
             <div class="title">Các gói dịch vụ</div>
             <div class="gap"></div>
             <div class="row service">
-                <form class="col-7 service-left">
+                <form class="col-7 service-left" action="booktour?Id=${Tour.getTourID()}" method="post">
                     <div>
                         <div style="display: flex; justify-content:space-between; margin-left: 30px;" >
                             <div style="font-size:20px;"><b>Vui lòng chọn gói dịch vụ và số lượng</b> </div>
@@ -129,23 +129,23 @@
                         <div class="gap"></div>
                         <div>
                             <div class="label">Xin chọn ngày đi tour</div>
-                            <input  class="date_input" type="date">
+                            <input  class="date_input" type="date" name="dateDeparture">
                         </div>
                         <div class="">
                             <div class="label">Số lượng</div>
                             <div class="main_service_quatity" style ="display:flex; justify-content:space-between;">
                                 <div>Người lớn</div>
-                                <input type="number" min=0 max = 10 class="input_number" value="1" onchange="Amount()" id ="adultValue">
+                                <input type="number" min=0 max = 10 class="input_number" value="1" onchange="Amount()" id ="adultValue" name="adultAmount">
                             </div>
                             <div class="gap"></div>
                             <div class="main_service_quatity" style ="display:flex; justify-content:space-between;">
                                 <div>Trẻ con</div>
-                                <input type="number" min=0 max = 10 class="input_number" value="0" onchange="Amount()" id = "childValue">
+                                <input type="number" min=0 max = 10 class="input_number" value="0" onchange="Amount()" id = "childValue" name="childAmount">
                             </div>
                             <div class="gap"></div>
                             <div class="main_service_button">
                                 <div id ="amount">${Tour.getTourPrice()}đ</div>
-                                <button>Thêm vào giỏ hàng</button>
+                                <button type="submit" >Thêm vào giỏ hàng</button>
                                 <button type="submit">Đặt ngay</button>
                             </div>
                             <div> </div>
@@ -202,14 +202,22 @@
                         </div>
                         <div style="margin-bottom:5px;margin-top: 5px;">${comment.getRate()}/5</div>
 
-                    <p> ${comment.getComment()}</p>
+                        <p> ${comment.getComment()}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="gap"></d
+                <div class="gap"></d
 
-            </c:forEach>
-        </div>
+                    </c:forEach>
+                </div>
     </main>
+
+    <%--        <c:if test="${error}!=null">--%>
+    <%--        <script>--%>
+    <%--            window.addEventListener("load",function (){--%>
+    <%--                alert()--%>
+    <%--            })--%>
+    <%--        </script>--%>
+    <%--        </c:if>--%>
 
     <!--Các gói dịch vụ-->
 

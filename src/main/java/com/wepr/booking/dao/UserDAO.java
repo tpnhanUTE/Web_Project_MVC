@@ -94,7 +94,7 @@ public class UserDAO  {
         EntityTransaction trans = em.getTransaction();
         try{
             trans.begin();
-           em.persist(user);
+            em.persist(user);
             trans.commit();
         }catch (Exception e){
             e.printStackTrace();
@@ -103,5 +103,17 @@ public class UserDAO  {
         finally {
             em.close();
         }
+    }
+    public List<User> getUsers(){
+        EntityManager em = JpaConfig.getEntityManager();
+        String queryString = "SELECT u FROM User u";
+        TypedQuery<User> q = em.createQuery(queryString,User.class);
+        List<User> users= null;
+        try {
+            users = q.getResultList();
+        }finally {
+            em.close();
+        }
+        return users;
     }
 }

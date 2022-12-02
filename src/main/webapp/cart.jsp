@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Map" %>
+<%@ page import="com.wepr.booking.model.Tour_TourBook" %>
+<%@ page import="java.util.HashMap" %><%--
   Created by IntelliJ IDEA.
   User: ADMIN
   Date: 11/27/2022
@@ -6,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -71,191 +74,65 @@
       </div>
 
       <div class="cart_list">
-        <div class="cart_item">
-          <div class="cart_item-content">
-            <div class="checkbox-grid-item">
-              <label class="cart-list__node" for="Item-1">
-                <div class="">
-                  <i class="fa-solid fa-check input__check-icon"></i>
-                </div>
-                <input type="checkbox" checked value ="" id="Item-1" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+        <c:forEach items="${userBookTourInfors}" var="userBookTourInfor">
+
+          <div class="cart_item" >
+            <div class="cart_item-content">
+              <div class="checkbox-grid-item">
+                <label class="cart-list__node" for="Item-3">
+                  <div class="">
+                    <i class="fa-solid fa-check input__check-icon"></i>
+                  </div>
+                  <input type="checkbox" value ="" id="Item-3" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                                     checked:border-orange focus:outline-none transition duration-200 item-checkbox">
-              </label>
-            </div>
-            <div class="img-grid-item">
-              <a href="#">
-                <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
-              </a>
-            </div>
-            <div class="info-grid-item">
-              <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
-            </div>
-            <div class="date-grid-item">
-              <div class="date">2/12/2022</div>
-              <span>(Giờ địa phương)</span>
-            </div>
-            <div class="guest-grid-item">
-              <div class="guest-category">
-                <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                <input type="number" class="guest-amount children-amount" value="1" disabled>
+                </label>
               </div>
-              <div class="guest-category">
-                <span class="guest-title">Người lớn</span>
-                <input type="number" class="guest-amount adult-amount" value="1" disabled>
+              <div class="img-grid-item">
+                <a href="#">
+                  <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
+                </a>
               </div>
-            </div>
-
-          </div>
-          <div class="cart_item-footer">
-            <div class="footer-operator">
-              <a href="#" class="delete-item">Xóa</a>
-            </div>
-            <div class="footer-price">₫ <span class="item-price">1907400</span></div>
-
-          </div>
-        </div>
-
-        <div class="cart_item">
-          <div class="cart_item-content">
-            <div class="checkbox-grid-item">
-              <label class="cart-list__node" for="Item-1">
-                <div class="">
-                  <i class="fa-solid fa-check input__check-icon"></i>
+              <div class="info-grid-item">
+                <a href="#" class="info-title">${userBookTourInfor.tourName}</a>
+                  <%--                <div class="info-description">Loại gói dịch vụ: Vé Vào Cổng + Cano Khứ Hồi</div>--%>
+              </div>
+              <div class="date-grid-item">
+                <div class="date">${userBookTourInfor.dateDepartment}</div>
+                <span>(Giờ địa phương)</span>
+              </div>
+              <div class="guest-grid-item">
+                <div class="guest-category">
+                  <span class="guest-title">Trẻ em (100 - 139 cm)</span>
+                  <input type="number" class="guest-amount children-amount" value="${userBookTourInfor.child}">
                 </div>
-                <input type="checkbox" checked value ="" id="Item-2" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
-                                    checked:border-orange focus:outline-none transition duration-200 item-checkbox">
-              </label>
-            </div>
-            <div class="img-grid-item">
-              <a href="#">
-                <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
-              </a>
-            </div>
-            <div class="info-grid-item">
-              <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
-            </div>
-            <div class="date-grid-item">
-              <div class="date">2/12/2022</div>
-              <span>(Giờ địa phương)</span>
-            </div>
-            <div class="guest-grid-item">
-              <div class="guest-category">
-                <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                <input type="number" class="guest-amount children-amount" value="1" disabled>
-              </div>
-              <div class="guest-category">
-                <span class="guest-title">Người lớn</span>
-                <input type="number" class="guest-amount adult-amount" value="1" disabled>
-              </div>
-            </div>
-
-          </div>
-          <div class="cart_item-footer">
-            <div class="footer-operator">
-              <a href="#" class="delete-item">Xóa</a>
-            </div>
-            <div class="footer-price">₫ <span class="item-price">1907400</span></div>
-
-          </div>
-        </div>
-
-        <div class="cart_item">
-          <div class="cart_item-content">
-            <div class="checkbox-grid-item">
-              <label class="cart-list__node" for="Item-1">
-                <div class="">
-                  <i class="fa-solid fa-check input__check-icon"></i>
+                <div class="guest-category">
+                  <span class="guest-title">Người lớn</span>
+                  <input type="number" class="guest-amount adult-amount" value="${userBookTourInfor.adult}">
                 </div>
-                <input type="checkbox" checked value ="" id="Item-3" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
-                                    checked:border-orange focus:outline-none transition duration-200 item-checkbox">
-              </label>
-            </div>
-            <div class="img-grid-item">
-              <a href="#">
-                <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
-              </a>
-            </div>
-            <div class="info-grid-item">
-              <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
-            </div>
-            <div class="date-grid-item">
-              <div class="date">2/12/2022</div>
-              <span>(Giờ địa phương)</span>
-            </div>
-            <div class="guest-grid-item">
-              <div class="guest-category">
-                <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                <input type="number" class="guest-amount children-amount" value="1" disabled>
               </div>
-              <div class="guest-category">
-                <span class="guest-title">Người lớn</span>
-                <input type="number" class="guest-amount adult-amount" value="1" disabled>
-              </div>
-            </div>
 
-          </div>
-          <div class="cart_item-footer">
-            <div class="footer-operator">
-              <a href="#" class="delete-item">Xóa</a>
             </div>
-            <div class="footer-price">₫ <span class="item-price">1907400</span></div>
-
-          </div>
-        </div>
-
-        <div class="cart_item">
-          <div class="cart_item-content">
-            <div class="checkbox-grid-item">
-              <label class="cart-list__node" for="Item-1">
-                <div class="">
-                  <i class="fa-solid fa-check input__check-icon"></i>
-                </div>
-                <input type="checkbox" checked value ="" id="Item-4" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
-                                    checked:border-orange focus:outline-none transition duration-200 item-checkbox">
-              </label>
-            </div>
-            <div class="img-grid-item">
-              <a href="#">
-                <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
-              </a>
-            </div>
-            <div class="info-grid-item">
-              <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
-            </div>
-            <div class="date-grid-item">
-              <div class="date">2/12/2022</div>
-              <span>(Giờ địa phương)</span>
-            </div>
-            <div class="guest-grid-item">
-              <div class="guest-category">
-                <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                <input type="number" class="guest-amount children-amount" value="1" disabled>
+            <div class="cart_item-footer">
+              <div class="footer-operator">
+                <a href="#">Sửa</a>
+                <a href="#" class="delete-item">Xóa</a>
               </div>
-              <div class="guest-category">
-                <span class="guest-title">Người lớn</span>
-                <input type="number" class="guest-amount adult-amount" value="1" disabled>
-              </div>
+              <div class="footer-price">₫ <span class="item-price">${userBookTourInfor.getTourPrice()}</span></div>
             </div>
           </div>
 
-          <div class="cart_item-footer">
-            <div class="footer-operator">
-              <a href="#" class="delete-item">Xóa</a>
-            </div>
-            <div class="footer-price">₫ <span class="item-price">1907400</span></div>
 
-          </div>
-        </div>
+        </c:forEach>
 
       </div>
     </div>
     <div class="payment-content">
       <div class="total-amount">
-        Tổng cộng (<span id="totalAmountNumber">2</span> Đơn vị)
+        Tổng cộng (<span id="totalAmountNumber">${userBookTourInfors.size()}</span> Đơn vị)
       </div>
       <div class="total-bill">
         ₫
-        <span id="totalPrice">3,447,400</span>
+        <span id="totalPrice">${amount}</span>
       </div>
       <button class="pay-now-btn">Thanh toán ngay</button>
     </div>

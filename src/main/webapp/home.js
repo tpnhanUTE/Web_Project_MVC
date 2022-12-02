@@ -958,7 +958,7 @@ const app = {
 
     },
     startCartPage() {
-        this.renderCartPage();
+        //this.renderCartPage();
         this.handleEventCartPage();
     }
 }
