@@ -69,6 +69,7 @@
         </label>
         <a href="#" class="delete-all text">Xóa dịch vụ đã chọn</a>
       </div>
+
       <div class="cart_list">
         <div class="cart_item">
           <div class="cart_item-content">
@@ -77,7 +78,7 @@
                 <div class="">
                   <i class="fa-solid fa-check input__check-icon"></i>
                 </div>
-                <input type="checkbox" value ="" id="Item-1" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                <input type="checkbox" checked value ="" id="Item-1" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                                     checked:border-orange focus:outline-none transition duration-200 item-checkbox">
               </label>
             </div>
@@ -88,7 +89,6 @@
             </div>
             <div class="info-grid-item">
               <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
-              <div class="info-description">Loại gói dịch vụ: Vé Vào Cổng + Cano Khứ Hồi</div>
             </div>
             <div class="date-grid-item">
               <div class="date">2/12/2022</div>
@@ -97,19 +97,17 @@
             <div class="guest-grid-item">
               <div class="guest-category">
                 <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                <input type="number" class="guest-amount children-amount" value="1">
+                <input type="number" class="guest-amount children-amount" value="1" disabled>
               </div>
               <div class="guest-category">
                 <span class="guest-title">Người lớn</span>
-                <input type="number" class="guest-amount adult-amount" value="1">
+                <input type="number" class="guest-amount adult-amount" value="1" disabled>
               </div>
             </div>
-
 
           </div>
           <div class="cart_item-footer">
             <div class="footer-operator">
-              <a href="#">Sửa</a>
               <a href="#" class="delete-item">Xóa</a>
             </div>
             <div class="footer-price">₫ <span class="item-price">1907400</span></div>
@@ -120,11 +118,11 @@
         <div class="cart_item">
           <div class="cart_item-content">
             <div class="checkbox-grid-item">
-              <label class="cart-list__node" for="Item-2">
+              <label class="cart-list__node" for="Item-1">
                 <div class="">
                   <i class="fa-solid fa-check input__check-icon"></i>
                 </div>
-                <input type="checkbox" value ="" id="Item-2" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                <input type="checkbox" checked value ="" id="Item-2" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                                     checked:border-orange focus:outline-none transition duration-200 item-checkbox">
               </label>
             </div>
@@ -135,7 +133,6 @@
             </div>
             <div class="info-grid-item">
               <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
-              <div class="info-description">Loại gói dịch vụ: Vé Vào Cổng + Cano Khứ Hồi</div>
             </div>
             <div class="date-grid-item">
               <div class="date">2/12/2022</div>
@@ -144,19 +141,17 @@
             <div class="guest-grid-item">
               <div class="guest-category">
                 <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                <input type="number" class="guest-amount children-amount" value="1">
+                <input type="number" class="guest-amount children-amount" value="1" disabled>
               </div>
               <div class="guest-category">
                 <span class="guest-title">Người lớn</span>
-                <input type="number" class="guest-amount adult-amount" value="1">
+                <input type="number" class="guest-amount adult-amount" value="1" disabled>
               </div>
             </div>
-
 
           </div>
           <div class="cart_item-footer">
             <div class="footer-operator">
-              <a href="#">Sửa</a>
               <a href="#" class="delete-item">Xóa</a>
             </div>
             <div class="footer-price">₫ <span class="item-price">1907400</span></div>
@@ -167,11 +162,11 @@
         <div class="cart_item">
           <div class="cart_item-content">
             <div class="checkbox-grid-item">
-              <label class="cart-list__node" for="Item-3">
+              <label class="cart-list__node" for="Item-1">
                 <div class="">
                   <i class="fa-solid fa-check input__check-icon"></i>
                 </div>
-                <input type="checkbox" value ="" id="Item-3" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                <input type="checkbox" checked value ="" id="Item-3" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                                     checked:border-orange focus:outline-none transition duration-200 item-checkbox">
               </label>
             </div>
@@ -182,7 +177,6 @@
             </div>
             <div class="info-grid-item">
               <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
-              <div class="info-description">Loại gói dịch vụ: Vé Vào Cổng + Cano Khứ Hồi</div>
             </div>
             <div class="date-grid-item">
               <div class="date">2/12/2022</div>
@@ -191,25 +185,68 @@
             <div class="guest-grid-item">
               <div class="guest-category">
                 <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                <input type="number" class="guest-amount children-amount" value="1">
+                <input type="number" class="guest-amount children-amount" value="1" disabled>
               </div>
               <div class="guest-category">
                 <span class="guest-title">Người lớn</span>
-                <input type="number" class="guest-amount adult-amount" value="1">
+                <input type="number" class="guest-amount adult-amount" value="1" disabled>
               </div>
             </div>
-
 
           </div>
           <div class="cart_item-footer">
             <div class="footer-operator">
-              <a href="#">Sửa</a>
               <a href="#" class="delete-item">Xóa</a>
             </div>
             <div class="footer-price">₫ <span class="item-price">1907400</span></div>
 
           </div>
         </div>
+
+        <div class="cart_item">
+          <div class="cart_item-content">
+            <div class="checkbox-grid-item">
+              <label class="cart-list__node" for="Item-1">
+                <div class="">
+                  <i class="fa-solid fa-check input__check-icon"></i>
+                </div>
+                <input type="checkbox" checked value ="" id="Item-4" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                                    checked:border-orange focus:outline-none transition duration-200 item-checkbox">
+              </label>
+            </div>
+            <div class="img-grid-item">
+              <a href="#">
+                <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/oklw8nrqcrhpxz2bjbpv.webp" alt="" class="shopcart-cover">
+              </a>
+            </div>
+            <div class="info-grid-item">
+              <a href="#" class="info-title">Vé VinWonders Nha Trang</a>
+            </div>
+            <div class="date-grid-item">
+              <div class="date">2/12/2022</div>
+              <span>(Giờ địa phương)</span>
+            </div>
+            <div class="guest-grid-item">
+              <div class="guest-category">
+                <span class="guest-title">Trẻ em (100 - 139 cm)</span>
+                <input type="number" class="guest-amount children-amount" value="1" disabled>
+              </div>
+              <div class="guest-category">
+                <span class="guest-title">Người lớn</span>
+                <input type="number" class="guest-amount adult-amount" value="1" disabled>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart_item-footer">
+            <div class="footer-operator">
+              <a href="#" class="delete-item">Xóa</a>
+            </div>
+            <div class="footer-price">₫ <span class="item-price">1907400</span></div>
+
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="payment-content">
