@@ -32,8 +32,9 @@ public class Admin extends HttpServlet {
         String tourPrice =  request.getParameter("TourPrice");
         String tourOldPrice = request.getParameter("TourOldPrice");
         String tourDescription = request.getParameter("TourDescription");
-        //String tourPolicy = request.getParameter("TourPolicy");
+        String tourPolicy = request.getParameter("TourPolicy");
         String tourSchedule = request.getParameter("TourSchedule");
+        String defaultImageUrl = request.getParameter("DefaultImage");
         System.out.print(request.getParameter("TourPolicy"));
         String PlaceId = request.getParameter("place");
         String[] imageUrl = request.getParameterValues("Image_Url");
@@ -49,9 +50,9 @@ public class Admin extends HttpServlet {
                     tour.setTourPrice(Double.parseDouble(tourPrice));
                     tour.setTourOldPrice(Double.parseDouble(tourOldPrice));
                     tour.setTourDescription(tourDescription);
-                    //tour.setPolicy(tourPolicy);
+                    tour.setPolicy(Boolean.parseBoolean(tourPolicy));
                     tour.setTourSchedule(tourSchedule);
-
+                    tour.setDefaultImage(defaultImageUrl);
                     PlaceDAO placeDAO = new PlaceDAO();
                     Optional<Place> place = placeDAO.GetPlace(Integer.parseInt(PlaceId));
                     tour.setPlace(place.get());
@@ -66,8 +67,9 @@ public class Admin extends HttpServlet {
                     tour.setTourPrice(Double.parseDouble(tourPrice));
                     tour.setTourOldPrice(Double.parseDouble(tourOldPrice));
                     tour.setTourDescription(tourDescription);
-                    //tour.setPolicy(tourPolicy);
+                    tour.setPolicy(Boolean.parseBoolean(tourPolicy));
                     tour.setTourSchedule(tourSchedule);
+                    tour.setDefaultImage(defaultImageUrl);
 
                     PlaceDAO placeDAO1 = new PlaceDAO();
                     Optional<Place> place1 = placeDAO1.GetPlace(Integer.parseInt(PlaceId));
