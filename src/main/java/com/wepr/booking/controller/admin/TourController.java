@@ -22,6 +22,7 @@ public class TourController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String url = "/error.jsp";
         Integer tourId = Integer.parseInt(request.getParameter("Id"));
         TourDAO tourDAO = new TourDAO();

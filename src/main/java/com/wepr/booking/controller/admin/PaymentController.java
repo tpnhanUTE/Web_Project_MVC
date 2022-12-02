@@ -32,6 +32,7 @@ public class PaymentController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String[] checkTours = request.getParameterValues("checkTour");
         if(checkTours ==null){
             String url = "/cart";
