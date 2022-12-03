@@ -84,6 +84,7 @@
                 </div>
                 <input type="checkbox" checked value ="" id="Item-1" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                                     checked:border-orange focus:outline-none transition duration-200 item-checkbox">
+<<<<<<< HEAD
               </label>
             </div>
             <div class="img-grid-item">
@@ -102,6 +103,34 @@
               <div class="guest-category">
                 <span class="guest-title">Trẻ em (100 - 139 cm)</span>
                 <input type="number" class="guest-amount children-amount" value="1" disabled>
+=======
+                  </label>
+                </div>
+                <div class="img-grid-item">
+                  <a href="#">
+                    <img src="${userBookTourInfor.tourImageUrl}" alt="" class="shopcart-cover">
+                  </a>
+                </div>
+                <div class="info-grid-item">
+                  <a href="#" class="info-title">${userBookTourInfor.tourName}</a>
+                    <%--                <div class="info-description">Loại gói dịch vụ: Vé Vào Cổng + Cano Khứ Hồi</div>--%>
+                </div>
+                <div class="date-grid-item">
+                  <div class="date">${userBookTourInfor.dateDepartment}</div>
+                  <span>(Giờ địa phương)</span>
+                </div>
+                <div class="guest-grid-item">
+                  <div class="guest-category">
+                    <span class="guest-title">Trẻ em (100 - 139 cm)</span>
+                    <input type="number" class="guest-amount children-amount" value="${userBookTourInfor.child}">
+                  </div>
+                  <div class="guest-category">
+                    <span class="guest-title">Người lớn</span>
+                    <input type="number" class="guest-amount adult-amount" value="${userBookTourInfor.adult}">
+                  </div>
+                </div>
+
+>>>>>>> d95ceceab94fde1e079cebcbc06f614ee262ec98
               </div>
               <div class="guest-category">
                 <span class="guest-title">Người lớn</span>

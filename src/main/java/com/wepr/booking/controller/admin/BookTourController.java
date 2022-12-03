@@ -22,6 +22,7 @@ public class BookTourController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String url = "/error.jsp";
 
         Integer tourId = Integer.parseInt(request.getParameter("Id"));
@@ -51,7 +52,7 @@ public class BookTourController extends HttpServlet {
             userTourBook.setUser(user);
             userTourBook.setTour(tourDAO.getTour(tourId).get());
             userTourBook.setPayment(null);
-            List<Tour_Image> tour_images = tourImageDAO.getImage(tourId);
+            List<Tour_Image> tour_images = tourImageDAO.getImages(tourId);
 
 
             for (Tour_Image tour_image:tour_images) {

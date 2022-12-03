@@ -53,4 +53,34 @@ public class UserBookTourDAO {
         }
         return user_Tour_Book;
     }
+    public List<User_Tour_Book> Get(User user){
+        EntityManager em = JpaConfig.getEntityManager();
+        String queryString = "SELECT u FROM User_Tour_Book u WHERE  u.user =:user";
+        TypedQuery<User_Tour_Book> q = em.createQuery(queryString,User_Tour_Book.class);
+        q.setParameter("user", user);
+        List<User_Tour_Book> user_Tour_Book=null;
+        try{
+            user_Tour_Book = q.getResultList();
+            if(user_Tour_Book== null || user_Tour_Book.isEmpty())
+                user_Tour_Book = null;
+        }finally {
+            em.close();
+        }
+        return user_Tour_Book;
+    }
+    public void Update(User_Tour_Book userTourBook){
+        EntityManager em = JpaConfig.getEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.merge(userTourBook);
+            trans.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            trans.rollback();
+        }
+        finally {
+            em.close();
+        }
+    }
 }

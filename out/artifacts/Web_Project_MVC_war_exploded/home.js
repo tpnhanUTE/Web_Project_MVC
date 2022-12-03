@@ -140,7 +140,7 @@ const app = {
             img: 'https://res.klook.com/image/upload/c_fill,w_352,h_470/fl_lossy.progressive,q_85,f_auto/cities/pv8gftuu2hmdi7sghimz.webp',
             name: 'Đồng Hới - Quảng Bình'
         },
-        
+
         {
             img: 'https://res.klook.com/image/upload/c_fill,w_352,h_470/fl_lossy.progressive,q_85,f_auto/cities/h4frkpsjdbkbtm5ajtw1.webp',
             name: 'Cần Thơ - ĐB Sông Cửu Long'
@@ -848,6 +848,14 @@ const app = {
                     cart.removeAttribute("style");
 =======
 >>>>>>> a2035ef3e87c2a3db27c76f369b1df0ee58fc527
+                }
+            })
+        }
+
+        function removeMarginRight() {
+            Array.from(cartList).forEach(cart => {
+                if(cart.hasAttribute("style")) {
+                    cart.removeAttribute("style");
                 }
             })
         }

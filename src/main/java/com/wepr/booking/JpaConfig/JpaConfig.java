@@ -8,5 +8,6 @@ public class JpaConfig {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("heroku_e9bd0b1d044616c");
         EntityManager em = emf.createEntityManager();
         return  em;
+
     }
 }

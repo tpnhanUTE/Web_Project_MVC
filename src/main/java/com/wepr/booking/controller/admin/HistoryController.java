@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
-@WebServlet(name = "CartController", urlPatterns = "/cart")
-public class CartController extends HttpServlet {
+@WebServlet(name = "HistoryController", urlPatterns = "/history")
+public class HistoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
@@ -31,9 +31,9 @@ public class CartController extends HttpServlet {
         User_Tour_Book userTourBook = new User_Tour_Book();
         User user = (User) session.getAttribute("user");
         Hashtable<Integer, Tour_TourBook> tourDis = null;
-        url = "/cart.jsp";
+        url = "/history.jsp";
         if (user != null) {
-            url = "/cart.jsp";
+            url = "/history.jsp";
             TourDAO tourDAO = new TourDAO();
             List<Tour> tours = tourDAO.getTour();
             UserBookTourDAO userBookTourDAO = new UserBookTourDAO();
@@ -46,7 +46,7 @@ public class CartController extends HttpServlet {
                     user_tour_books) {
                 for (Tour t :
                         tours) {
-                    if (user_tour_book.getTour().getTourID() == t.getTourID() && user_tour_book.getUser().getUserID() == user.getUserID() && user_tour_book.getPayment() == null) {
+                    if (user_tour_book.getTour().getTourID() == t.getTourID() && user_tour_book.getUser().getUserID() == user.getUserID() && user_tour_book.getPayment() != null) {
                         Tour_TourBook tour_tourBook = new Tour_TourBook();
                         tour_tourBook.tour = t;
                         tour_tourBook.userTourBook = user_tour_book;
