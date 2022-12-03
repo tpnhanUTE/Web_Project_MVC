@@ -585,7 +585,7 @@ const app = {
             Array.from(cartList).forEach(cart => {
                 let cartTitleElement = cart.querySelector('.item__title span');
                 if(!app.engSub(cartTitleElement.innerText).toLowerCase().includes(keyStr)) {
-                    cart.classList.contains('card--hidden');
+                    cart.classList.add('card--hidden');
                 }
             })
         }

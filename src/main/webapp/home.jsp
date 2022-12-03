@@ -166,7 +166,7 @@
                                            <c:forEach items="${Tours}" var="item">
                                                <a href="tour?Id=${item.tourID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
                                                    <div class="category-swiper__item hover-effect">
-                                                       <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')"></div>
+                                                       <div class="item__heading" style="background-image: url('${item.defaultImage}')"></div>
                                                        <div class="item__body">
                                                            <div class="item__body--top">
                                                                <div class="item__title">
@@ -239,7 +239,7 @@
                                         <c:forEach items="${Tours}" var="item">
                                             <a href="tour?Id=${item.tourID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
                                                 <div class="category-swiper__item hover-effect">
-                                                    <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')"></div>
+                                                    <div class="item__heading" style="background-image: url('${item.defaultImage}')"></div>
                                                     <div class="item__body">
                                                         <div class="item__body--top">
                                                             <div class="item__title">
@@ -312,7 +312,7 @@
                                         <c:forEach items="${Tours}" var="item">
                                             <a href="tour?Id=${item.tourID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
                                                 <div class="category-swiper__item hover-effect">
-                                                    <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')"></div>
+                                                    <div class="item__heading" style="background-image: url('${item.defaultImage}')"></div>
                                                     <div class="item__body">
                                                         <div class="item__body--top">
                                                             <div class="item__title">
@@ -385,7 +385,7 @@
                                         <c:forEach items="${Tours}" var="item">
                                             <a href="tour?Id=${item.tourID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
                                                 <div class="category-swiper__item hover-effect">
-                                                    <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')"></div>
+                                                    <div class="item__heading" style="background-image: url('${item.defaultImage}')"></div>
                                                     <div class="item__body">
                                                         <div class="item__body--top">
                                                             <div class="item__title">
@@ -458,7 +458,7 @@
                                         <c:forEach items="${Tours}" var="item">
                                             <a href="tour?Id=${item.tourID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
                                                 <div class="category-swiper__item hover-effect">
-                                                    <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')"></div>
+                                                    <div class="item__heading" style="background-image: url('${item.defaultImage}')"></div>
                                                     <div class="item__body">
                                                         <div class="item__body--top">
                                                             <div class="item__title">
@@ -531,7 +531,7 @@
                                         <c:forEach items="${Tours}" var="item">
                                             <a href="tour?Id=${item.tourID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
                                                 <div class="category-swiper__item hover-effect">
-                                                    <div class="item__heading" style="background-image: url('https://res.klook.com/image/upload/c_fill,w_550,h_308/fl_lossy.progressive,q_85,f_auto/activities/lvnxfcz989rlat8jndf0.webp')"></div>
+                                                    <div class="item__heading" style="background-image: url('${item.defaultImage}')"></div>
                                                     <div class="item__body">
                                                         <div class="item__body--top">
                                                             <div class="item__title">
