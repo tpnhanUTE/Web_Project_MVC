@@ -67,7 +67,7 @@
             <div class="">
               <i class="fa-solid fa-check input__check-icon"></i>
             </div>
-            <input type="checkbox" value ="" id="AllCheckbox" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+            <input type="checkbox" checked value ="" id="AllCheckbox" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                         checked:border-orange focus:outline-none transition duration-200">
             <span class="all text">Tất cả</span>
           </label>
@@ -79,11 +79,11 @@
             <div class="cart_item" >
               <div class="cart_item-content">
                 <div class="checkbox-grid-item">
-                  <label class="cart-list__node" for="Item-3">
+                  <label class="cart-list__node" for="Item-${userBookTourInfor.userBookTourId}">
                     <div class="">
                       <i class="fa-solid fa-check input__check-icon"></i>
                     </div>
-                    <input type="checkbox" name="checkTour" value ="${userBookTourInfor.userBookTourId}" id="Item-3" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                    <input type="checkbox" name="checkTour" value ="${userBookTourInfor.userBookTourId}" id="Item-${userBookTourInfor.userBookTourId}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                                     checked:border-orange focus:outline-none transition duration-200 item-checkbox">
                   </label>
                 </div>
@@ -103,18 +103,17 @@
                 <div class="guest-grid-item">
                   <div class="guest-category">
                     <span class="guest-title">Trẻ em (100 - 139 cm)</span>
-                    <input type="number" class="guest-amount children-amount" value="${userBookTourInfor.child}">
+                    <input type="number" class="guest-amount children-amount" value="${userBookTourInfor.child}" disabled>
                   </div>
                   <div class="guest-category">
                     <span class="guest-title">Người lớn</span>
-                    <input type="number" class="guest-amount adult-amount" value="${userBookTourInfor.adult}">
+                    <input type="number" class="guest-amount adult-amount" value="${userBookTourInfor.adult}" disabled>
                   </div>
                 </div>
 
               </div>
               <div class="cart_item-footer">
                 <div class="footer-operator">
-                  <a href="#">Sửa</a>
                   <a href="#" class="delete-item">Xóa</a>
                 </div>
                 <div class="footer-price">₫ <span class="item-price">${userBookTourInfor.getTourPrice()}</span></div>
