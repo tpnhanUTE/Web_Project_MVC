@@ -918,6 +918,12 @@ const app = {
 
         })
 
+        itemCheckBoxList.forEach(item => {
+            item.onchange = () => {
+                app.renderCartPage();
+            }
+        })
+
         // function updatePaymentContent() {
         //     let totalBill = 0;
         //     let totalAmount = 0;

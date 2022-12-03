@@ -67,7 +67,7 @@
             <div class="">
               <i class="fa-solid fa-check input__check-icon"></i>
             </div>
-            <input type="checkbox" checked value ="" id="AllCheckbox" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+            <input type="checkbox" value ="" id="AllCheckbox" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                         checked:border-orange focus:outline-none transition duration-200">
             <span class="all text">Tất cả</span>
           </label>
@@ -83,7 +83,7 @@
                     <div class="">
                       <i class="fa-solid fa-check input__check-icon"></i>
                     </div>
-                    <input type="checkbox" name="checkTour" value ="${userBookTourInfor.userBookTourId}" id="Item-${userBookTourInfor.userBookTourId}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                    <input type="checkbox" checked name="checkTour" value ="${userBookTourInfor.userBookTourId}" id="Item-${userBookTourInfor.userBookTourId}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                                     checked:border-orange focus:outline-none transition duration-200 item-checkbox">
                   </label>
                 </div>
