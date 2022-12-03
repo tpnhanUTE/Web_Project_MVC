@@ -837,17 +837,6 @@ const app = {
             Array.from(cartList).forEach(cart => {
                 if(cart.classList.contains('card--hidden')) {
                     cart.classList.remove('card--hidden');
-<<<<<<< HEAD
-                }
-            })
-        }
-
-        function removeMarginRight() {
-            Array.from(cartList).forEach(cart => {
-                if(cart.hasAttribute("style")) {
-                    cart.removeAttribute("style");
-=======
->>>>>>> a2035ef3e87c2a3db27c76f369b1df0ee58fc527
                 }
             })
         }
