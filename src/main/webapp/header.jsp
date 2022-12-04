@@ -29,14 +29,7 @@
                 <a href="index"><img class="navbar__logo" src="./img/logo.png"></a>
                 <form method="post" action="search" id="HeaderForm">
                     <div class="navbar__search-box">
-                        <c:if test="${key == null}">
-                            <input type="text" class="search-box__input" placeholder="Tìm theo điểm đến, hoạt động">
-                        </c:if>
-
-                        <c:if test="${key != null}">
-                            <input value="${key}" type="text" class="search-box__input" placeholder="Tìm theo điểm đến, hoạt động">
-                        </c:if>
-
+                        <input type="text" class="search-box__input" placeholder="Tìm theo điểm đến, hoạt động">
                         <button type="submit" class="search-box__btn">
                             <i class="ti-search"></i>
                         </button>

@@ -282,7 +282,7 @@ const app = {
 
         function search() {
             if(searchInput.value.trim() !== "") {
-                let searchValue = app.engSub(searchInput.value).toLowerCase();
+                let searchValue = app.engSub(searchInput.value).toLowerCase().trim();
                 let searchValueArr = searchValue.replace(/\s+/g, ' ').split(' ');
                 let url = "";
                 searchValueArr.forEach(value => {
@@ -317,55 +317,15 @@ const app = {
         selectedElement.innerHTML = tagHtml ? tagHtml : '';
 
     },
-    renderSelectedCartOnSearchPage() {
-        //Hide all cart
-        let cartList = $$('.category-swiper__item-wrapper');
-        Array.from(cartList).forEach(item => {
-            item.style.display = 'none'
-        })
-        // Get selected destination tag
-        let desList = $$('#Destination .tree-list-item__node');
-        let selectedDesIDArray = Array.from(desList).map((item, index) => {
-            if (item.querySelector("input[type='checkbox']").checked === true) {
-                return item.querySelector('input').id;
-            }
-        }, [])
-        // Get selected category tag
-        let cateList = $$('#Category .tree-list-item__node');
-        let selectedCateIDArray = Array.from(cateList).map((item, index) => {
-            if (item.querySelector("input[type='checkbox']").checked === true) {
-                return item.querySelector('input').id;
-            }
-        }, [])
-        // Display cart
-        Array.from(cartList).forEach(item => {
-            let filterArr = item.getAttribute('data-filter').split(' ');
-            desList.forEach(des => {
-                for (let i = 0; i < filterArr.length; i++) {
-                    if (des === filterArr[i]) {
-                        item.style.display = 'block';
-                    }
-                }
-            })
-
-            cateList.forEach(cate => {
-                for (let i = 0; i < filterArr.length; i++) {
-                    if (cate === filterArr[i]) {
-                        item.style.display = 'block';
-                    }
-                }
-            })
-        })
-        this.afterFiltering();
-    },
     afterFiltering() {
         let searchList = $('#SearchList');
         let activityCount = $('.search-result-container .activity-count span');
         let searhListCollection = searchList.children;
 
         let count = 0;
+
         for(let i = 0; i < searhListCollection.length; i++) {
-            if(!searhListCollection[i].classList.contains('card--hidden')) {
+            if(!searhListCollection[i].classList.contains('card--hidden') && !searhListCollection[i].classList.contains('card-place--hidden')) {
                 count++;
             }
         }
@@ -373,16 +333,42 @@ const app = {
 
         let i = 0, visibleCartIndex = 0;
         while(i < searhListCollection.length) {
-            if(!searhListCollection[i].classList.contains('card--hidden')) {
-                console.log(searhListCollection[i])
+            if(!searhListCollection[i].classList.contains('card--hidden') && !searhListCollection[i].classList.contains('card-place--hidden')) {
                 if((visibleCartIndex + 1) % 3 === 0) {
                     searhListCollection[i].style.marginRight = 0 + 'px';
-                    console.log('mgr: ' + searhListCollection[i])
                 }
                 visibleCartIndex++;
             }
             i++;
         }
+    }
+    ,
+    renderCartByPlace() {
+        let desNodeList = $$('#Destination .tree-list-item__node')
+        let cartList = $$('.category-swiper__item-wrapper');
+
+        desNodeList.forEach(node => {
+            if(node.querySelector('input').checked) {
+                cartList.forEach(cart => {
+
+                    if(!(cart.getAttribute("place-data") === node.querySelector('input').value)) {
+                        cart.classList.add('card-place--hidden')
+                    }
+                })
+            }
+        })
+
+
+
+
+    },
+    removeMarginRight() {
+        let cartList = $$('.category-swiper__item-wrapper');
+        Array.from(cartList).forEach(cart => {
+            if(cart.hasAttribute("style")) {
+                cart.removeAttribute("style");
+            }
+        })
     }
     ,
     renderHomePage() {
@@ -572,24 +558,28 @@ const app = {
 
         // Render tour by key
         let url = window.location.search
-        let keyArr = url.slice(5).split('%');
-        let keyStr = '';
-        let headerInput = $('#HeaderForm input');
-        keyArr.forEach(key => {
-            keyStr += key + ' ';
-        })
-        keyStr = keyStr.trim();
-        let cartList = $$('.category-swiper__item-wrapper');
-        if(keyStr) {
-            console.log(keyStr)
-            Array.from(cartList).forEach(cart => {
-                let cartTitleElement = cart.querySelector('.item__title span');
-                if(!app.engSub(cartTitleElement.innerText).toLowerCase().includes(keyStr)) {
-                    cart.classList.add('card--hidden');
-                }
+        if(url.includes('key')) {
+            let keyArr = url.slice(5).split('%');
+            let keyStr = '';
+            keyArr.forEach(key => {
+                keyStr += key + ' ';
             })
+            keyStr = keyStr.trim();
+            let cartList = $$('.category-swiper__item-wrapper');
+            if(keyStr) {
+                Array.from(cartList).forEach(cart => {
+                    let cartTitleElement = cart.querySelector('.item__title span');
+                    if(!app.engSub(cartTitleElement.innerText).toLowerCase().includes(keyStr)) {
+                        cart.classList.add('card--hidden');
+                    }
+                })
+            }
+            app.afterFiltering();
         }
-        app.afterFiltering();
+        else {
+            app.renderCartByPlace();
+            app.afterFiltering();
+        }
     },
 
     handleEventHomePage() {
@@ -740,12 +730,29 @@ const app = {
         // Event click node
         let searchList = $('#SearchList');
         let nodeList = $$('.tree-list-item__node');
+        let cateNodeList = $$('#Category .tree-list-item__node')
+        let desNodeList = $$('#Destination .tree-list-item__node')
+
+
         Array.from(nodeList).forEach((node, index) => {
             node.onclick = () => {
+                this.removeMarginRight();
+                cartList.forEach(cart => {
+                    if(cart.classList.contains('card-place--hidden')) {
+                        cart.classList.remove('card-place--hidden')
+                    }
+                })
+                app.renderCartByPlace();
+                app.afterFiltering()
                 app.renderTagOnSearchPage();
                 displaySelectedTagElement();
+
+
+
             }
         })
+
+
 
 
         // Event click 'Clear Selection'
@@ -802,7 +809,7 @@ const app = {
             priceRangeElement.style.backgroundColor = '#ff5b00';
             priceRangeElement.style.color = '#fff';
             deletePriceFilter();
-            removeMarginRight();
+            this.removeMarginRight();
             let reservePrice = parseInt(displayValOne.innerText);
             let endPrice = parseInt(displayValTwo.innerText);
             Array.from(cartList).forEach(cart => {
@@ -829,7 +836,7 @@ const app = {
             sliderTwo.value = 500000;
             slideTwo();
             deletePriceFilter();
-            removeMarginRight();
+            this.removeMarginRight();
             this.afterFiltering();
         }
 
@@ -841,13 +848,7 @@ const app = {
             })
         }
 
-        function removeMarginRight() {
-            Array.from(cartList).forEach(cart => {
-                if(cart.hasAttribute("style")) {
-                    cart.removeAttribute("style");
-                }
-            })
-        }
+
 
         // Handle event search
         let headerFrom = $('#HeaderForm');

@@ -241,7 +241,7 @@
 
           <div class="search-result-list" id="SearchList">
             <c:forEach items="${tourList}" var="item">
-              <a href="tour?Id=${item.tourID}" place-data="${item.place}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
+              <a href="tour?Id=${item.tourID}" place-data="${item.place.placeID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
                 <div class="category-swiper__item hover-effect">
 
                   <div class="item__heading" style="background-image: url('${item.defaultImage}')">

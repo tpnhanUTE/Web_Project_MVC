@@ -615,6 +615,9 @@ body {
     display: none!important;
 }
 
+.card-place--hidden {
+    display: none;
+}
 
 .btn {
     min-width: 86px;
