@@ -37,51 +37,54 @@ public class HistoryController extends HttpServlet {
             TourDAO tourDAO = new TourDAO();
             List<Tour> tours = tourDAO.getTour();
             UserBookTourDAO userBookTourDAO = new UserBookTourDAO();
-            List<User_Tour_Book> user_tour_books = userBookTourDAO.Get();
+            if(userBookTourDAO.Get() != null)
+            {
+                List<User_Tour_Book> user_tour_books =userBookTourDAO.Get().get();
+                if(user_tour_books!= null){
 
-
-
-            tourDis = new Hashtable<Integer, Tour_TourBook>();
-            for (User_Tour_Book user_tour_book :
-                    user_tour_books) {
-                for (Tour t :
-                        tours) {
-                    if (user_tour_book.getTour().getTourID() == t.getTourID() && user_tour_book.getUser().getUserID() == user.getUserID() && user_tour_book.getPayment() != null) {
-                        Tour_TourBook tour_tourBook = new Tour_TourBook();
-                        tour_tourBook.tour = t;
-                        tour_tourBook.userTourBook = user_tour_book;
-                        tourDis.put(user_tour_book.getUserBookTourID(),tour_tourBook);
+                    tourDis = new Hashtable<Integer, Tour_TourBook>();
+                    for (User_Tour_Book user_tour_book :
+                            user_tour_books) {
+                        for (Tour t :
+                                tours) {
+                            if (user_tour_book.getTour().getTourID() == t.getTourID() && user_tour_book.getUser().getUserID() == user.getUserID() && user_tour_book.getPayment() != null) {
+                                Tour_TourBook tour_tourBook = new Tour_TourBook();
+                                tour_tourBook.tour = t;
+                                tour_tourBook.userTourBook = user_tour_book;
+                                tourDis.put(user_tour_book.getUserBookTourID(),tour_tourBook);
+                            }
+                        }
                     }
+                    List<UserBookTourInfor> userBookTourInfors = new ArrayList<UserBookTourInfor>();
+                    //request.setAttribute("tourDis", tourDis);
+                    AtomicReference<Double> price = new AtomicReference<>(0.0);
+                    tourDis.forEach((k,v)->{
+                        Double m = (v.tour.getTourPrice() * v.userTourBook.getAdultAmount()) + (v.tour.getTourPrice() * v.userTourBook.getChildAmount() / 2);
+                        TourImageDAO tourImageDAO = new TourImageDAO();
+                        Optional<Tour_Image> tour_image  = tourImageDAO.getImage(v.tour.getTourID());
+
+                        UserBookTourInfor userBookTourInfor = new UserBookTourInfor();
+                        userBookTourInfor.setUserBookTourId(k);
+                        userBookTourInfor.setTourID(v.tour.getTourID());
+                        userBookTourInfor.setTourName(v.tour.getTourName());
+                        userBookTourInfor.setTourPrice(v.tour.getTourPrice());
+                        userBookTourInfor.setAdult(v.userTourBook.getAdultAmount());
+                        userBookTourInfor.setChild(v.userTourBook.getChildAmount());
+                        userBookTourInfor.setDateDepartment(v.userTourBook.getDateDeparture());
+                        userBookTourInfor.setTourImageUrl(tour_image.get().getTourImageUrl());
+                        userBookTourInfors.add(userBookTourInfor);
+                        price.updateAndGet(v1 -> v1 + m);
+                    });
+
+                    request.setAttribute("userBookTourInfors",userBookTourInfors);
+                    request.setAttribute("amount",price);
+                    System.out.print(price.toString());
+
                 }
             }
-
         }else {
             url ="/Login.jsp";
         }
-        List<UserBookTourInfor> userBookTourInfors = new ArrayList<UserBookTourInfor>();
-        //request.setAttribute("tourDis", tourDis);
-        AtomicReference<Double> price = new AtomicReference<>(0.0);
-        tourDis.forEach((k,v)->{
-            Double m = (v.tour.getTourPrice() * v.userTourBook.getAdultAmount()) + (v.tour.getTourPrice() * v.userTourBook.getChildAmount() / 2);
-            TourImageDAO tourImageDAO = new TourImageDAO();
-            Optional<Tour_Image> tour_image  = tourImageDAO.getImage(v.tour.getTourID());
-
-            UserBookTourInfor userBookTourInfor = new UserBookTourInfor();
-            userBookTourInfor.setUserBookTourId(k);
-            userBookTourInfor.setTourID(v.tour.getTourID());
-            userBookTourInfor.setTourName(v.tour.getTourName());
-            userBookTourInfor.setTourPrice(v.tour.getTourPrice());
-            userBookTourInfor.setAdult(v.userTourBook.getAdultAmount());
-            userBookTourInfor.setChild(v.userTourBook.getChildAmount());
-            userBookTourInfor.setDateDepartment(v.userTourBook.getDateDeparture());
-            userBookTourInfor.setTourImageUrl(tour_image.get().getTourImageUrl());
-            userBookTourInfors.add(userBookTourInfor);
-            price.updateAndGet(v1 -> v1 + m);
-        });
-
-        request.setAttribute("userBookTourInfors",userBookTourInfors);
-        request.setAttribute("amount",price);
-        System.out.print(price.toString());
 
 
 

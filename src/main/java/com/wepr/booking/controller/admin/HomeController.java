@@ -127,7 +127,8 @@ public class HomeController extends HttpServlet {
                 user.setPassword(request.getParameter("password"));
                 String confirmPassword = request.getParameter("confirmPassword");
                 request.setAttribute("user", user);
-
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
                 url = "/Login.jsp";
                 if(!user.getPassword().equals(confirmPassword)){
                     url = "/register.jsp";
@@ -139,7 +140,7 @@ public class HomeController extends HttpServlet {
                     if(userDAO.IsValid(user.getEmail(), user.getUserName())){
 
                         url ="/otp.jsp";
-                        HttpSession session = request.getSession();
+                        session = request.getSession();
                         session.setAttribute("User", user);
                         session.setAttribute("OTP", EmailUtility.randomOtp());
                         try {
