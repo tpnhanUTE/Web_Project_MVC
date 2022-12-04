@@ -113,11 +113,11 @@
                   </div>
 
                   <c:if test="${desHtmlID == desItem.placeID}">
-                    <input type="checkbox" checked id="DesCheckBox-${desItem.placeID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                    <input type="checkbox" value="${desItem.placeID}" checked id="DesCheckBox-${desItem.placeID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                   checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
                   </c:if>
                   <c:if test="${desHtmlID != desItem.placeID}">
-                    <input type="checkbox" id="DesCheckBox-${desItem.placeID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                    <input type="checkbox" value="${desItem.placeID}" id="DesCheckBox-${desItem.placeID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                   checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
                   </c:if>
                   <span>${desItem.placeName}</span>
@@ -136,11 +136,11 @@
                     <i class="fa-solid fa-check input__check-icon"></i>
                   </div>
                   <c:if test="${cateHtmlID == cateItem.catalogID}">
-                    <input type="checkbox" checked  id="CategoryCheckBox-${cateItem.catalogID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                    <input type="checkbox" value="${cateItem.catalogID}" checked  id="CategoryCheckBox-${cateItem.catalogID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                 checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
                   </c:if>
                   <c:if test="${cateHtmlID != cateItem.catalogID}">
-                    <input type="checkbox"  id="CategoryCheckBox-${cateItem.catalogID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
+                    <input type="checkbox" value="${cateItem.catalogID}"  id="CategoryCheckBox-${cateItem.catalogID}" class="appearance-none h-4 w-4 border border-gray-300 hover:border-orange rounded-sm bg-white checked:bg-orange
                 checked:border-orange focus:outline-none transition duration-200 mt-1 mr-2">
                   </c:if>
                   <span>${cateItem.catalogName}</span>
@@ -241,11 +241,7 @@
 
           <div class="search-result-list" id="SearchList">
             <c:forEach items="${tourList}" var="item">
-<<<<<<< HEAD
               <a href="tour?Id=${item.tourID}" place-data="${item.place.placeID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
-=======
-              <a href="tour?Id=${item.tourID}" class="category-swiper__item-wrapper" has-tag="${item.policy}" is-discounting="${item.tourOldPrice != null}">
->>>>>>> parent of 0c569df (Auxiliary commit to revert individual files from 053903a8fb9b6436193cc22356d708a8265e097c)
                 <div class="category-swiper__item hover-effect">
 
                   <div class="item__heading" style="background-image: url('${item.defaultImage}')">

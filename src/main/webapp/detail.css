@@ -23,7 +23,7 @@ body {
 .Tour_Name{
 	margin-top: 50px;
 	font-size: 30px;
-	
+
 }
 .package-content{
 	margin-top: 70px;
@@ -108,7 +108,7 @@ body {
 	color: white;
 }
 .service-right{
-	
+
 	list-style-type: circle;
 	padding: 10px;
 	background-color: #F0FFFF;
@@ -129,7 +129,7 @@ body {
 	align-items:flex-end;
 }
 .comment_avt img{
-	
+
 	border-radius: 50%;
 	width: 50px;
 	height: 50px;
