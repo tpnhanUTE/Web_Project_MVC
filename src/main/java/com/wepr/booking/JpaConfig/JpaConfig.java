@@ -5,7 +5,7 @@ import javax.persistence.Persistence;
 
 public class JpaConfig {
     public static  EntityManager getEntityManager(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("heroku_e9bd0b1d044616c");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("heroku_d9d8bf11be93e25");
         EntityManager em = emf.createEntityManager();
         return  em;
 

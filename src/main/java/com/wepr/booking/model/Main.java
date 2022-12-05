@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 public class Main {
     public static  void main(String[] args){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("heroku_e9bd0b1d044616c");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("heroku_d9d8bf11be93e25");
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
