@@ -53,12 +53,12 @@ public class HomeController extends HttpServlet {
                     url = "/Login.jsp";
                     break;
                 case "home":
-                    url = "/home.jsp";
+                    url = "/index.jsp";
                     break;
                 case "logout":
                     HttpSession session = request.getSession();
                     session.invalidate();
-                    url = "/home.jsp";
+                    url = "/index.jsp";
                     break;
                 default:
                     break;
@@ -89,7 +89,7 @@ public class HomeController extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", oUser.get());
                     request.setAttribute("user",oUser.get());
-                    if(oUser.get().getIsAdmin() !=null ){
+                    if(oUser.get().getIsAdmin() ==true ){
                         userDAO = new UserDAO();
                         List<User> users = userDAO.getUsers();
 

@@ -2,7 +2,7 @@
              xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence_2_1.xsd">
 
-    <persistence-unit name="heroku_e9bd0b1d044616c" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="heroku_d9d8bf11be93e25" transaction-type="RESOURCE_LOCAL">
         <class>com.wepr.booking.model.Catalog</class>
         <class>com.wepr.booking.model.Payment</class>
         <class>com.wepr.booking.model.Place</class>
@@ -19,9 +19,9 @@
         <properties>
 
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_e9bd0b1d044616c" />
-            <property name="javax.persistence.jdbc.user" value="b9189a58769b7e" />
-            <property name="javax.persistence.jdbc.password" value="b80d210e" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://us-cdbr-east-06.cleardb.net/heroku_d9d8bf11be93e25" />
+            <property name="javax.persistence.jdbc.user" value="b02fa5a1cbc905" />
+            <property name="javax.persistence.jdbc.password" value="b896c697" />
 
 <!--            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />-->
 <!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/heroku_e9bd0b1d044616c" />-->
